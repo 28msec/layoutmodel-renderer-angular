@@ -1,0 +1,251 @@
+@preview-bg:      #ffffff;
+@preview-null-bg: #f0f0f0;
+@preview-data-bg: #ffffff;
+@preview-light-bc: #dadcdd;
+@preview-dark-bc: #000000;
+@preview-total-bc: #000000;
+@preview-main-header-bg: @brand-primary;
+@preview-second-header-bg: #ddeafa;
+
+@preview-check-ok-fg: #00a000;
+@preview-check-fail-fg: #a00000;
+
+@preview-plain-header-bg: #e0e0e0;
+@preview-plain-data-bg: #f0f0f0;
+
+.preview-style table {
+
+  border-spacing: 0px;  
+  border-collapse: separate;  
+  border-right:2px solid @preview-dark-bc;border-bottom:2px solid @preview-dark-bc; 
+  font-size: 80%;
+
+  thead { margin-bottom:5px }
+
+  tr.constraints {
+    td.constraintlabel {
+      background-color: @preview-main-header-bg;
+      border-top:2px solid @preview-dark-bc; border-left:2px solid @preview-dark-bc;   
+      min-width:200px;
+    }
+
+    td.constraintvalue {
+      background-color: @preview-second-header-bg;
+      border-top:2px solid @preview-dark-bc; border-left:2px solid @preview-dark-bc;   
+      min-width:200px;
+    }
+  }
+ 
+   td { padding: 2px;  }
+  
+  .data { 
+    border-top:2px solid @preview-light-bc;
+    border-left:2px solid @preview-light-bc;
+    background-color: @preview-null-bg;
+    vertical-align:top;
+    padding:0px;
+    
+    i { 
+      position:absolute; 
+      top:6px; 
+      left:0px; 
+      font-size:50%;
+      color:white;
+      border-radius:5px; 
+      border:1px solid #303030;
+      padding:1px;
+    }
+    i.invalid {       
+      background-color:@preview-check-fail-fg;      
+    }
+    i.valid {       
+      background-color:@preview-check-ok-fg;      
+    }
+     
+    div.value { 
+      background-color: @preview-data-bg; 
+      padding: 2px;   
+    }
+  }
+   
+  .null div.value { background-color: @preview-null-bg; }
+  
+  .title { 
+    border-top:4px solid @preview-dark-bc; 
+    border-left:2px solid @preview-dark-bc; 
+    vertical-align:bottom; 
+    text-align:center; 
+  }
+
+  .yrollup { text-align:right;  }
+  td.yrollupdata div.value { 
+    border-bottom:4px double @preview-total-bc; 
+    border-top:1px solid @preview-total-bc;  
+  }
+  .depth4 td.yrollupdata div.value { 
+    border-bottom:1px solid @preview-total-bc; 
+    border-top:1px solid @preview-total-bc;  
+  }
+  .header { 
+    background-color: @preview-main-header-bg; 
+    padding: 2px; 
+  }
+  .column-header { 
+    background-color: @preview-main-header-bg; 
+    border-top:1px solid @preview-dark-bc; 
+    border-left:1px solid @preview-dark-bc; 
+    font-weight:bold; 
+    vertical-align:bottom; 
+    text-align:right; 
+    padding-left:10px;
+    padding-right:6px; 
+  }
+  .first-column-header-row .column-header { 
+    border-top:4px solid @preview-dark-bc; 
+  }
+  .last-column-header-row .column-header { 
+    background-color: @preview-second-header-bg; 
+    border-left:1px solid @preview-light-bc; 
+    font-weight:normal; 
+  }
+  .column-header:first-child { 
+    border-left:2px solid @preview-dark-bc; 
+  }
+  tr .xrollup { 
+    border-top:none;
+    border-left:1px solid @preview-dark-bc; 
+  }
+  .last-column-header-row .xrollup { 
+    background-color: @preview-main-header-bg;
+    border-left:1px solid @preview-dark-bc; 
+  }
+
+  .title + .column-header { border-left:2px solid @preview-dark-bc }
+  .row-header { 
+    background-color: @preview-second-header-bg; 
+    vertical-align:top; 
+    border-left:2px solid @preview-dark-bc;
+    border-top:2px solid @preview-light-bc;  
+  }
+  .first-row-header-row .row-header:first-child { min-width:200px; }
+  .row-header + .data { 
+    border-left:2px solid @preview-dark-bc 
+  }
+  .first-row-header-row .data { 
+    border-top:2px solid @preview-dark-bc; 
+  }
+  .first-row-header-row .row-header { 
+    border-top:2px solid @preview-dark-bc; 
+  }
+  td.depth1 { font-weight:bold; }
+  td.depth2 { font-weight:bold;  }
+  td.isrollup { 
+    text-align:right;
+    height:35px;
+    border-bottom: 4px solid @preview-second-header-bg; 
+  }
+  
+  td.NumericValue div.value { padding-left:14px; }
+}
+
+.document-style table {
+  border-spacing: 2px;  
+  border-collapse: separate;
+
+  tr.constraints td {
+   min-width:250px;
+   vertical-align:top;
+  }
+
+  td { 
+    padding: 0px;  
+  }
+  .data { 
+    background-color: @preview-bg; 
+    padding: 0px; 
+    vertical-align:top; 
+    padding-left:10px;
+    
+    i { font-size:75%; }
+    i.invalid { color:@preview-check-fail-fg; }
+    i.valid { color:@preview-check-ok-fg;  }    
+  }
+  .title { 
+    font-size:18px;
+    font-weight:bold; 
+    vertical-align:bottom; 
+  }
+  
+  .yrollup { text-align:right }
+  td.yrollupdata { 
+    border-bottom:4px double @preview-total-bc; 
+    border-top:1px solid @preview-total-bc; 
+    vertical-align:bottom; 
+  }
+  .header { 
+    background-color: @preview-bg; 
+    padding: 2px; 
+  }
+  .column-header { 
+    border-bottom:1px solid black;
+    margin-right:2px; 
+    font-weight:bold; 
+    vertical-align:bottom; 
+    text-align:right; 
+    padding-left:10px; 
+  }
+  .row-header { vertical-align:top; }
+  td.depth1 { font-weight:bold; }
+
+  td.isrollup { 
+    text-align:right;
+    height:40px;
+    vertical-align:bottom;
+    border-bottom: 4px double @preview-bg; 
+  }
+  .first-row-header-row .row-header:first-child { min-width:200px; }  
+}
+
+
+.plain-style table {    
+   border-spacing: 0px;  
+   border-collapse: separate;
+   border-right:2px solid white;border-bottom:2px solid white;
+
+   td { 
+     padding: 2px; 
+     border-top:2px solid white;
+     border-left:2px solid white; 
+   }
+   
+   tr.constraints td {
+      background-color: #e0e0e0;
+      padding: 2px;
+      border-top:2px solid white;border-left:2px solid white;
+   }
+
+   .title { font-weight:bold; }
+   .xrollup { border-top:none }
+   .yrollup { border-left:none }
+   
+   .header { 
+     background-color: @preview-plain-header-bg; 
+     padding: 2px;font-weight:bold; 
+   }
+      
+   .data { 
+     background-color: @preview-plain-data-bg; 
+     padding: 2px; 
+   
+     i { position:absolute; top:8px; left:-1px; }
+     i.glyphicon-remove { color:red; }
+     i.glyphicon-ok { color:green;  }
+   }
+}
+
+.data span.icon { position:relative; }
+.null span.icon { display:none; }
+.NonNumericValue span.icon i { top:0px; left:0px; }
+.NonNumericValue span.icon { margin-left:5px; }
+
+table .NumericValue { text-align: right; }

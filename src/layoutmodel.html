@@ -1,0 +1,33 @@
+ <script type="text/ng-template" id="defaultTitle.html">
+  {{ innerTitle.CellLabels[labelidx] || innerTitle.CellLabels[0] }}  
+ </script>
+ <script type="text/ng-template" id="defaultData.html">
+  <div class="value"><span ng-bind-html="showValue(data)"></span><span ng-if="checks" class="icon"><i ng-show="data.Valid == false" class="fa fa-times invalid"></i><i ng-show="data.Valid" class="fa fa-check valid"></i></span>           
+ </script>
+ <script type="text/ng-template" id="defaultHeader.html">
+  {{ header.CellLabels[labelidx] || header.CellLabels[0] }}           
+ </script>
+ 
+<h2>{{ title }}</h2>
+<table ng-show="layoutModel && xHeaderGroups && xHeaderGroups.length > 0 && yHeaderGroups && yHeaderGroups.length>0" class="rendering" ng-class="class">
+  <thead ng-if="constraints == true" ng-show="hasConstraints()">
+   <tr class="constraints" ng-repeat="(constraint, value) in layoutModel.GlobalConstraintLabels">
+     <td class="constraintlabel" colspan="{{yHeaderGroups[0].length}}">{{ value.DimensionLabels[labelidx] || value.DimensionLabels[0]  }}</td>
+     <td class="constraintvalue" colspan="{{data[0].length}}">{{ value.ValueLabels[labelidx] || value.ValueLabels[0]  }}</td>
+   </tr>   
+  </thead>  
+  <tbody>
+  <tr ng-repeat="headerGroup in xHeaderGroups" ng-class="{ 'last-column-header-row' : $last, 'first-column-header-row' : $first }">
+    <td class="header title" ng-if="$index == 0" colspan="{{yHeaderGroups[0].length}}" rowspan="{{xHeaderGroups.length}}" ng-include="titleTemplate"></td>
+    <td class="header column-header" ng-class="{ xrollup : header.RollUp }" ng-click="headerclick({header : header, axis:'x' });" ng-repeat="header in headerGroup" colspan="{{header.CellSpan}}" ng-include="headerTemplate">    
+    </td>
+  </tr>
+  <tr ng-repeat="headerGroup in yHeaderGroups" ng-class="headerclasses(headerGroup[headerGroup.length - 1], $first)">
+    <td class="header row-header" ng-class="headerclasses(header)" ng-click="headerclick({header : header, axis:'y' });" ng-repeat="header in headerGroup" rowspan="{{header.CellSpan}}" ng-include="headerTemplate">     
+    </td>
+    
+    <td class="data" ng-click="dataclick({ data : data })" ng-class="classes(data, headerGroup[headerGroup.length - 1])" ng-repeat="data in data[$index] track by $index" ng-include="dataTemplate">          
+    </td>
+  </tr>
+  </tbody>
+</table>

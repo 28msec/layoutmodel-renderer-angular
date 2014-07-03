@@ -1,0 +1,43 @@
+{
+  "author": "Alexander Kreutz",
+  "name": "layoutmodel-renderer-angular",
+  "description": "Layoutmodel Renderer for angularJS",
+  "version": "0.1.0",
+  "homepage": "http://28.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/28msec/layoutmodel-renderer-angular"
+  },
+  "main": "./dist/layoutmodel-renderer-angular.js",
+  "ignore": [
+    ".bowerrc",
+    "coverage/",
+    ".jshintrc",
+    ".jslintrc",
+    "Gruntfile.js",
+    "CONTRIBUTING.md",
+    "node_modules/",
+    "test/",
+    "karma.conf.js",
+    "libpeerconnection.log",
+    ".gitignore",
+    ".travis.yml"
+  ],
+  "devDependencies": {
+    "angular-mocks-1.2.9": "angular-mocks#1.2.9"
+  },
+  "dependencies": {
+    "angular": "1.2.9",
+    "font-awesome": "~4.1.0",
+    "ngprogress-lite": "~1.0.5",
+    "angular-ui-router": "~0.2.10",
+    "angular-sanitize": "~1.2.18",
+    "angular-ui-bootstrap-bower": "~0.11.0",
+    "angular-cache": "2.3.0",
+    "bootstrap": "~3.1.1",
+    "accounting": "~0.3.2"
+  },
+  "resolutions": {
+    "angular": "1.2.9"
+  }
+}
