@@ -1,0 +1,4 @@
+app/bower_components
+app/modules/report-api.js
+app/modules/formula-parser.js
+app/modules/excel-parser.js

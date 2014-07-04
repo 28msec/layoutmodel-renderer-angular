@@ -1,0 +1,197 @@
+/* Some examples for styling the table */
+
+.style1 table {    
+   border-spacing: 0px;  
+   border-collapse: separate;
+   border-right:2px solid white;border-bottom:2px solid white;
+}
+.style1 table td { padding: 2px; border-top:2px solid white;border-left:2px solid white; }
+.style1 tr.constraints td {
+  background-color: #e0e0e0;
+  padding: 2px;
+  border-top:2px solid white;border-left:2px solid white;
+}
+
+.style1 .title { font-weight:bold; }
+.style1 .xrollup { border-top:none }
+.style1 .yrollup { border-left:none }
+.style1 .header { background-color: #e0e0e0; padding: 2px;font-weight:bold; }
+.style1 .header:hover { background-color: #ffe0e0; padding: 2px; }
+.style1 .data { background-color: #f0f0f0; padding: 2px;  }
+.style1 .data:hover { background-color: #fff0f0; padding: 2px; }
+
+.style1 .data i { position:absolute; top:8px; left:-1px; }
+.style1 .data i.glyphicon-remove { color:red; }
+.style1 .data i.glyphicon-ok { color:green;  }
+
+/* Style 2 */
+
+.style2 tr.constraints td {
+   min-width:250px;
+   vertical-align:top;
+}
+
+.style2 table {    
+   border-spacing: 2px;  
+   border-collapse: separate;  
+}
+
+.style2 table td { padding: 0px;  }
+.style2 .data { background-color: #ffffff; padding: 0px; vertical-align:top; padding-left:10px; }
+.style2 .title { font-size:18px;font-weight:bold; vertical-align:bottom; }
+.style2 .xrollup {  }
+.style2 .yrollup { text-align:right }
+.style2 td.yrollupdata { border-bottom:4px double black; border-top:1px solid black; vertical-align:bottom; }
+.style2 .header { background-color: #ffffff; padding: 2px; }
+.style2 .column-header { border-bottom:1px solid black;margin-right:2px; font-weight:bold; vertical-align:bottom; text-align:right; padding-left:10px; }
+.style2 .row-header { vertical-align:top; }
+.style2 td.depth1 { font-weight:bold; }
+
+.style2 td.isrollup { text-align:right;height:40px;vertical-align:bottom;border-bottom: 4px double #ffffff }
+.style2 .first-row-header-row .row-header:first-child { min-width:200px; }
+
+.style2 .data i {  }
+.style2 .data i.glyphicon-remove { color:red; }
+.style2 .data i.glyphicon-ok { color:green;  }
+
+/* Style 3 */
+.style3 thead { margin-bottom:5px }
+
+.style3 tr.constraints td.constraintlabel {
+   background-color: #8db4e3;
+   border-top:2px solid black; border-left:2px solid black;   
+   min-width:200px;
+}
+
+.style3 tr.constraints td.constraintvalue {
+   background-color: #ddeafa;
+   border-top:2px solid black; border-left:2px solid black;   
+   min-width:200px;
+}
+
+.style3 table {    
+   border-spacing: 0px;  
+   border-collapse: separate;  
+   border-right:2px solid black;border-bottom:2px solid black; 
+   font-size: 80% 
+   
+}
+
+.style3 table td { padding: 2px;  }
+.style3 .data { border-top:2px solid #dadcdd;border-left:2px solid #dadcdd;background-color: #f0f0f0;vertical-align:top;padding:0px; }
+.style3 .data div.value { background-color: #ffffff; padding: 2px;   }
+.style3 .null div.value { background-color: #f0f0f0; }
+.style3 .title { border-top:4px solid black; border-left:2px solid black; vertical-align:bottom; text-align:center; }
+
+.style3 .yrollup { text-align:right;  }
+.style3 td.yrollupdata div.value { border-bottom:4px double black; border-top:1px solid black;  }
+.style3 .depth4 td.yrollupdata div.value { border-bottom:1px solid black; border-top:1px solid black;  }
+.style3 .header { background-color: #8db4e3; padding: 2px; }
+.style3 .column-header { background-color: #8db4e3; border-top:1px solid black; border-left:1px solid black; font-weight:bold; vertical-align:bottom; text-align:right; padding-left:10px;padding-right:6px; }
+.style3 .first-column-header-row .column-header { border-top:4px solid black; }
+.style3 .last-column-header-row .column-header { background-color: #ddeafa; border-left:1px solid #dadcdd; font-weight:normal; }
+.style3 .column-header:first-child { border-left:2px solid black; }
+.style3 tr .xrollup { border-top:none;border-left:1px solid black; }
+.style3 .last-column-header-row .xrollup { background-color: #8db4e3;border-left:1px solid black; }
+
+.style3 .title + .column-header { border-left:2px solid black }
+.style3 .row-header { background-color: #ddeafa; vertical-align:top; border-left:2px solid black;border-top:2px solid #dadcdd;  }
+.style3 .first-row-header-row .row-header:first-child { min-width:200px; }
+.style3 .row-header + .data { border-left:2px solid black }
+.style3 .first-row-header-row .data { border-top:2px solid black; }
+.style3 .first-row-header-row .row-header { border-top:2px solid black; }
+.style3 td.depth1 { font-weight:bold; }
+.style3 td.depth2 { font-weight:bold;  }
+.style3 td.isrollup { text-align:right;height:35px;border-bottom: 4px solid #ddeafa; }
+
+.style3 .data i { position:absolute; top:8px; left:-1px; }
+.style3 .data i.glyphicon-remove { color:white;border-radius:7px;background-color:red;border:1px solid #303030;padding:2px;padding-right:13px; }
+.style3 .data i.glyphicon-ok { color:white;border-radius:7px;background-color:green;border:1px solid #303030;padding:2px;padding-right:13px; }
+.style3 td.NumericValue div.value { padding-left:14px; }
+
+
+.data span.icon { position:relative; }
+.null span.icon { display:none; }
+.NonNumericValue span.icon i { top:0px; left:0px; }
+.NonNumericValue span.icon { margin-left:5px; }
+
+/* Style specific data types */
+table .NumericValue { text-align: right; }
+
+/* End examples */
+
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 1030px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
