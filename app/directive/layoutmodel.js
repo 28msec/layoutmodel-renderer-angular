@@ -28,8 +28,8 @@ angular.module('layoutmodel', [])
     	  // Helper function to format content
     	  scope.showValue = function(fact) {
     			 if (!fact) { return ''; }
-        		 if (fact.Type !== 'NumericValue') { return $sce.trustAsHtml(fact.Value); }
-        		 return $sce.trustAsHtml(accounting.formatNumber(fact.Value));        	     
+        		 if (fact.Type !== 'NumericValue') { return $sce.trustAsHtml(''+fact.Value); }
+        		 return $sce.trustAsHtml(''+accounting.formatNumber(fact.Value));        	     
     	  };
     	  
     	  scope.classes = function(data, header) {
