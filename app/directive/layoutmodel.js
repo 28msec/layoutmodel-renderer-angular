@@ -27,7 +27,7 @@ angular.module('layoutmodel', [])
     	  scope.$scope = $scope.$parent;
     	  // Helper function to format content
     	  scope.showValue = function(fact) {
-    			 if (!fact) { return ''; }
+    			 if (!fact || fact.Value === null) { return ''; }    			 
         		 if (fact.Type !== 'NumericValue') { return $sce.trustAsHtml(''+fact.Value); }
         		 return $sce.trustAsHtml(''+accounting.formatNumber(fact.Value));        	     
     	  };
