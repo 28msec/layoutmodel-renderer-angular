@@ -5814,6 +5814,9 @@ button.close {
 .preview-style table thead {
   margin-bottom: 5px;
 }
+.preview-style table tr {
+  height: 100%;
+}
 .preview-style table tr.constraints td.constraintlabel {
   background-color: #8db4e3;
   border-top: 2px solid #000000;
@@ -5828,6 +5831,7 @@ button.close {
 }
 .preview-style table td {
   padding: 2px;
+  height: 100%;
 }
 .preview-style table .data {
   border-top: 2px solid #dadcdd;
@@ -5853,6 +5857,7 @@ button.close {
   background-color: #00a000;
 }
 .preview-style table .data div.value {
+  height: 100%;
   background-color: #ffffff;
   padding: 2px;
 }
@@ -5867,6 +5872,9 @@ button.close {
 }
 .preview-style table .yrollup {
   text-align: right;
+}
+.preview-style table td.yrollupdata {
+  padding-bottom: 4px;
 }
 .preview-style table td.yrollupdata div.value {
   border-bottom: 4px double #000000;
@@ -5938,7 +5946,6 @@ button.close {
 }
 .preview-style table td.isrollup {
   text-align: right;
-  height: 32px;
   border-bottom: 4px solid #ddeafa;
 }
 .preview-style table td.NumericValue div.value {

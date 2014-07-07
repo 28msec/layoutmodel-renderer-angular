@@ -22,6 +22,7 @@
 
   thead { margin-bottom:5px }
 
+  tr { height:100%; }
   tr.constraints {
     td.constraintlabel {
       background-color: @preview-main-header-bg;
@@ -36,14 +37,14 @@
     }
   }
  
-   td { padding: 2px;  }
+   td { padding: 2px;height:100%;  }
   
   .data { 
     border-top:2px solid @preview-light-bc;
     border-left:2px solid @preview-light-bc;
     background-color: @preview-null-bg;
     vertical-align:top;
-    padding:0px;
+    padding:0px;   
     
     i { 
       position:absolute; 
@@ -62,9 +63,10 @@
       background-color:@preview-check-ok-fg;      
     }
      
-    div.value { 
+    div.value {
+      height:100%; 
       background-color: @preview-data-bg; 
-      padding: 2px;   
+      padding: 2px;        
     }
   }
    
@@ -78,9 +80,13 @@
   }
 
   .yrollup { text-align:right;  }
-  td.yrollupdata div.value { 
-    border-bottom:4px double @preview-total-bc; 
-    border-top:1px solid @preview-total-bc;  
+  td.yrollupdata {
+    padding-bottom:4px;
+    
+    div.value { 
+      border-bottom:4px double @preview-total-bc; 
+      border-top:1px solid @preview-total-bc;
+    }  
   }
   .depth4 td.yrollupdata div.value { 
     border-bottom:1px solid @preview-total-bc; 
@@ -140,8 +146,7 @@
   td.depth1 { font-weight:bold; }
   td.depth2 { font-weight:bold;  }
   td.isrollup { 
-    text-align:right;
-    height:28px;
+    text-align:right;  
     border-bottom: 4px solid @preview-second-header-bg; 
   }
   
