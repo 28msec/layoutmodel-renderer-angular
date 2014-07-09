@@ -6057,11 +6057,11 @@ button.close {
   top: 4px;
   left: 0px;
 }
-.plain-style table .data i.glyphicon-remove {
-  color: red;
+.plain-style table .data i.invalid {
+  color: #a00000;
 }
-.plain-style table .data i.glyphicon-ok {
-  color: green;
+.plain-style table .data i.valid {
+  color: #00a000;
 }
 .data span.icon {
   position: relative;
