@@ -5890,6 +5890,10 @@ button.close {
   background-color: #8db4e3;
   padding: 2px;
 }
+.preview-style table .row-header {
+  white-space: nowrap;
+  width: 0px;
+}
 .preview-style table .column-header {
   background-color: #8db4e3;
   border-top: 1px solid #000000;
@@ -5960,6 +5964,10 @@ button.close {
 }
 .document-style table td {
   padding: 0px;
+}
+.document-style table .row-header {
+  white-space: nowrap;
+  width: 0px;
 }
 .document-style table .data {
   background-color: #ffffff;
@@ -6046,6 +6054,10 @@ button.close {
   background-color: #e0e0e0;
   padding: 2px;
   font-weight: bold;
+}
+.plain-style table .row-header {
+  white-space: nowrap;
+  width: 0px;
 }
 .plain-style table .data {
   background-color: #f0f0f0;

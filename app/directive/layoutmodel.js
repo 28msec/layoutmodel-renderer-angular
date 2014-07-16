@@ -60,7 +60,7 @@ angular.module('layoutmodel', [])
      	  };
      	  
      	  scope.constraintLabelWidth = function() {
-     		 return $('.title', $element).width();     		      	 
+     		 return $('.title', $element).width();     		      		      	
      	  };
      	       	    	      	      	      
     	  scope.dataTemplate = scope.dataTemplateUrl || 'defaultData.html';
