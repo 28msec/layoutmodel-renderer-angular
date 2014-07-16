@@ -5804,15 +5804,15 @@ button.close {
   margin: auto;
   padding: 0;
 }
+.preview-style .header-table {
+  margin-bottom: 5px;
+}
 .preview-style table {
   border-spacing: 0px;
   border-collapse: separate;
   border-right: 2px solid #000000;
   border-bottom: 2px solid #000000;
   font-size: 80%;
-}
-.preview-style table thead {
-  margin-bottom: 5px;
 }
 .preview-style table tr {
   height: 100%;
@@ -5840,20 +5840,22 @@ button.close {
   vertical-align: top;
   padding: 0px;
 }
-.preview-style table .data i {
+.preview-style table .data .validation i {
   position: absolute;
-  top: 3px;
-  left: 0px;
+  top: 5px;
+  right: -9px;
   font-size: 50%;
   color: white;
   border-radius: 5px;
   border: 1px solid #303030;
   padding: 1px;
+  z-index: 10;
 }
-.preview-style table .data i.invalid {
+.preview-style table .data .validation .invalid {
   background-color: #a00000;
+  font-size: 60%;
 }
-.preview-style table .data i.valid {
+.preview-style table .data .validation .valid {
   background-color: #00a000;
 }
 .preview-style table .data div.value {
@@ -5865,7 +5867,7 @@ button.close {
   background-color: #f0f0f0;
 }
 .preview-style table .title {
-  border-top: 4px solid #000000;
+  border-top: 2px solid #000000;
   border-left: 2px solid #000000;
   vertical-align: bottom;
   text-align: center;
@@ -5894,12 +5896,12 @@ button.close {
   border-left: 1px solid #000000;
   font-weight: bold;
   vertical-align: bottom;
-  text-align: right;
+  text-align: center;
   padding-left: 10px;
   padding-right: 6px;
 }
 .preview-style table .first-column-header-row .column-header {
-  border-top: 4px solid #000000;
+  border-top: 2px solid #000000;
 }
 .preview-style table .last-column-header-row .column-header {
   background-color: #ddeafa;
@@ -5938,10 +5940,7 @@ button.close {
 .preview-style table .first-row-header-row .row-header {
   border-top: 2px solid #000000;
 }
-.preview-style table td.depth1 {
-  font-weight: bold;
-}
-.preview-style table td.depth2 {
+.preview-style table td.abstract {
   font-weight: bold;
 }
 .preview-style table td.isrollup {
@@ -5968,13 +5967,13 @@ button.close {
   vertical-align: top;
   padding-left: 10px;
 }
-.document-style table .data i {
+.document-style table .data .validation {
   font-size: 75%;
 }
-.document-style table .data i.invalid {
+.document-style table .data .validation .invalid {
   color: #a00000;
 }
-.document-style table .data i.valid {
+.document-style table .data .validation .valid {
   color: #00a000;
 }
 .document-style table .title {
@@ -6005,7 +6004,7 @@ button.close {
 .document-style table .row-header {
   vertical-align: top;
 }
-.document-style table td.depth1 {
+.document-style table td.abstract {
   font-weight: bold;
 }
 .document-style table td.isrollup {
@@ -6052,29 +6051,38 @@ button.close {
   background-color: #f0f0f0;
   padding: 2px;
 }
-.plain-style table .data i {
+.plain-style table .data .validation i {
   position: absolute;
-  top: 4px;
-  left: 0px;
+  top: 3px;
+  right: -15px;
+  z-index: 10;
 }
-.plain-style table .data i.invalid {
+.plain-style table .data .validation .invalid {
   color: #a00000;
 }
-.plain-style table .data i.valid {
+.plain-style table .data .validation .valid {
   color: #00a000;
 }
-.data span.icon {
+.data {
   position: relative;
 }
-.null span.icon {
+.null span.validation {
   display: none;
 }
-.NonNumericValue span.icon i {
+.NonNumericValue span.icon i.validation {
   top: 0px;
   left: 0px;
 }
 .NonNumericValue span.icon {
   margin-left: 5px;
+}
+.boolean-true {
+  color: #00a000;
+  padding-top: 2px;
+}
+.boolean-false {
+  color: #a00000;
+  padding-top: 2px;
 }
 table .NumericValue {
   text-align: right;

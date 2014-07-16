@@ -26,7 +26,7 @@ module.exports = function (grunt) {
         config: config,
         watch: {
             less: {
-                files:  ['<%= config.app %>/styles/{,*/}*.less,<%= config.app %>/src/*.less'],
+                files:  ['<%= config.app %>/styles/{,*/}*.less','<%= config.app %>/directive/*.less'],
                 tasks: ['less']
             },
             livereload: {
@@ -35,7 +35,8 @@ module.exports = function (grunt) {
                 },
                 files: [
                     '<%= config.app %>/**/*.html',
-                    '{.tmp,<%= config.app %>}/styles/{,*/}*.css,<%= config.app %>/src/*}',
+                    '<%= config.app %>/styles/*.css',
+                    '<%= config.app %>/directive/*',
                     '{.tmp,<%= config.app %>}/**/*.js',
                     '<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
@@ -100,7 +101,7 @@ module.exports = function (grunt) {
             options: {
                 jshintrc: '.jshintrc'
             },
-            src: ['Gruntfile.js', '<%= config.app %>/modules/**/*.js', '<%= config.app %>/report/**/*.js', '<%= config.app %>/reports/**/*.js', 'tasks/**/*.js', 'tests/**/*.js','<%= config.app %>/src/*.js'],
+            src: ['Gruntfile.js', '<%= config.app %>/modules/**/*.js', '<%= config.app %>/report/**/*.js', '<%= config.app %>/reports/**/*.js', 'tasks/**/*.js', 'tests/**/*.js','<%= config.app %>/directive/*.js'],
         },
         karma: {
             options: {
@@ -272,7 +273,14 @@ module.exports = function (grunt) {
                 'fonts/*',
                 'directive/*.html'
               ]
-            }, {
+            },
+            {
+                expand: true,
+                cwd: 'app/bower_components/font-awesome/fonts',
+                dest: 'dist/fonts',
+                src: ['*']
+            },
+            {
               expand: true,
               cwd: '.tmp/images',
               dest: '<%= config.dist %>/images',

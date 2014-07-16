@@ -2,20 +2,28 @@
   {{ innerTitle.CellLabels[labelidx] || innerTitle.CellLabels[0] }}  
  </script>
  <script type="text/ng-template" id="defaultData.html">
-  <div class="value"><span ng-bind-html="showValue(data)"></span><span ng-if="checks" class="icon"><i ng-show="data.Valid == false" class="fa fa-times invalid"></i><i ng-show="data.Valid" class="fa fa-check valid"></i></span>           
+  <div class="value"><span ng-bind-html="showValue(data)"></span><span ng-if="checks" class="validation"><i ng-show="data.Valid == false" class="fa fa-times invalid"></i><i ng-show="data.Valid" class="fa fa-check valid"></i></span>           
  </script>
  <script type="text/ng-template" id="defaultHeader.html">
   {{ header.CellLabels[labelidx] || header.CellLabels[0] }}           
  </script>
  
-<h2>{{ title }}</h2>
-<table ng-show="layoutModel && xHeaderGroups && xHeaderGroups.length > 0 && yHeaderGroups && yHeaderGroups.length>0" class="rendering" ng-class="class">
-  <thead ng-if="constraints == true" ng-show="hasConstraints()">
-   <tr class="constraints" ng-repeat="(constraint, value) in layoutModel.GlobalConstraintLabels">
-     <td class="constraintlabel" colspan="{{yHeaderGroups[0].length}}">{{ value.DimensionLabels[labelidx] || value.DimensionLabels[0]  }}</td>
-     <td class="constraintvalue" colspan="{{data[0].length}}">{{ value.ValueLabels[labelidx] || value.ValueLabels[0]  }}</td>
+<div style="display:inline-block">
+<table style="width:100%" class="header-table" ng-class="class" ng-show="layoutModel && headers">  
+   <tr class="constraints" ng-repeat="header in headers">
+     <td ng-style="{ width : constraintLabelWidth() }" class="constraintlabel" >{{ header.label  }}</td>
+     <td  class="constraintvalue" >{{ header.value  }}</td>
    </tr>   
-  </thead>  
+</table> 
+
+<table style="width:100%" class="header-table" ng-class="class" ng-if="constraints == true" ng-show="layoutModel && hasConstraints()">  
+   <tr class="constraints" ng-repeat="(constraint, value) in layoutModel.GlobalConstraintLabels">
+     <td ng-style="{ width : constraintLabelWidth() }" class="constraintlabel" >{{ value.DimensionLabels[labelidx] || value.DimensionLabels[0]  }}</td>
+     <td  class="constraintvalue" >{{ value.ValueLabels[labelidx] || value.ValueLabels[0]  }}</td>
+   </tr>   
+</table> 
+
+<table style="width:100%" ng-show="layoutModel && xHeaderGroups && xHeaderGroups.length > 0 && yHeaderGroups && yHeaderGroups.length>0" class="rendering" ng-class="class"> 
   <tbody>
   <tr ng-repeat="headerGroup in xHeaderGroups" ng-class="{ 'last-column-header-row' : $last, 'first-column-header-row' : $first }">
     <td class="header title" ng-if="$index == 0" colspan="{{yHeaderGroups[0].length}}" rowspan="{{xHeaderGroups.length}}" ng-include="titleTemplate"></td>
@@ -31,3 +39,4 @@
   </tr>
   </tbody>
 </table>
+</div>
