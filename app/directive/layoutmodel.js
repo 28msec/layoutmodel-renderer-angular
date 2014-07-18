@@ -1,7 +1,6 @@
 'use strict';
 
 /* global accounting : false */
-/* global $ */
 
 angular.module('layoutmodel', [])  
   .directive('layoutmodel', function() {
