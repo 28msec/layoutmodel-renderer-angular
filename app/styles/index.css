@@ -5992,6 +5992,12 @@ button.close {
 .document-style table .data .validation {
   font-size: 75%;
 }
+.document-style table .data .validation i {
+  position: absolute;
+  top: 3px;
+  right: -15px;
+  z-index: 10;
+}
 .document-style table .data .validation .invalid {
   color: #a00000;
 }
@@ -6104,7 +6110,7 @@ button.close {
 .plain-style table .data .validation .valid {
   color: #00a000;
 }
-.data {
+.value {
   position: relative;
 }
 .null span.validation {

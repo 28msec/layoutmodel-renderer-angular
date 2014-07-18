@@ -214,12 +214,14 @@
     padding: 0px; 
     vertical-align:top; 
     padding-left:10px;
-    
+        
     .validation { 
-      font-size:75%; 
-      .invalid { color:@preview-check-fail-fg; }
-      .valid { color:@preview-check-ok-fg;  }
-    }    
+       font-size:75%;
+       i { position:absolute; top:3px; right:-15px;z-index:10; } 
+       .invalid { color: @preview-check-fail-fg; }
+       .valid { color: @preview-check-ok-fg;  }
+    }
+        
   }
   .title { 
     font-size:18px;
@@ -322,7 +324,7 @@
    }
 }
 
-.data { position:relative; }
+.value { position:relative; }
 .null span.validation { display:none; }
 .NonNumericValue span.icon i.validation { top:0px; left:0px; }
 .NonNumericValue span.icon { margin-left:5px; }
