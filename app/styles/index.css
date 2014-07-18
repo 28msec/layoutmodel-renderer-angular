@@ -5811,9 +5811,6 @@ button.close {
   border-bottom: 2px solid #000000;
   font-size: 80%;
 }
-.preview-style table tr {
-  height: 100%;
-}
 .preview-style table tr.constraints td.constraintlabel {
   background-color: #8db4e3;
   border-top: 2px solid #000000;
@@ -5830,7 +5827,7 @@ button.close {
 }
 .preview-style table td {
   padding: 2px;
-  height: 100%;
+  height: 1px;
 }
 .preview-style table .closing-border {
   border: none;
@@ -5870,9 +5867,18 @@ button.close {
   background-color: #00a000;
 }
 .preview-style table .data div.value {
+  min-height: 100%;
+  height: auto !important;
   height: 100%;
   background-color: #ffffff;
-  padding: 2px;
+  padding: 0px;
+}
+.preview-style table .data div.value span {
+  display: inline-block;
+  margin: 2px;
+}
+.preview-style table .data div.value span.validation {
+  margin: 0px;
 }
 .preview-style table .title {
   border-top: 2px solid #000000;

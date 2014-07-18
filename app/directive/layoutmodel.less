@@ -23,8 +23,7 @@
   border-collapse: separate;  
   border-bottom:2px solid @preview-dark-bc; 
   font-size: 80%;
-  
-  tr { height:100%; }
+   
   tr.constraints {
     td.constraintlabel {
       background-color: @preview-main-header-bg;
@@ -41,7 +40,7 @@
     }
   }  
  
-   td { padding: 2px;height:100%;  }
+   td { padding: 2px;height:1px;;  }
    
   .closing-border {
     border:none;
@@ -85,10 +84,14 @@
       }
     }
      
-    div.value {
-      height:100%; 
-      background-color: @preview-data-bg; 
-      padding: 2px;        
+    div.value {      
+      min-height:100%;
+      height: auto !important;   
+      height: 100%;
+      background-color: @preview-data-bg;       
+      padding: 0px;
+      span { display:inline-block; margin:2px; }   
+      span.validation { margin:0px; }     
     }
   }
     
