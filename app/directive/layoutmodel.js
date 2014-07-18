@@ -30,6 +30,7 @@ angular.module('layoutmodel', [])
     	  
     	  var scope = $scope;
     	  scope.$scope = $scope.$parent;
+    	  scope.lw = 0;
     	  
     	  // Helper function to format content
     	  scope.showValue = function(fact) {
@@ -58,11 +59,7 @@ angular.module('layoutmodel', [])
      	  scope.hasConstraints = function() {
      		 return scope.layoutModel && scope.layoutModel.GlobalConstraintLabels && Object.keys(scope.layoutModel.GlobalConstraintLabels).length > 0;  
      	  };
-     	  
-     	  scope.constraintLabelWidth = function() {
-     		 return $('.title', $element).width();     		      		      	
-     	  };
-     	       	    	      	      	      
+     	       	     	       	     	       	    	      	      	     
     	  scope.dataTemplate = scope.dataTemplateUrl || 'defaultData.html';
     	  scope.headerTemplate = scope.headerTemplateUrl || 'defaultHeader.html';
     	  scope.titleTemplate = scope.titleTemplateUrl || 'defaultTitle.html';    	  

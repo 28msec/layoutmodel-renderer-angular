@@ -16,15 +16,12 @@
 @preview-plain-header-bg: #e0e0e0;
 @preview-plain-data-bg: #f0f0f0;
 
-.preview-style {
+.preview-style table {
+  empty-cells:show;
  
-  .header-table { margin-bottom:5px; }
-
-  table {
-
   border-spacing: 0px;  
   border-collapse: separate;  
-  border-right:2px solid @preview-dark-bc;border-bottom:2px solid @preview-dark-bc; 
+  border-bottom:2px solid @preview-dark-bc; 
   font-size: 80%;
   
   tr { height:100%; }
@@ -32,17 +29,33 @@
     td.constraintlabel {
       background-color: @preview-main-header-bg;
       border-top:2px solid @preview-dark-bc; border-left:2px solid @preview-dark-bc;   
-      min-width:200px;     
+      min-width:200px;   
+      padding:2px;        
     }
 
     td.constraintvalue {
       background-color: @preview-second-header-bg;
       border-top:2px solid @preview-dark-bc; border-left:2px solid @preview-dark-bc;   
       min-width:200px;      
+      padding:2px;   
     }
-  }
+  }  
  
    td { padding: 2px;height:100%;  }
+   
+  .closing-border {
+    border:none;
+    border-left:2px solid @preview-dark-bc;  
+    width:0px;
+    padding:0px;
+    margin:0px;     
+  }
+  
+  tr.space td {    
+    border-left:none;    
+    border-top:2px solid @preview-dark-bc;   
+    height:5px;        
+  }
   
   .data { 
     border-top:2px solid @preview-light-bc;
@@ -78,14 +91,13 @@
       padding: 2px;        
     }
   }
-   
-  .null div.value { background-color: @preview-null-bg; }
-  
+    
   .title { 
     border-top:2px solid @preview-dark-bc; 
     border-left:2px solid @preview-dark-bc; 
     vertical-align:bottom; 
     text-align:center; 
+    padding:2px;    
   }
 
   .yrollup { text-align:right;  }
@@ -96,20 +108,25 @@
       border-bottom:4px double @preview-total-bc; 
       border-top:1px solid @preview-total-bc;
     }  
+      
   }
+      
   .depth4 td.yrollupdata div.value { 
     border-bottom:1px solid @preview-total-bc; 
     border-top:1px solid @preview-total-bc;  
   }
+  
+   tr td.null div.value { 
+       border-bottom:none !important;
+       border-top:none !important;
+       background-color: @preview-null-bg;
+   }
+  
   .header { 
     background-color: @preview-main-header-bg; 
     padding: 2px; 
   }
-  
-  .row-header {
-    white-space:nowrap;
-    width:0px;
-  }
+    
   
   .column-header { 
     background-color: @preview-main-header-bg; 
@@ -166,7 +183,7 @@
   }
   
   td.NumericValue div.value { padding-left:14px; }
-  }
+  
 }
 
 .document-style table {
@@ -182,10 +199,15 @@
     padding: 0px;  
   }
   
-  .row-header {
-    white-space:nowrap;
+  .closing-border {  
     width:0px;
+    padding:0px;
+    margin:0px;     
   }
+  
+  tr.space td {    
+    height:5px;           
+  } 
   
   .data { 
     background-color: @preview-bg; 
@@ -237,9 +259,10 @@
 
 
 .plain-style table {    
+   empty-cells:show;
    border-spacing: 0px;  
    border-collapse: separate;
-   border-right:2px solid white;border-bottom:2px solid white;
+   border-bottom:2px solid white;
 
    td { 
      padding: 2px; 
@@ -247,13 +270,33 @@
      border-left:2px solid white; 
    }
    
-   tr.constraints td {
-      background-color: #e0e0e0;
-      padding: 2px;
-      border-top:2px solid white;border-left:2px solid white;
+   tr.constraints {
+      td.constraintlabel {
+        background-color: #e0e0e0;      
+        border-top:2px solid white;border-left:2px solid white;
+        padding:2px;      
+      }  
+      td.constraintvalue {
+        background-color: #e0e0e0;      
+        border-top:2px solid white;border-left:2px solid white;
+        padding:2px;      
+      }
+   }
+   
+   .closing-border {
+     border:none;
+     border-left:2px solid white;  
+     width:0px;
+     padding:0px;
+     margin:0px;     
+   }
+  
+   tr.space td {    
+     border-left:none;    
+     border-top:2px solid white;   
+     height:5px;        
    }
 
-   .title { font-weight:bold; }
    .xrollup { border-top:none }
    .yrollup { border-left:none }
    
@@ -262,10 +305,10 @@
      padding: 2px;font-weight:bold; 
    }
    
-   .row-header {
-     white-space:nowrap;
-     width:0px;
-   }
+    .title { 
+     font-weight:bold;
+     padding:2px;       
+   }    
       
    .data { 
      background-color: @preview-plain-data-bg; 
