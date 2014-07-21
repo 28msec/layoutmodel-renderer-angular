@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('exampleApp')
-  .controller('ExampleCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+  .controller('ExampleCtrl', ['$scope', '$http', function ($scope, $http) {
 	  $scope.mymodel = null;
 	  $scope.myheaders = null;
-	  $scope.modelurl = $routeParams.url;
+	  $scope.modelurl = "";
 	  $scope.labelidx = 0;
 	  $scope.constraints = true;
 	  $scope.checks = true;

@@ -3,12 +3,10 @@
 /* global accounting : false */
 
 angular.module('layoutmodel', [])  
-  .directive('layoutmodel', function() {
+  .directive('layoutmodel', [ 'LayoutModelTpl' , function(LayoutModelTpl) {
     return {
       restrict: 'E',
-      templateUrl: function(elem,attrs) {
-         return attrs.templateUrl || '/report/preview/layoutmodel.html';
-      },    
+      template: LayoutModelTpl,
       scope: {
          layoutModel: '=model',
          headers: '=headers',
@@ -134,5 +132,5 @@ angular.module('layoutmodel', [])
         		            
       }
     };
-  });
+  }]);
 

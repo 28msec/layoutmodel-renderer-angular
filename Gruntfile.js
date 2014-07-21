@@ -29,6 +29,10 @@ module.exports = function (grunt) {
                 files:  ['<%= config.app %>/styles/{,*/}*.less','<%= config.app %>/directive/*.less'],
                 tasks: ['less']
             },
+            ngconstant: {
+            	files:  ['<%= config.app %>/directive/*.html'],
+            	tasks: ['ngconstant:tpl']
+            },
             livereload: {
                 options: {
                     livereload: LIVERELOAD_PORT
@@ -41,6 +45,20 @@ module.exports = function (grunt) {
                     '<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
             }
+        },
+        ngconstant: {
+           options: {
+        	 space: ' ',
+        	 deps: false
+           },
+           tpl: {
+        	name: 'layoutmodel',
+        	dest: '<%= config.app %>/directive/layoutmodeltemplate.js',
+            wrap: '/*jshint quotmark:double */\n"use strict";\n\n<%= __ngModule %>',
+        	constants: {
+        	  LayoutModelTpl: grunt.file.read(config.app + '/directive/layoutmodel.html')
+        	 }
+           }
         },
         //Connect
         connect: {
@@ -327,6 +345,7 @@ module.exports = function (grunt) {
 
         grunt.task.run([                     
             'less',
+            'ngconstant:tpl',
             'connect:livereload',
             'open',
             'watch'
@@ -335,7 +354,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('unit-tests', ['clean:pre', 'less', 'karma:1.2.9', 'clean:post']);
     grunt.registerTask('test', ['clean:pre', 'less', 'karma:1.2.9', 'clean:post', 'e2e']);
-    grunt.registerTask('build', ['clean:pre', 'bower-install','useminPrepare','concurrent:dist','autoprefixer','concat','ngmin',
+    grunt.registerTask('build', ['clean:pre', 'bower-install','ngconstant:tpl','useminPrepare','concurrent:dist','autoprefixer','concat','ngmin',
                                  'copy:dist','cdnify','cssmin','uglify','rev','usemin','htmlmin']);
     grunt.registerTask('default', ['jsonlint', 'jshint', 'build', 'test']);
 };
