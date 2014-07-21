@@ -3,14 +3,13 @@
 /* global accounting : false */
 
 angular.module('layoutmodel', [])  
-  .directive('layoutmodel', function() {
+  .directive('layoutmodel', [ 'LayoutModelTpl' , function(LayoutModelTpl) {
     return {
       restrict: 'E',
-      templateUrl: function(elem,attrs) {
-         return attrs.templateUrl || '/report/preview/layoutmodel.html'
-      },    
+      template: LayoutModelTpl,
       scope: {
          layoutModel: '=model',
+         headers: '=headers',
          'class' : '@',
          tableSet: '=table',
          dataTemplateUrl: '=data',
@@ -22,13 +21,20 @@ angular.module('layoutmodel', [])
          dataclick: '&',
          headerclick: '&' 
       },    
-      controller: function ($scope, $element, $sce) {    	      	      	 
+      controller: function ($scope, $element, $sce) {    	  
+    	  var check = $sce.trustAsHtml('<i class="fa fa-check boolean-true"></i>');
+    	  var cross = $sce.trustAsHtml('<i class="fa fa-times boolean-false"></i>');
+    	  
     	  var scope = $scope;
     	  scope.$scope = $scope.$parent;
+    	  scope.lw = 0;
+    	  
     	  // Helper function to format content
     	  scope.showValue = function(fact) {
     		    /*jshint eqnull:true */
-    			 if (!fact || fact.Value == null) { return ''; }    			 
+    			 if (!fact || fact.Value == null) { return ''; }
+    			 if (fact.Value === true) { return check; }
+    			 if (fact.Value === false) { return cross; }
         		 if (fact.Type !== 'NumericValue') { return $sce.trustAsHtml(''+fact.Value); }
         		 return $sce.trustAsHtml(''+accounting.formatNumber(fact.Value));        	     
     	  };
@@ -37,8 +43,10 @@ angular.module('layoutmodel', [])
     		 /*jshint eqnull:true */
     		 return ((data && data.Value != null) ? data.Type : 'null') + ( (header.IsRollUp) ? ' yrollupdata' : '');    		 
     	  };   
+    	  
     	  scope.headerclasses = function(header, first) {
     		 return (header.RollUp ? 'yrollup' : '') +
+    		        (header.IsAbstract ? ' abstract' : '') +
     		        (header.Depth ? ' depth' + header.Depth : '') +
     		        (header.IsRollUp ? ' isrollup' : '') +
     		        (first ? ' first-row-header-row' : '');
@@ -48,7 +56,7 @@ angular.module('layoutmodel', [])
      	  scope.hasConstraints = function() {
      		 return scope.layoutModel && scope.layoutModel.GlobalConstraintLabels && Object.keys(scope.layoutModel.GlobalConstraintLabels).length > 0;  
      	  };
-    	      	      	      	
+     	       	     	       	     	       	    	      	      	     
     	  scope.dataTemplate = scope.dataTemplateUrl || 'defaultData.html';
     	  scope.headerTemplate = scope.headerTemplateUrl || 'defaultHeader.html';
     	  scope.titleTemplate = scope.titleTemplateUrl || 'defaultTitle.html';    	  
@@ -79,8 +87,7 @@ angular.module('layoutmodel', [])
           
           scope.yHeaderGroups = [];
           scope.xHeaderGroups = [];
-          scope.data = scope.table.TableCells.Facts;
-          scope.title = scope.layoutModel.TableSetLabels[tableIndex];
+          scope.data = scope.table.TableCells.Facts;          
           scope.innerTitle = null;
 
           var hd, grp;
@@ -125,5 +132,5 @@ angular.module('layoutmodel', [])
         		            
       }
     };
-  });
+  }]);
 

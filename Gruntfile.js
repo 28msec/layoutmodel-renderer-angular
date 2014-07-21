@@ -26,8 +26,12 @@ module.exports = function (grunt) {
         config: config,
         watch: {
             less: {
-                files:  ['<%= config.app %>/styles/{,*/}*.less,<%= config.app %>/src/*.less'],
+                files:  ['<%= config.app %>/styles/{,*/}*.less','<%= config.app %>/directive/*.less'],
                 tasks: ['less']
+            },
+            ngconstant: {
+            	files:  ['<%= config.app %>/directive/*.html'],
+            	tasks: ['ngconstant:tpl']
             },
             livereload: {
                 options: {
@@ -35,11 +39,26 @@ module.exports = function (grunt) {
                 },
                 files: [
                     '<%= config.app %>/**/*.html',
-                    '{.tmp,<%= config.app %>}/styles/{,*/}*.css,<%= config.app %>/src/*}',
+                    '<%= config.app %>/styles/*.css',
+                    '<%= config.app %>/directive/*',
                     '{.tmp,<%= config.app %>}/**/*.js',
                     '<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
             }
+        },
+        ngconstant: {
+           options: {
+        	 space: ' ',
+        	 deps: false
+           },
+           tpl: {
+        	name: 'layoutmodel',
+        	dest: '<%= config.app %>/directive/layoutmodeltemplate.js',
+            wrap: '/*jshint quotmark:double */\n"use strict";\n\n<%= __ngModule %>',
+        	constants: {
+        	  LayoutModelTpl: grunt.file.read(config.app + '/directive/layoutmodel.html')
+        	 }
+           }
         },
         //Connect
         connect: {
@@ -100,7 +119,7 @@ module.exports = function (grunt) {
             options: {
                 jshintrc: '.jshintrc'
             },
-            src: ['Gruntfile.js', '<%= config.app %>/modules/**/*.js', '<%= config.app %>/report/**/*.js', '<%= config.app %>/reports/**/*.js', 'tasks/**/*.js', 'tests/**/*.js','<%= config.app %>/src/*.js'],
+            src: ['Gruntfile.js', '<%= config.app %>/modules/**/*.js', '<%= config.app %>/report/**/*.js', '<%= config.app %>/reports/**/*.js', 'tasks/**/*.js', 'tests/**/*.js','<%= config.app %>/directive/*.js'],
         },
         karma: {
             options: {
@@ -272,7 +291,14 @@ module.exports = function (grunt) {
                 'fonts/*',
                 'directive/*.html'
               ]
-            }, {
+            },
+            {
+                expand: true,
+                cwd: 'app/bower_components/font-awesome/fonts',
+                dest: 'dist/fonts',
+                src: ['*']
+            },
+            {
               expand: true,
               cwd: '.tmp/images',
               dest: '<%= config.dist %>/images',
@@ -319,6 +345,7 @@ module.exports = function (grunt) {
 
         grunt.task.run([                     
             'less',
+            'ngconstant:tpl',
             'connect:livereload',
             'open',
             'watch'
@@ -327,7 +354,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('unit-tests', ['clean:pre', 'less', 'karma:1.2.9', 'clean:post']);
     grunt.registerTask('test', ['clean:pre', 'less', 'karma:1.2.9', 'clean:post', 'e2e']);
-    grunt.registerTask('build', ['clean:pre', 'bower-install','useminPrepare','concurrent:dist','autoprefixer','concat','ngmin',
+    grunt.registerTask('build', ['clean:pre', 'bower-install','ngconstant:tpl','useminPrepare','concurrent:dist','autoprefixer','concat','ngmin',
                                  'copy:dist','cdnify','cssmin','uglify','rev','usemin','htmlmin']);
     grunt.registerTask('default', ['jsonlint', 'jshint', 'build', 'test']);
 };
