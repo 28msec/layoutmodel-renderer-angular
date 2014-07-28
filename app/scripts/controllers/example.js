@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('exampleApp')
-  .controller('ExampleCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+  .controller('ExampleCtrl', ['$scope', '$http', function ($scope, $http) {
 	  $scope.mymodel = null;
-	  $scope.modelurl = $routeParams.url;
+	  $scope.myheaders = null;
+	  $scope.modelurl = "";
 	  $scope.labelidx = 0;
 	  $scope.constraints = true;
 	  $scope.checks = true;
@@ -16,7 +17,11 @@ angular.module('exampleApp')
 		$scope.modelurl = url;
 		$scope.loading = true;
 		$http.get(url)
-		.success(function (data) { $scope.mymodel = data; $scope.loading = false; })
+		.success(function (data) { 
+			$scope.mymodel = data;
+			$scope.myheaders = [ { label : "Report", value : data.TableSetLabels[0] }]
+			$scope.loading = false; 
+		})
 		.error(function(data,status) { 
 			$scope.mymodel = null; 
 			$scope.loading = false;
