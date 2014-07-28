@@ -2,26 +2,26 @@
 
 /* global accounting : false */
 
-angular.module('layoutmodel', [])  
-  .directive('layoutmodel', [ 'LayoutModelTpl' , function(LayoutModelTpl) {
+angular.module('layoutmodel', [ 'ui.bootstrap' ])  
+  .directive('layoutmodel', [ 'LayoutModelTpl', 'FactDetailTpl' , function(LayoutModelTpl, FactDetailTpl) {
     return {
       restrict: 'E',
       template: LayoutModelTpl,
       scope: {
          layoutModel: '=model',
-         headers: '=headers',
-         'class' : '@',
+         headers: '=headers',      
          tableSet: '=table',
          dataTemplateUrl: '=data',
          headerTemplateUrl: '=header',
          titleTemplateUrl: '=title',
          constraints: '=',
+         truncate: '=',
          checks: '=',
          labelidx: '=',
          dataclick: '&',
          headerclick: '&' 
       },    
-      controller: function ($scope, $element, $sce) {    	  
+      controller: function ($scope, $element, $modal, $sce) {    	  
     	  var check = $sce.trustAsHtml('<i class="fa fa-check boolean-true"></i>');
     	  var cross = $sce.trustAsHtml('<i class="fa fa-times boolean-false"></i>');
     	  
@@ -30,18 +30,27 @@ angular.module('layoutmodel', [])
     	  scope.lw = 0;
     	  
     	  // Helper function to format content
-    	  scope.showValue = function(fact) {
-    		    /*jshint eqnull:true */
-    			 if (!fact || fact.Value == null) { return ''; }
+    	  scope.showValue = function(fact, alwaysfull) {
+    		    /*jshint eqnull:true */    		     
+    			 if (!fact || fact.Value === null) { return ''; }
+    			 if (fact.length) { return scope.showValue(fact[0]); }
     			 if (fact.Value === true) { return check; }
     			 if (fact.Value === false) { return cross; }
+    			 if (scope.truncate && !alwaysfull && fact.Value && fact.Value.indexOf && fact.Value.indexOf('<') >= 0) {
+        			 return $sce.trustAsHtml('<span class="ellipsis">'+fact.Value.replace(/<(?:.|\n)*?>/gm, '')+'</span>');    			      			 
+        		  }
         		 if (fact.Type !== 'NumericValue') { return $sce.trustAsHtml(''+fact.Value); }
         		 return $sce.trustAsHtml(''+accounting.formatNumber(fact.Value));        	     
     	  };
-    	  
+    	      	      	  
     	  scope.classes = function(data, header) {
     		 /*jshint eqnull:true */
-    		 return ((data && data.Value != null) ? data.Type : 'null') + ( (header.IsRollUp) ? ' yrollupdata' : '');    		 
+    		 var add = header.IsRollUp ? ' yrollupdata' : '';
+    		 if (data) {
+    			if (data.length > 0) return data[0].Type + add+ " multiplefacts";
+    			if (data.Value != null) return data.Type + add;    			
+    		 }
+    		 return 'null '+add;    		     		
     	  };   
     	  
     	  scope.headerclasses = function(header, first) {
@@ -56,7 +65,26 @@ angular.module('layoutmodel', [])
      	  scope.hasConstraints = function() {
      		 return scope.layoutModel && scope.layoutModel.GlobalConstraintLabels && Object.keys(scope.layoutModel.GlobalConstraintLabels).length > 0;  
      	  };
-     	       	     	       	     	       	    	      	      	     
+     	  
+     	  scope.showMoreLink = function(fact) {
+     		return fact && (fact.length || (scope.truncate && fact.Value && fact.Value.indexOf && fact.Value.indexOf('<') >= 0)); 
+     	  };
+     	  
+     	  scope.showDetails = function($event, fact) {
+     		 $event.stopPropagation();
+     		 $modal.open({
+          		template : FactDetailTpl,
+          		controller : 'FactDetailCtrl',
+          		scope : $scope,
+          		resolve : { fact : function () { return fact; } }
+           	 });
+     		 return false;
+     	  };  
+     	  
+     	  scope.tableClass = function() {
+     		  return scope.truncate ? "truncate" : "";
+     	  };
+     	      	       	     	       	     	       	    	      	      	    
     	  scope.dataTemplate = scope.dataTemplateUrl || 'defaultData.html';
     	  scope.headerTemplate = scope.headerTemplateUrl || 'defaultHeader.html';
     	  scope.titleTemplate = scope.titleTemplateUrl || 'defaultTitle.html';    	  
@@ -73,6 +101,7 @@ angular.module('layoutmodel', [])
               scope.data = [];
               return;
     	  }
+    	      	  
     	  
     	// Check if this component may be used to render the table    	      	     	  
     	  if (scope.layoutModel.ModelKind !== 'LayoutModel' || !scope.layoutModel.TableSet) { throw new Error('layoutmodel: "model" parameter does not contain a layout model!'); }
@@ -132,5 +161,10 @@ angular.module('layoutmodel', [])
         		            
       }
     };
-  }]);
+  }])
+  .controller('FactDetailCtrl', [ '$scope', '$modalInstance', 'fact' , function($scope, $modalInstance, fact) {
+	  $scope.facts = fact.length ? fact : [ fact ];	  
+	  $scope.ok = function() { $modalInstance.close(); }	  
+  }])
+  ;
 

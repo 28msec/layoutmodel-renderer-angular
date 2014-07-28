@@ -52,6 +52,9 @@
       <label class="checkbox-inline">      
         <input type="checkbox" id="checks" ng-model="checks" value="true" />Show validation checks
       </label>
+      <label class="checkbox-inline">      
+        <input type="checkbox" id="truncate" ng-model="truncate" value="true" />Shorten textblocks
+      </label>
     </div>
  </div>
  
@@ -78,6 +81,7 @@
                headers="myheaders"
                labelidx="labelidx" 
                constraints="constraints"
+               truncate="truncate"
                checks="checks" 
                headerclick="test(header)" 
                dataclick="test(data)" 

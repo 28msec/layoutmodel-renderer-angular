@@ -336,3 +336,18 @@
 .boolean-false { color : @marked-red; padding-top:2px; }
 
 table .NumericValue { text-align: right; }
+
+table.truncate div.value {  
+   span.ellipsis {
+     max-width: 250px;
+     white-space: nowrap;
+     overflow: hidden;
+     display:inline-block; 
+     overflow: hidden;
+     text-overflow: ellipsis; 
+  }
+  span.morelink { 
+    vertical-align:top;    
+    display:inline-block;
+  } 
+} 

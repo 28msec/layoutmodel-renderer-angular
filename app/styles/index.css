@@ -6140,6 +6140,17 @@ button.close {
 table .NumericValue {
   text-align: right;
 }
+table.truncate div.value span.ellipsis {
+  max-width: 250px;
+  white-space: nowrap;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+table.truncate div.value span.morelink {
+  vertical-align: top;
+  display: inline-block;
+}
 /* Space out content a bit */
 body {
   padding-top: 20px;

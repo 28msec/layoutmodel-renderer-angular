@@ -1,0 +1,8 @@
+ <div class="modal-body">
+  <div ng-repeat="fact in facts">
+    <span ng-bind-html="showValue(fact, true)"></span>
+  </div>
+ </div>
+ <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">Close</button>   
+ </div>

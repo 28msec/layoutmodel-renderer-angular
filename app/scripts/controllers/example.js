@@ -8,6 +8,7 @@ angular.module('exampleApp')
 	  $scope.labelidx = 0;
 	  $scope.constraints = true;
 	  $scope.checks = true;
+	  $scope.truncate = false;
 	  
 	  $scope.css = "plain-style";
 	  $scope.loading = false;

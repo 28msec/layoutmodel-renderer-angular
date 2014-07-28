@@ -2,13 +2,17 @@
   <div>{{ innerTitle.CellLabels[labelidx] || innerTitle.CellLabels[0] }}</div>  
  </script>
  <script type="text/ng-template" id="defaultData.html">
-  <div class="value"><span ng-bind-html="showValue(data)"></span><span ng-if="checks" class="validation"><i ng-show="data.Valid == false" class="fa fa-times invalid"></i><i ng-show="data.Valid" class="fa fa-check valid"></i></span>           
+  <div class="value">
+    <span ng-bind-html="showValue(data)"></span><span ng-if="showMoreLink(data)" class="morelink"><a ng-click="showDetails($event, data)" href="javascript:">[more]</a></span>    
+    <span ng-if="checks" class="validation"><i ng-show="data.Valid == false" class="fa fa-times invalid"></i><i ng-show="data.Valid" class="fa fa-check valid"></i></span>
+  </div>            
  </script>
+
  <script type="text/ng-template" id="defaultHeader.html">
   {{ header.CellLabels[labelidx] || header.CellLabels[0] }}           
  </script>
  
-<table ng-show="layoutModel && xHeaderGroups && xHeaderGroups.length > 0 && yHeaderGroups && yHeaderGroups.length>0" class="rendering" ng-class="class">
+<table ng-show="layoutModel && xHeaderGroups && xHeaderGroups.length > 0 && yHeaderGroups && yHeaderGroups.length>0" class="rendering" ng-class="tableClass()">
   <thead ng-show="headers.length >0">
     <tr class="constraints" ng-repeat="header in headers">
       <td class="constraintlabel" colspan="{{yHeaderGroups[0].length}}">{{ header.label  }}</td>

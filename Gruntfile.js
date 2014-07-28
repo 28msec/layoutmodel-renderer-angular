@@ -56,7 +56,8 @@ module.exports = function (grunt) {
         	dest: '<%= config.app %>/directive/layoutmodeltemplate.js',
             wrap: '/*jshint quotmark:double */\n"use strict";\n\n<%= __ngModule %>',
         	constants: {
-        	  LayoutModelTpl: grunt.file.read(config.app + '/directive/layoutmodel.html')
+        	  LayoutModelTpl: grunt.file.read(config.app + '/directive/layoutmodel.html'),
+        	  FactDetailTpl: grunt.file.read(config.app + '/directive/factdetails.html')
         	 }
            }
         },
