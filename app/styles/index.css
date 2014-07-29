@@ -5808,7 +5808,6 @@ button.close {
   empty-cells: show;
   border-spacing: 0px;
   border-collapse: separate;
-  border-bottom: 2px solid #000000;
   font-size: 80%;
 }
 .preview-style table tr.constraints td.constraintlabel {
@@ -6054,7 +6053,6 @@ button.close {
   empty-cells: show;
   border-spacing: 0px;
   border-collapse: separate;
-  border-bottom: 2px solid white;
 }
 .plain-style table td {
   padding: 2px;
