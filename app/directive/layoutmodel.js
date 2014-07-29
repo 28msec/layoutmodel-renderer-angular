@@ -32,8 +32,9 @@ angular.module('layoutmodel', [ 'ui.bootstrap' ])
     	  // Helper function to format content
     	  scope.showValue = function(fact, alwaysfull) {
     		    /*jshint eqnull:true */    		     
-    			 if (!fact || fact.Value === null) { return ''; }
+    			 if (!fact) { return ''; }
     			 if (fact.length) { return scope.showValue(fact[0]); }
+    			 if (fact.Value == null) { return ''; }
     			 if (fact.Value === true) { return check; }
     			 if (fact.Value === false) { return cross; }
     			 if (scope.truncate && !alwaysfull && fact.Value && fact.Value.indexOf && fact.Value.indexOf('<') >= 0) {
@@ -47,8 +48,12 @@ angular.module('layoutmodel', [ 'ui.bootstrap' ])
     		 /*jshint eqnull:true */
     		 var add = header.IsRollUp ? ' yrollupdata' : '';
     		 if (data) {
-    			if (data.length > 0) return data[0].Type + add+ " multiplefacts";
-    			if (data.Value != null) return data.Type + add;    			
+    			if (data.length > 0) { 
+    				return data[0].Type + add+ ' multiplefacts'; 
+    			}
+    			if (data.Value != null) { 
+    				return data.Type + add; 
+    			}    			
     		 }
     		 return 'null '+add;    		     		
     	  };   
@@ -82,7 +87,7 @@ angular.module('layoutmodel', [ 'ui.bootstrap' ])
      	  };  
      	  
      	  scope.tableClass = function() {
-     		  return scope.truncate ? "truncate" : "";
+     		  return scope.truncate ? 'truncate' : '';
      	  };
      	      	       	     	       	     	       	    	      	      	    
     	  scope.dataTemplate = scope.dataTemplateUrl || 'defaultData.html';
@@ -164,7 +169,9 @@ angular.module('layoutmodel', [ 'ui.bootstrap' ])
   }])
   .controller('FactDetailCtrl', [ '$scope', '$modalInstance', 'fact' , function($scope, $modalInstance, fact) {
 	  $scope.facts = fact.length ? fact : [ fact ];	  
-	  $scope.ok = function() { $modalInstance.close(); }	  
+	  $scope.ok = function() { 
+		  $modalInstance.close(); 
+	  };	  
   }])
   ;
 

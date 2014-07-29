@@ -1,4 +1,5 @@
  <div class="modal-body">
+  <p ng-show="facts.length > 1">{{ facts.length }} facts:</p>
   <div ng-repeat="fact in facts">
     <span ng-bind-html="showValue(fact, true)"></span>
   </div>
