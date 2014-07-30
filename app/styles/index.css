@@ -6127,6 +6127,9 @@ button.close {
 .NonNumericValue span.icon {
   margin-left: 5px;
 }
+.rendering a {
+  cursor: pointer;
+}
 .boolean-true {
   color: #00a000;
   padding-top: 2px;
