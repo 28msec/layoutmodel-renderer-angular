@@ -36,6 +36,7 @@ angular.module('layoutmodel', [])
     			 if (fact.Value === true) { return check; }
     			 if (fact.Value === false) { return cross; }
         		 if (fact.Type !== 'NumericValue') { return $sce.trustAsHtml(''+fact.Value); }
+        		 if (fact.Type === 'NumericValue' && fact.Decimals > 0) { return $sce.trustAsHtml(''+accounting.formatNumber(fact.Value, fact.Decimals)); }
         		 return $sce.trustAsHtml(''+accounting.formatNumber(fact.Value));        	     
     	  };
     	  
