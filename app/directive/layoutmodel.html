@@ -2,7 +2,7 @@
   <div>{{ innerTitle.CellLabels[labelidx] || innerTitle.CellLabels[0] }}</div>  
  </script>
  <script type="text/ng-template" id="defaultData.html">
-  <div class="value"><span ng-bind-html="showValue(data)"></span><span ng-if="checks" class="validation"><i ng-show="data.Valid == false" class="fa fa-times invalid"></i><i ng-show="data.Valid" class="fa fa-check valid"></i></span>           
+  <div class="value"><span ng-bind-html="showValue(data)"></span><span ng-if="checks" class="validation"><i ng-show="data.Valid == false" class="fa fa-times invalid"></i><i ng-show="data.Valid" class="fa fa-check valid"></i></span></div>
  </script>
  <script type="text/ng-template" id="defaultHeader.html">
   {{ header.CellLabels[labelidx] || header.CellLabels[0] }}           
