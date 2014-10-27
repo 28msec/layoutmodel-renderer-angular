@@ -41,7 +41,8 @@ angular.module('layoutmodel', [ 'ui.bootstrap' ])
         			 return $sce.trustAsHtml('<span class="ellipsis">'+fact.Value.replace(/<(?:.|\n)*?>/gm, '')+'</span>');    			      			 
         		  }
         		 if (fact.Type !== 'NumericValue') { return $sce.trustAsHtml(''+fact.Value); }
-        		 return $sce.trustAsHtml(''+accounting.formatNumber(fact.Value));        	     
+        		 var decimals = fact.Decimals > 0 ? fact.Decimals : 0;
+        		 return $sce.trustAsHtml(accounting.formatNumber(fact.Value, decimals));
     	  };
     	      	      	  
     	  scope.classes = function(data, header) {
