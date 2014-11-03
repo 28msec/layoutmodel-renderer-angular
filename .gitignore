@@ -1,0 +1,9 @@
+app/bower_components
+app/.buildignore
+app/.htaccess
+node_modules
+*.css
+dist
+.tmp
+.project
+.idea
