@@ -5810,6 +5810,13 @@ button.close {
   border-collapse: separate;
   font-size: 80%;
 }
+.preview-style table tr.constraints td.header {
+  background-color: #909090;
+  border-top: 2px solid #000000;
+  border-left: 2px solid #000000;
+  padding: 2px;
+  font-weight: bold;
+}
 .preview-style table tr.constraints td.constraintlabel {
   background-color: #8db4e3;
   border-top: 2px solid #000000;
@@ -5823,6 +5830,10 @@ button.close {
   border-left: 2px solid #000000;
   min-width: 200px;
   padding: 2px;
+}
+.preview-style table tr.constraints td.constraintvalue div {
+  color: #909090;
+  white-space: nowrap;
 }
 .preview-style table td {
   padding: 2px;
@@ -5977,6 +5988,10 @@ button.close {
   min-width: 250px;
   vertical-align: top;
 }
+.document-style table tr.constraints td div {
+  color: #909090;
+  white-space: nowrap;
+}
 .document-style table td {
   padding: 0px;
 }
@@ -6070,6 +6085,10 @@ button.close {
   border-top: 2px solid white;
   border-left: 2px solid white;
   padding: 2px;
+}
+.plain-style table tr.constraints td.constraintvalue div {
+  color: #909090;
+  white-space: nowrap;
 }
 .plain-style table .closing-border {
   border: none;

@@ -134,6 +134,7 @@ angular.module('layoutmodel', [ 'ui.bootstrap' ])
           }
           
           var idx = 0;
+          var title = true;
           for (hd in scope.table.TableHeaders.y) {
         	  for (grp in scope.table.TableHeaders.y[hd].GroupCells) {        		        		 
         		  idx = 0;
@@ -141,23 +142,16 @@ angular.module('layoutmodel', [ 'ui.bootstrap' ])
         		  {
         			 var c = scope.table.TableHeaders.y[hd].GroupCells[grp][cell];
         			 
-        			  if (scope.innerTitle === null && cell===0 && hd===0 && grp===0 && scope.table.TableHeaders.y.length===1 && scope.table.TableHeaders.y[hd].GroupCells.length===1) {        				 
-        				  var empty = true;
-        				  for (var d in scope.data[0]) 
-        				  {
-        				     if (scope.data[0][d] !== null) { empty = false; }
-        				  }
-        				  if (empty) {
-            			    scope.innerTitle = c;
-            			    scope.data.shift();
-            			    continue;
-        				  }
-            		  } 
-        			         			 
+        			 if (title) {
+        				  title = false;
+        			      scope.innerTitle = c;	 
+        			      continue;
+        			 } 	         			 
+	        		
         			 while (scope.yHeaderGroups.length <= idx) { scope.yHeaderGroups.push([]); }
-        			 scope.yHeaderGroups[idx].push(c);
-        			 idx += (c.CellSpan || 1);
-            		  
+	        		 scope.yHeaderGroups[idx].push(c);
+	        		 idx += (c.CellSpan || 1);
+        			 
         		  }
         		  
         	  }

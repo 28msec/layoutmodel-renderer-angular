@@ -15,6 +15,11 @@
 
 @preview-plain-header-bg: #e0e0e0;
 @preview-plain-data-bg: #f0f0f0;
+@preview-header-url: #909090;
+
+@document-header-url: #909090;
+
+@plain-header-url: #909090;
 
 .preview-style table {
   empty-cells:show;
@@ -24,6 +29,14 @@
   font-size: 80%;
    
   tr.constraints {
+  
+    td.header {
+      background-color: #909090;
+      border-top:2px solid @preview-dark-bc; border-left:2px solid @preview-dark-bc;         
+      padding:2px;
+      font-weight:bold;
+    }
+    
     td.constraintlabel {
       background-color: @preview-main-header-bg;
       border-top:2px solid @preview-dark-bc; border-left:2px solid @preview-dark-bc;   
@@ -36,6 +49,11 @@
       border-top:2px solid @preview-dark-bc; border-left:2px solid @preview-dark-bc;   
       min-width:200px;      
       padding:2px;   
+      
+      div {
+        color: @preview-header-url;
+        white-space: nowrap;
+      }
     }
   }  
  
@@ -188,6 +206,8 @@
   
 }
 
+
+
 .document-style table {
   border-spacing: 2px;  
   border-collapse: separate;
@@ -195,6 +215,11 @@
   tr.constraints td {
    min-width:250px;
    vertical-align:top;
+   
+   div {
+        color: @document-header-url;
+        white-space: nowrap;
+   }
   }
 
   td { 
@@ -282,7 +307,12 @@
       td.constraintvalue {
         background-color: #e0e0e0;      
         border-top:2px solid white;border-left:2px solid white;
-        padding:2px;      
+        padding:2px;   
+        
+        div {
+          color: @plain-header-url;
+           white-space: nowrap;
+        }   
       }
    }
    
