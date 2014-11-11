@@ -90,6 +90,28 @@ angular.module('layoutmodel', [ 'ui.bootstrap' ])
      	  scope.tableClass = function() {
      		  return scope.truncate ? 'truncate' : '';
      	  };
+     	  
+     	  scope.getConstraintValue = function(constraint) {
+     		  var result;
+     		  angular.forEach(constraint, function(value,key) {
+     			 if (key != "$$hashKey" && constraint.hasOwnProperty(key)) {     			
+     			    var label = scope.layoutModel.GlobalConstraintLabels[value];
+     	     		result = label ? label : value;
+     			 }
+     		  });     		
+     		  return result;     		
+     	  };
+     	  
+     	  scope.getConstraintLabel = function(constraint) {
+     		 var result;
+     		 angular.forEach(constraint, function(value,key) {
+     		    if (key != "$$hashKey" && constraint.hasOwnProperty(key)) {
+     			   var label = scope.layoutModel.GlobalConstraintLabels[key];
+     	     	   result = label ? label : key;
+     			}
+     		 });     		
+     		 return result;
+     	  };
      	      	       	     	       	     	       	    	      	      	    
     	  scope.dataTemplate = scope.dataTemplateUrl || 'defaultData.html';
     	  scope.headerTemplate = scope.headerTemplateUrl || 'defaultHeader.html';

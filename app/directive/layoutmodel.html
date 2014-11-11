@@ -37,9 +37,9 @@
     </tr>
   </thead>
   <tbody ng-if="constraints == true" ng-show="hasConstraints()">
-    <tr class="constraints" ng-repeat="(constraint, value) in layoutModel.GlobalConstraintLabels">
-      <td class="constraintlabel" colspan="{{yHeaderGroups[0].length}}">{{ value.DimensionLabels[labelidx] || value.DimensionLabels[0]  }}</td>
-      <td class="constraintvalue" colspan="{{data[0].length}}">{{ value.ValueLabels[labelidx] || value.ValueLabels[0]  }}</td>
+    <tr class="constraints" ng-repeat="pair in layoutModel.GlobalConstraints">
+      <td class="constraintlabel" colspan="{{yHeaderGroups[0].length}}">{{ getConstraintLabel(pair) }}</td>
+      <td class="constraintvalue" colspan="{{data[0].length}}">{{ getConstraintValue(pair) }}</td>
       <td class="closing-border"></td>
     </tr> 
     <tr class="space">
