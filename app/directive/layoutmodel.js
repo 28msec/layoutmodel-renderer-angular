@@ -8,8 +8,7 @@ angular.module('layoutmodel', [ 'ui.bootstrap' ])
       restrict: 'E',
       template: LayoutModelTpl,
       scope: {
-         layoutModel: '=model',
-         headers: '=headers',      
+         layoutModel: '=model',         
          tableSet: '=table',
          dataTemplateUrl: '=data',
          headerTemplateUrl: '=header',
