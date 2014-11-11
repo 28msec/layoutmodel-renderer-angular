@@ -5896,6 +5896,7 @@ button.close {
   vertical-align: bottom;
   text-align: center;
   padding: 2px;
+  font-weight: bold;
 }
 .preview-style table .yrollup {
   text-align: right;
