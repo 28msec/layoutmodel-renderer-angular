@@ -5817,6 +5817,24 @@ button.close {
   padding: 2px;
   font-weight: bold;
 }
+.preview-style table tr.constraints td.headerlabel {
+  background-color: #b8b8b8;
+  border-top: 2px solid #000000;
+  border-left: 2px solid #000000;
+  min-width: 200px;
+  padding: 2px;
+}
+.preview-style table tr.constraints td.headervalue {
+  background-color: #ececec;
+  border-top: 2px solid #000000;
+  border-left: 2px solid #000000;
+  min-width: 200px;
+  padding: 2px;
+}
+.preview-style table tr.constraints td.headervalue div {
+  color: #909090;
+  white-space: nowrap;
+}
 .preview-style table tr.constraints td.constraintlabel {
   background-color: #8db4e3;
   border-top: 2px solid #000000;
@@ -5830,10 +5848,6 @@ button.close {
   border-left: 2px solid #000000;
   min-width: 200px;
   padding: 2px;
-}
-.preview-style table tr.constraints td.constraintvalue div {
-  color: #909090;
-  white-space: nowrap;
 }
 .preview-style table td {
   padding: 2px;
@@ -6075,6 +6089,22 @@ button.close {
   border-top: 2px solid white;
   border-left: 2px solid white;
 }
+.plain-style table tr.constraints td.headerlabel {
+  background-color: #e0e0e0;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  padding: 2px;
+}
+.plain-style table tr.constraints td.headervalue {
+  background-color: #e0e0e0;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  padding: 2px;
+}
+.plain-style table tr.constraints td.headervalue div {
+  color: #909090;
+  white-space: nowrap;
+}
 .plain-style table tr.constraints td.constraintlabel {
   background-color: #e0e0e0;
   border-top: 2px solid white;
@@ -6086,10 +6116,6 @@ button.close {
   border-top: 2px solid white;
   border-left: 2px solid white;
   padding: 2px;
-}
-.plain-style table tr.constraints td.constraintvalue div {
-  color: #909090;
-  white-space: nowrap;
 }
 .plain-style table .closing-border {
   border: none;
