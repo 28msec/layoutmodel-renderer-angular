@@ -10,7 +10,7 @@ angular.module('exampleApp')
 	  $scope.checks = true;
 	  $scope.truncate = false;
 	  
-	  $scope.css = "plain-style";
+	  $scope.css = "preview-style";
 	  $scope.loading = false;
 	  		  
 	  $scope.fetch = function(url)
