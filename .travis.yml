@@ -1,8 +1,6 @@
 language: node_js
 node_js:
 - '0.10'
-addons:
-  firefox: '31.0'
 before_script:
 - npm install -g bower
 - bower install
@@ -10,7 +8,5 @@ script:
 - grunt
 env:
   global:
-  - secure: USgTTaw/Vn69/M8X4ZJHEOZO9II18PQdaztoRgp9o71gQYvq7J/F+cYIfnyF1rwnlY6bbl/IJWQF6vmw338pXO20H8Ppk33SMom2uTasNTrq64Fb6Yd7wIvbZdj11yhGGd9OYpB+/ONU+0ArOBWGu2po/yCvbgAESpA5hcGOegc=
-  - secure: b8O5l0rlwvjo2R/QjfGIgD6GOEHpDPkVygv0FixZrywlM18ZThiaWn5tp8liY7DQsi7AB6m2Q/bXKd39uAxJnWAgOBLUwXB1NN6jG1qZxzDCF7hEPs25/WYLD6vIW9o0j5e3rmMgDU6dtLH141njOLhWG93oy0+h6jzRnH2niWo=
-  - secure: Anp6iY7L5E6PBR1yBwZw3arxUfMQeikJt5AQ9YPUtDfv95imt1QLfzk+KrtXnpRETTvPCYSLfSECBBnBTFS/d2u/Sq0I7dK5/ooBHUjhu9MSxwsO8lNiw83hH5d9LTkQ6Faxz2LZ3vLXsDIQZBjYW6nuRgLaoCPkcx3SMxdOCL8=
-  - secure: Pgh2rWa+D7UfFjycLI1RIdLOT3ukrs9pum0gEhLzCSkWk9EvOHCIIRVvm4aXHk/dik4CZ8WgOqej9e0vsFxApEXubZr7cx/VX66fdC9B8juuiCCrZf8sMhTKCSIgrrlM/dLPy8xlt0sYtVpfKNCogKMDSWuB1XP32gESpnJfjeQ=
+  - secure: mb8/fcbUXQCxXS/GcvnDsHhEU3HRcMiN0Jc+JRQvjIDsC+33AOL8kAZ4kpR7oasbCH+ySjWnsHkH9kS2OZSW4L7gp6sEWeuyqa6lNXwvWLkyq+VnGNFjN9i3qacvPkoMK7CQwejP+qTvHiWU8SwYU91DRef3qHkNl6qVQ+SDgL0=
+  - secure: AXuY3I1ekTW+2I7/JZuiaqpv7BiHOGrZqqYVIGMyqqk7T/VDaQuBbwwzykwuZmlSNBDYM9T01BUeYeOCFRNqmjq04GS5jiWxuKOn9ZapD1s7kvyALt5G8dBPYKcrmTdB2lOWtErS0SZJ1caD3qXTH4HOQbG+rihjRMB1EF7qEjY=
