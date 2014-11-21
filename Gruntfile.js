@@ -371,9 +371,9 @@ module.exports = function (grunt) {
     });
     
     grunt.registerTask('deploy', function() {
-        //if(process.env.TRAVIS_BRANCH === 'master' && process.env.TRAVIS_PULL_REQUEST === 'false') {
+        if(process.env.TRAVIS_BRANCH === 'master' && process.env.TRAVIS_PULL_REQUEST === 'false') {
             grunt.task.run(['s3:prod']);
-        //}
+        }
     });
 
     grunt.registerTask('unit-tests', ['clean:pre', 'less', /* 'karma:1.2.9', */ 'clean:post']);
