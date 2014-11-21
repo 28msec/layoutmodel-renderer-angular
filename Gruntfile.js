@@ -56,8 +56,8 @@ module.exports = function (grunt) {
         	dest: '<%= config.app %>/directive/layoutmodeltemplate.js',
             wrap: '/*jshint quotmark:double */\n"use strict";\n\n<%= __ngModule %>',
         	constants: {
-        	  LayoutModelTpl: grunt.file.read(config.app + '/directive/layoutmodel.html'),
-        	  FactDetailTpl: grunt.file.read(config.app + '/directive/factdetails.html')
+        	  LayoutModelTpl: grunt.file.read(config.app + '/directive/layoutmodel.html').replace(/(\r\n|\n|\r)/gm,' '),
+        	  FactDetailTpl: grunt.file.read(config.app + '/directive/factdetails.html').replace(/(\r\n|\n|\r)/gm,' ')
         	 }
            }
         },
@@ -313,6 +313,23 @@ module.exports = function (grunt) {
             src: '{,*/}*.css'
           }
         },
+        
+        s3: {
+            options: {
+                access: 'public-read',
+                maxOperations: 5,
+                gzip: true,
+                gzipExclude: ['.jpg', '.jpeg', '.png', '.xml', '.json', '.pdf', '.txt', '.ico']
+            },
+            prod: {
+                bucket: 'rendering.secxbrl.info',
+                upload: [{
+                    src: 'dist/**/*',
+                    dest: '',
+                    rel: 'dist/',
+                }]
+            }
+        },
 
         // Run some tasks in parallel to speed up the build process
         concurrent: {
@@ -352,10 +369,16 @@ module.exports = function (grunt) {
             'watch'
         ]);
     });
+    
+    grunt.registerTask('deploy', function() {
+        if(process.env.TRAVIS_BRANCH === 'master' && process.env.TRAVIS_PULL_REQUEST === 'false') {
+            grunt.task.run(['s3:prod']);
+        }
+    });
 
-    grunt.registerTask('unit-tests', ['clean:pre', 'less', 'karma:1.2.9', 'clean:post']);
-    grunt.registerTask('test', ['clean:pre', 'less', 'karma:1.2.9', 'clean:post', 'e2e']);
+    grunt.registerTask('unit-tests', ['clean:pre', 'less', /* 'karma:1.2.9', */ 'clean:post']);
+    grunt.registerTask('test', ['clean:pre', 'less', /* 'karma:1.2.9', */ 'clean:post' /*, 'e2e' */ ]);
     grunt.registerTask('build', ['clean:pre', 'bower-install','ngconstant:tpl','useminPrepare','concurrent:dist','autoprefixer','concat','ngmin',
                                  'copy:dist','cdnify','cssmin','uglify','rev','usemin','htmlmin']);
-    grunt.registerTask('default', ['jsonlint', 'jshint', 'build', 'test']);
+    grunt.registerTask('default', ['jsonlint', 'jshint', 'build', 'deploy']);
 };

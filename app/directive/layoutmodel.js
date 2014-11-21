@@ -93,7 +93,7 @@ angular.module('layoutmodel', [ 'ui.bootstrap' ])
      	  scope.getConstraintValue = function(constraint) {
      		  var result;
      		  angular.forEach(constraint, function(value,key) {
-     			 if (key != "$$hashKey" && constraint.hasOwnProperty(key)) {     			
+     			 if (key !== '$$hashKey' && constraint.hasOwnProperty(key)) {     			
      			    var label = scope.layoutModel.GlobalConstraintLabels[value];
      	     		result = label ? label : value;
      			 }
@@ -104,7 +104,7 @@ angular.module('layoutmodel', [ 'ui.bootstrap' ])
      	  scope.getConstraintLabel = function(constraint) {
      		 var result;
      		 angular.forEach(constraint, function(value,key) {
-     		    if (key != "$$hashKey" && constraint.hasOwnProperty(key)) {
+     		    if (key !== '$$hashKey' && constraint.hasOwnProperty(key)) {
      			   var label = scope.layoutModel.GlobalConstraintLabels[key];
      	     	   result = label ? label : key;
      			}
