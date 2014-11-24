@@ -65,5 +65,7 @@ The directive itself has multiple parameters:
 * constraints : Boolean variable. if 'true' slicers are shown, if 'false' slicers are hidden. 
 * truncate : Boolean variable. If 'true' text blocks are shortenend.
 * checks : Boolean variable. If 'true' validation checks are shown.
+* headerclick : Expression to be executed when the user clicks into a column or row header cell. The variable 'header' contains the header JSON from the layoutmodel
+* dataclick : Expression to be executed when the user clicks into a data cell. The variable 'data' contains the JSON of the cell. (object, array or null depending on number of facts in cell)
 
 
