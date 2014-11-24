@@ -67,5 +67,34 @@ The directive itself has multiple parameters:
 * checks : Boolean variable. If 'true' validation checks are shown.
 * headerclick : Expression to be executed when the user clicks into a column or row header cell. The variable 'header' contains the header JSON from the layoutmodel
 * dataclick : Expression to be executed when the user clicks into a data cell. The variable 'data' contains the JSON of the cell. (object, array or null depending on number of facts in cell)
+* data : Overrides template for data cells. (Example value: data="'myDataTemplate.html'" if there is a ng-template with name 'myDataTemplate.html')
+* header : Overrides template for header cells
+* title : Overrides template for top-left cell
 
+The original templates for 'data', 'header' and 'title' are as follows:
+
+The topleft title cell:
+```
+ <script type="text/ng-template" id="defaultTitle.html">
+  <div>{{ innerTitle.CellLabels[labelidx] || innerTitle.CellLabels[0] }}</div>  
+ </script>
+```
+ 
+A default header cell:
+```
+ <script type="text/ng-template" id="defaultHeader.html">
+  {{ header.CellLabels[labelidx] || header.CellLabels[0] }}           
+ </script>
+```
+ 
+A default data cell:
+```
+ <script type="text/ng-template" id="defaultData.html">
+  <div class="value">
+    <span ng-bind-html="showValue(data)"></span><span ng-if="showMoreLink(data)" class="morelink"><a ng-click="showDetails($event, data)">[more]</a></span>    
+    <span ng-if="checks" class="validation"><i ng-show="data.Valid == false" class="fa fa-times invalid"></i><i ng-show="data.Valid" class="fa fa-check valid"></i></span>
+  </div>            
+ </script>
+```
+ 
 
