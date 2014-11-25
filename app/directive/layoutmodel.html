@@ -1,9 +1,9 @@
  <script type="text/ng-template" id="defaultTitle.html">
-  <div>{{ innerTitle.CellLabels[labelidx] || innerTitle.CellLabels[0] }}</div>  
+  <div class="title-value">{{ innerTitle.CellLabels[labelidx] || innerTitle.CellLabels[0] }}</div>  
  </script>
  <script type="text/ng-template" id="defaultData.html">
   <div class="value">
-    <span ng-bind-html="showValue(data)"></span><span ng-if="showMoreLink(data)" class="morelink"><a ng-click="showDetails($event, data)">[more]</a></span>    
+    <span class="data-value" ng-bind-html="showValue(data)"></span><span ng-if="showMoreLink(data)" class="morelink"><a ng-click="showDetails($event, data)">[more]</a></span>    
     <span ng-if="checks" class="validation"><i ng-show="data.Valid == false" class="fa fa-times invalid"></i><i ng-show="data.Valid" class="fa fa-check valid"></i></span>
   </div>            
  </script>
@@ -15,19 +15,19 @@
 <table ng-show="layoutModel && xHeaderGroups && xHeaderGroups.length > 0 && yHeaderGroups && yHeaderGroups.length>0" class="rendering" ng-class="tableClass()">
   <thead ng-if="layoutModel.ComponentAndHypercubeInformation">
      <tr class="constraints">
-      <td class="header" colspan="{{ (yHeaderGroups[0].length + data[0].length )}}">Component: (Network and Table)</td>      
+      <td class="header networkandtable" colspan="{{ (yHeaderGroups[0].length + data[0].length )}}">Component: (Network and Table)</td>      
       <td class="closing-border"></td>
     </tr>
     <tr class="constraints">
       <td class="headerlabel" colspan="{{yHeaderGroups[0].length}}">Network</td>
-      <td class="headervalue" colspan="{{data[0].length}}">{{ layoutModel.ComponentAndHypercubeInformation.Component.Label  }}
-       <div class="">( {{ layoutModel.ComponentAndHypercubeInformation.Component.Role  }} )</div>
+      <td class="headervalue" colspan="{{data[0].length}}"><span class="componentlabel">{{ layoutModel.ComponentAndHypercubeInformation.Component.Label  }}</span>
+       <div class="componenturl">( {{ layoutModel.ComponentAndHypercubeInformation.Component.Role  }} )</div>
       </td>
       <td class="closing-border"></td>
     </tr>
     <tr class="constraints">
       <td class="headerlabel" colspan="{{yHeaderGroups[0].length}}">Table</td>
-      <td class="headervalue" colspan="{{data[0].length}}">{{ layoutModel.ComponentAndHypercubeInformation.Hypercube.Label  }}</td>
+      <td class="headervalue hypercubelabel" colspan="{{data[0].length}}">{{ layoutModel.ComponentAndHypercubeInformation.Hypercube.Label  }}</td>
       <td class="closing-border"></td>
     </tr>
     <tr class="space">
