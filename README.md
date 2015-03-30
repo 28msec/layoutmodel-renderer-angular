@@ -78,14 +78,14 @@ The topleft title cell:
   <div>{{ innerTitle.CellLabels[labelidx] || innerTitle.CellLabels[0] }}</div>  
  </script>
 ```
- 
+
 A default header cell:
 ```
  <script type="text/ng-template" id="defaultHeader.html">
   {{ header.CellLabels[labelidx] || header.CellLabels[0] }}           
  </script>
 ```
- 
+
 A default data cell:
 ```
  <script type="text/ng-template" id="defaultData.html">
