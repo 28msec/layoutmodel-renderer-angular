@@ -322,7 +322,7 @@ module.exports = function (grunt) {
                 gzipExclude: ['.jpg', '.jpeg', '.png', '.xml', '.json', '.pdf', '.txt', '.ico']
             },
             prod: {
-                bucket: 'spreadsheet.28.io',
+                bucket: 'rendering.secxbrl.info',
                 upload: [{
                     src: 'dist/**/*',
                     dest: '',
