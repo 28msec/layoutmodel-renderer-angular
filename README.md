@@ -1,5 +1,4 @@
-layoutmodel-renderer-angular
-============================
+#Layout Model Angularjs Directive [![Build Status](https://travis-ci.org/28msec/layoutmodel-renderer-angular.svg?branch=master)](https://travis-ci.org/28msec/layoutmodel-renderer-angular)
 
 This repository contains of two parts:
 * AngularJS directive for rendering JSON XBRL layoutmodels ( in /app/directive )
