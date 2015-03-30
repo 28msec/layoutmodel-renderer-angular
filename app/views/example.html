@@ -1,7 +1,10 @@
 
 <div>
-<h1>Cell Store Spreadsheet Renderer</h1>
- 
+<h1>
+    Cell Store Spreadsheet Renderer
+    &nbsp;
+    <small style="font-size: 50%;"><a id="opensource" href="http://28.io/analysts">Made with <i class="fa fa-heart-o"></i> by 28.io</a></small>
+</h1>
 <form class="form-horizontal" role="form">
 
  <div class="form-group">
@@ -16,7 +19,7 @@
     </div>
  </div>
 
- <div class="form-group">
+ <!--div class="form-group">
     <label class="col-sm-2 control-label" for="css">Style</label>
     <div class="col-sm-10">
       <label class="radio-inline">      
@@ -29,9 +32,9 @@
         <input type="radio" id="css2" ng-model="css" value="preview-style" />3: XBRL Cloud like
       </label>         
     </div>
- </div>
+ </div-->
  
- <div class="form-group">
+ <!--div class="form-group">
     <label class="col-sm-2 control-label" for="constraints">Constraints</label>
     <div class="col-sm-10">
       <label class="checkbox-inline">      
@@ -44,9 +47,9 @@
         <input type="checkbox" id="truncate" ng-model="truncate" value="true" />Shorten textblocks
       </label>
     </div>
- </div>
+ </div-->
  
-<div class="form-group">
+<!--div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">
     <button class="btn btn-default" ng-click="fetch('http://metapatterns-rendering.28.io/v1/_queries/public/metapatterns/resolution-and-layout-and-accountant.jq?def=hierarchy')">Hierachy</button>
     <button class="btn btn-default" ng-click="fetch('http://metapatterns-rendering.28.io/v1/_queries/public/metapatterns/resolution-and-layout-and-accountant.jq?def=rollup')">Rollup</button>
@@ -58,7 +61,7 @@
     <button class="btn btn-default" ng-click="fetch('http://metapatterns-rendering.28.io/v1/_queries/public/metapatterns/resolution-and-layout-and-accountant.jq?def=textblock')">Textblock</button>
     <button class="btn btn-default" ng-click="fetch('http://metapatterns-rendering.28.io/v1/_queries/public/metapatterns/resolution-and-layout-and-accountant.jq?def=grid')">Grid</button>
   </div>
-</div>
+</div-->
 </form>
 
 <script type="text/ng-template" id="myheaders.html">  
