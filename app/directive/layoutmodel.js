@@ -146,7 +146,26 @@ angular.module('layoutmodel', [ 'ui.bootstrap' ])
           scope.data = scope.table.TableCells.Facts;          
           scope.innerTitle = null;
 
-          var hd, grp;
+		  var maxDepth = 1;
+		  var hd, grp, idx;
+
+		  // determine max Depth attribute
+		  for (hd in scope.table.TableHeaders.y) {
+			  for (grp in scope.table.TableHeaders.y[hd].GroupCells) {
+				  idx = 0;
+				  for (var cellH in scope.table.TableHeaders.y[hd].GroupCells[grp])
+				  {
+					  var header = scope.table.TableHeaders.y[hd].GroupCells[grp][cellH];
+					  var depth = header.Depth || 1;
+					  if(depth > maxDepth)
+					  {
+						  maxDepth=depth;
+					  }
+				  }
+
+			  }
+		  }
+
           // Build header rows and columns in required order
           for (hd in scope.table.TableHeaders.x) {
         	  for (grp in scope.table.TableHeaders.x[hd].GroupCells) {
@@ -154,7 +173,6 @@ angular.module('layoutmodel', [ 'ui.bootstrap' ])
         	  }
           }
           
-          var idx = 0;
           var title = true;
           for (hd in scope.table.TableHeaders.y) {
         	  for (grp in scope.table.TableHeaders.y[hd].GroupCells) {        		        		 
@@ -162,15 +180,19 @@ angular.module('layoutmodel', [ 'ui.bootstrap' ])
         		  for (var cell in scope.table.TableHeaders.y[hd].GroupCells[grp])
         		  {
         			 var c = scope.table.TableHeaders.y[hd].GroupCells[grp][cell];
-        			 
+
+					 var depthAttr = c.Depth || 1;
+					 var headers = new Array(maxDepth);
+					 headers[depthAttr] = c;
+
         			 if (title) {
         				  title = false;
         			      scope.innerTitle = c;	 
         			      continue;
         			 } 	         			 
 	        		
-        			 while (scope.yHeaderGroups.length <= idx) { scope.yHeaderGroups.push([]); }
-	        		 scope.yHeaderGroups[idx].push(c);
+        			 while (scope.yHeaderGroups.length <= idx) { scope.yHeaderGroups.push(new Array(maxDepth)); }
+	        		 scope.yHeaderGroups[idx].push(headers);
 	        		 idx += (c.CellSpan || 1);
         			 
         		  }
