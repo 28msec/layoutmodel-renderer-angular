@@ -17,7 +17,6 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
          tableSet: '=table',
          dataTemplateUrl: '=data',
          headerTemplateUrl: '=header',
-         titleTemplateUrl: '=title',
          constraints: '=',
          truncate: '=',
          checks: '=',
@@ -145,7 +144,6 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
 
         scope.dataTemplate = scope.dataTemplateUrl || 'defaultData.html';
         scope.headerTemplate = scope.headerTemplateUrl || 'defaultHeader.html';
-        scope.titleTemplate = scope.titleTemplateUrl || 'defaultTitle.html';
 
         var tableIndex = scope.tableSet || 0;
 
