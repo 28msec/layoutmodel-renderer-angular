@@ -47,7 +47,7 @@
     "grunt-jsdoc": "~0.5.1",
     "grunt-karma": "~0.8.0",
     "grunt-karma-coveralls": "~2.0.2",
-    "grunt-ng-constant": "~0.4.8",
+    "grunt-ng-constant": "1.1.0",
     "grunt-open": "~0.2.3",
     "grunt-peg": "^1.3.1",
     "karma": "~0.12.0",
@@ -76,6 +76,10 @@
     {
       "name": "Alexander Kreutz",
       "email": "a@28.io"
+    },
+    {
+      "name": "Dennis Knochenwefel",
+      "email": "d@28.io"
     }
   ],
   "licenses": [

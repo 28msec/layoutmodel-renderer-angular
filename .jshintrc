@@ -35,6 +35,7 @@
         "jasmine"
     ],
     "globals": {
-        "angular": false
+        "angular": false,
+        "_": false
     }
 }
