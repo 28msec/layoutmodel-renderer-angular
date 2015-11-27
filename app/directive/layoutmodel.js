@@ -206,10 +206,11 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
               allHeaderGroupCells.push(grp);
             });
           });
-          var groupIdx = 0;
+
           // a supergroup is a group of columns under a superheader
           // a superheader spans all rows and can therefore be moved
           // in the top left corner
+          var groupIdx = 0;
           var superGroups = _.groupBy(allHeaderGroupCells, function(grp){
             if(grp[0].CellSpan == rows){
               grp[0].IsSuperHeader = true;
@@ -221,6 +222,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
             _.each(superColumns, function(col, i){
               var rowIdx = 0;
               _.each(col, function(cell, j){
+
                 // if the first cell in the first col of a
                 // superColumns group is a superheader we move
                 // it up in the super header top left corner
