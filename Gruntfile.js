@@ -314,9 +314,7 @@ module.exports = function (grunt) {
         s3: {
             options: {
                 access: 'public-read',
-                maxOperations: 5,
-                gzip: true,
-                gzipExclude: ['.jpg', '.jpeg', '.png', '.xml', '.json', '.pdf', '.txt', '.ico']
+                maxOperations: 5
             },
             prod: {
                 bucket: 'rendering.secxbrl.info',
