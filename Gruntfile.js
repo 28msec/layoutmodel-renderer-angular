@@ -316,16 +316,15 @@ module.exports = function (grunt) {
                 access: 'public-read',
                 maxOperations: 5,
                 gzip: true,
-                gzipExclude: ['.jpg', '.jpeg', '.png', '.xml', '.json', '.pdf', '.txt', '.ico']
-            },
-            prod: {
+                gzipExclude: ['.jpg', '.jpeg', '.png', '.xml', '.json', '.pdf', '.txt', '.ico'],
                 bucket: 'rendering.secxbrl.info',
                 upload: [{
                     src: 'dist/**/*',
                     dest: '',
                     rel: 'dist/',
                 }]
-            }
+            },
+            prod: {}
         },
 
         // Run some tasks in parallel to speed up the build process
