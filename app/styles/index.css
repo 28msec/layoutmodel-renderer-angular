@@ -5970,8 +5970,11 @@ button.close {
 .preview-style table .row-header {
   background-color: #ddeafa;
   vertical-align: top;
-  border-left: 2px solid #000000;
+  border-left: 2px solid #dadcdd;
   border-top: 2px solid #dadcdd;
+}
+.preview-style table .first-row-header-col {
+  border-left: 2px solid #000000;
 }
 .preview-style table .first-row-header-row .row-header:first-child {
   min-width: 200px;

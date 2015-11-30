@@ -1,6 +1,3 @@
- <script type="text/ng-template" id="defaultTitle.html">
-  <div class="title-value">{{ innerTitle.CellLabels[labelidx] || innerTitle.CellLabels[0] }}</div>  
- </script>
  <script type="text/ng-template" id="defaultData.html">
   <div class="value">
     <span class="data-value" ng-bind-html="showValue(data)"></span><span ng-if="showMoreLink(data)" class="morelink"><a ng-click="showDetails($event, data)">[more]</a></span>    
@@ -9,7 +6,7 @@
  </script>
  
  <script type="text/ng-template" id="defaultHeader.html">
-  {{ header.CellLabels[labelidx] || header.CellLabels[0] }}           
+  {{ header.CellLabels[labelidx] || header.CellLabels[0] }}
  </script>
  
 <table ng-show="layoutModel && xHeaderGroups && xHeaderGroups.length > 0 && yHeaderGroups && yHeaderGroups.length>0" class="rendering" ng-class="tableClass()">
@@ -47,22 +44,46 @@
        <td colspan="{{data[0].length}}"></td>
        <td class="closing-border"></td>
      </tr> 
-  </tbody> 
+  </tbody>
+
+  <!-- ###### The main table ###### -->
   <tbody>
-	  <tr ng-repeat="headerGroup in xHeaderGroups" ng-class="{ 'last-column-header-row' : $last, 'first-column-header-row' : $first }">
-	    <td class="header title" ng-if="$index == 0" colspan="{{yHeaderGroups[0].length}}" rowspan="{{xHeaderGroups.length}}" ng-include="titleTemplate"></td>
-	    <td class="header column-header" ng-class="{ xrollup : header.RollUp }" ng-click="headerclick({header : header, axis:'x' });" ng-repeat="header in headerGroup" colspan="{{header.CellSpan}}" ng-include="headerTemplate">    
-	    </td>
-	    <td class="closing-border"></td>
-	  </tr>
-	  <tr ng-repeat="headerGroup in yHeaderGroups" ng-class="headerclasses(headerGroup[headerGroup.length - 1], $first)">
-	    <td class="header row-header" ng-class="headerclasses(header)" ng-click="headerclick({header : header, axis:'y' });" ng-repeat="header in headerGroup" rowspan="{{header.CellSpan}}" ng-include="headerTemplate">     
-	    </td>    
-	    <td class="data" ng-click="dataclick({ data : data })" ng-class="classes(data, headerGroup[headerGroup.length - 1])" ng-repeat="data in data[$index] track by $index" ng-include="dataTemplate">          
-	    </td>
-	    <td class="closing-border"></td>
-	  </tr>
-	  <tr class="space">
+      <tr ng-repeat="headerGroup in xHeaderGroups"
+          ng-class="{ 'last-column-header-row' : $last, 'first-column-header-row' : $first }">
+
+        <!-- top left corner header cell -->
+        <td ng-repeat="superHeader in ySuperHeaders | displaySuperColumnHeader:$index"
+            class="header title"
+            colspan="{{superHeader.ColSpan}}" rowspan="{{xHeaderGroups.length}}">{{superHeader.Label}}</td>
+
+        <!-- top header row -->
+        <td class="header column-header" ng-class="{ xrollup : header.RollUp }"
+            ng-click="headerclick({header : header, axis:'x' });"
+            ng-repeat="header in headerGroup" colspan="{{header.CellSpan}}" ng-include="headerTemplate">
+        </td>
+
+        <td class="closing-border"></td>
+      </tr>
+      <tr ng-repeat="headerGroup in yHeaderGroups"
+          ng-class="rowHeaderClasses(headerGroup[0], $first)">
+
+        <!-- left row headers -->
+        <td ng-repeat="header in headerGroup"
+            class="header row-header"
+            ng-class="rowColHeaderClasses(header, $first)"
+            ng-click="headerclick({header : header, axis:'y' });"
+            ng-show="isVisible(header)"
+            colspan="{{headerColSpan(headerGroup, $index)}}"
+            rowspan="{{header.CellSpan}}" ng-include="headerTemplate">
+        </td>
+
+        <!-- data cells -->
+        <td class="data" ng-click="dataclick({ data : data })" ng-class="classes(data, headerGroup[headerGroup.length - 1])" ng-repeat="data in data[$index] track by $index" ng-include="dataTemplate">
+        </td>
+
+        <td class="closing-border"></td>
+      </tr>
+      <tr class="space">
        <td colspan="{{yHeaderGroups[0].length}}"></td>
        <td colspan="{{data[0].length}}"></td>
        <td class="closing-border"></td>
