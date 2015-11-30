@@ -8,5 +8,5 @@ script:
 - grunt
 env:
   global:
-  - secure: mb8/fcbUXQCxXS/GcvnDsHhEU3HRcMiN0Jc+JRQvjIDsC+33AOL8kAZ4kpR7oasbCH+ySjWnsHkH9kS2OZSW4L7gp6sEWeuyqa6lNXwvWLkyq+VnGNFjN9i3qacvPkoMK7CQwejP+qTvHiWU8SwYU91DRef3qHkNl6qVQ+SDgL0=
-  - secure: AXuY3I1ekTW+2I7/JZuiaqpv7BiHOGrZqqYVIGMyqqk7T/VDaQuBbwwzykwuZmlSNBDYM9T01BUeYeOCFRNqmjq04GS5jiWxuKOn9ZapD1s7kvyALt5G8dBPYKcrmTdB2lOWtErS0SZJ1caD3qXTH4HOQbG+rihjRMB1EF7qEjY=
+  - secure: lIdv8bI/nIWcvsgEKoTuvCU3oofya2/pCSHB6kV6/ipu33TJ8s88VkRq+wZ5XXvWC8crM+M+wL4B+OQ+JhhToAdWIo1ut4B/SLLCaa91iHMPcBa63V7jv4TaX5MlDyLMT+CWSPB7TY+oPp+Dw4EIdm5e17YrpbdHKJ61qscVzCs=
+  - secure: PDOY9C8nY5tfWG5eW5wh5NzYzquoWO/ldJno5Z/RaNVnWLfJMlDegqXSt58WDZ4MG/apW/BUzFOmxjpc1ATfxhg32v2bF5nGWTxkArZI2g6fHKk2k9UxqC/qwk0X/hOLvIhrZtktkSw+APRIfwwybF/RnzqjJMrN8WpgQ6ibMJ4=
