@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '4.2.2'
+- 4.2.2
 before_script:
 - npm install -g bower
 - bower install
@@ -8,5 +8,5 @@ script:
 - grunt
 env:
   global:
-  - secure: lIdv8bI/nIWcvsgEKoTuvCU3oofya2/pCSHB6kV6/ipu33TJ8s88VkRq+wZ5XXvWC8crM+M+wL4B+OQ+JhhToAdWIo1ut4B/SLLCaa91iHMPcBa63V7jv4TaX5MlDyLMT+CWSPB7TY+oPp+Dw4EIdm5e17YrpbdHKJ61qscVzCs=
-  - secure: PDOY9C8nY5tfWG5eW5wh5NzYzquoWO/ldJno5Z/RaNVnWLfJMlDegqXSt58WDZ4MG/apW/BUzFOmxjpc1ATfxhg32v2bF5nGWTxkArZI2g6fHKk2k9UxqC/qwk0X/hOLvIhrZtktkSw+APRIfwwybF/RnzqjJMrN8WpgQ6ibMJ4=
+  - secure: OmW4JssXPZE9fpT0H9bnO+F1Q3a7HwdpVav2qagLnK6g/MU7HbMlEZBTk5X32KlvRryTuQEQP5LcHPM5gDmP0jYmRnthr0NOgxPVQt85ifj9VIBMLJgj67T06Cdth7rKdASLLqK+3FnmkC9+HIFVN/tf2YWaEL6SUbhChRWO23M=
+  - secure: oc/cd01UyH4WesDea7E1H+bZMahcEuXC5S/zOw/ouhWSpFzRLVxHyC7qZL4JmsSHt5UBolySllqTXcARFKYiWqGhJAKKoS/MgZytnhThiKckCyWgdHAMRW8WJW3z7t9KZTnNsLwkqYe4U4xnKATqzPlpp9h5N8HTJWbuoYYVNLw=
