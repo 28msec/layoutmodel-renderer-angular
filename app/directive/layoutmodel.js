@@ -237,11 +237,6 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                                         });
                                     }
 
-                                    // fill up with empty rows cols if cellspan > 1
-                                    while (scope.yHeaderGroups.length < rowIdx)
-                                    {
-                                        scope.yHeaderGroups.push([{ CellLabels: [] }]);
-                                    }
                                     // add row
                                     if(scope.yHeaderGroups.length <= rowIdx)
                                     {
@@ -249,13 +244,14 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                                     }
                                     scope.yHeaderGroups[rowIdx].push(cell);
                                     rowIdx += (cell.CellSpan || 1);
+
+                                    // fill up with empty rows cols if cellspan > 1
+                                    while (scope.yHeaderGroups.length < rowIdx)
+                                    {
+                                        scope.yHeaderGroups.push([{ CellLabels: [] }]);
+                                    }
                                 }
                             });
-                            // fill up with empty rows cols if cellspan > 1
-                            while (scope.yHeaderGroups.length < rowIdx)
-                            {
-                                scope.yHeaderGroups.push([{ CellLabels: [] }]);
-                            }
                         });
                     });
                 });
