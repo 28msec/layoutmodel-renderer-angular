@@ -81,9 +81,6 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     var allFollowingColumnsRollUp = true;
                     while(pos+i<headerGroup.length && allFollowingColumnsRollUp){
                         var header = headerGroup[pos+i];
-                        if(header.CellLabels[0] === 'Interest income'){
-                            console.log('hello');
-                        }
                         if(header.RollUp !== true){
                             allFollowingColumnsRollUp = false;
                         } else {
@@ -240,11 +237,6 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                                         });
                                     }
 
-                                    // fill up with empty rows cols if cellspan > 1
-                                    while (scope.yHeaderGroups.length < rowIdx)
-                                    {
-                                        scope.yHeaderGroups.push([{ CellLabels: [] }]);
-                                    }
                                     // add row
                                     if(scope.yHeaderGroups.length <= rowIdx)
                                     {
@@ -252,6 +244,12 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                                     }
                                     scope.yHeaderGroups[rowIdx].push(cell);
                                     rowIdx += (cell.CellSpan || 1);
+
+                                    // fill up with empty rows cols if cellspan > 1
+                                    while (scope.yHeaderGroups.length < rowIdx)
+                                    {
+                                        scope.yHeaderGroups.push([{ CellLabels: [] }]);
+                                    }
                                 }
                             });
                         });
