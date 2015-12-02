@@ -62,6 +62,36 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     return 'null '+add;
                 };
 
+                var isDomainHeader = function(header) {
+                    if(header.CellLabels[0] === 'Stock repurchase program [Member]'){
+                        console.log('hello');
+                    }
+                    var labelMatches = _.filter(header.CellLabels, function(label){
+                        return label.indexOf('Domain') > -1;
+                    });
+                    var constraintMatches = _.filter(_.values(header.CellConstraints), function(constraints){
+                        return _.filter(_.values(constraints), function(constraintVal){
+                            return constraintVal.indexOf('Domain') > -1;
+                        }).length > 0;
+                    });
+                    return labelMatches.length > 0 || constraintMatches.length > 0
+                        || (header.CellLabels.length === 0 && header.RollUp === true);
+                };
+
+                scope.colHeaderClasses = function(header) {
+                    var constraints = _.isObject(header.CellConstraints) ? _.keys(header.CellConstraints) : [];
+                    var isNotEmpty = scope.isVisible(header);
+                    var classes = header.RollUp ? 'xrollup' : '';
+                    if(isDomainHeader(header)){
+                        classes += ' domain-header';
+                    } else if (constraints.length > 0 || !isNotEmpty){
+                        classes += ' member-header';
+                    } else {
+                        classes += ' dimension-header';
+                    }
+                    return classes;
+                };
+
                 scope.rowHeaderClasses = function(header, first) {
                     return (first ? ' first-row-header-row' : '');
                 };
@@ -91,7 +121,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                 };
 
                 scope.isVisible = function(header) {
-                    return _.isUndefined(header.CellLabels) || header.CellLabels.length > 0;
+                    return !_.isUndefined(header.CellLabels) && header.CellLabels.length > 0;
                 };
 
                 scope.hasConstraints = function() {

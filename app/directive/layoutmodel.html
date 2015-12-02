@@ -53,11 +53,11 @@
 
         <!-- top left corner header cell -->
         <td ng-repeat="superHeader in ySuperHeaders | displaySuperColumnHeader:$index"
-            class="header title"
+            class="header title superheader"
             colspan="{{superHeader.ColSpan}}" rowspan="{{xHeaderGroups.length}}">{{superHeader.Label}}</td>
 
         <!-- top header row -->
-        <td class="header column-header" ng-class="{ xrollup : header.RollUp }"
+        <td class="header column-header" ng-class="colHeaderClasses(header)"
             ng-click="headerclick({header : header, axis:'x' });"
             ng-repeat="header in headerGroup" colspan="{{header.CellSpan}}" ng-include="headerTemplate">
         </td>
