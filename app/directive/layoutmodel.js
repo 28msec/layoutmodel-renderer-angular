@@ -63,9 +63,6 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                 };
 
                 var isDomainHeader = function(header) {
-                    if(header.CellLabels[0] === 'Stock repurchase program [Member]'){
-                        console.log('hello');
-                    }
                     var labelMatches = _.filter(header.CellLabels, function(label){
                         return label.indexOf('Domain') > -1;
                     });
