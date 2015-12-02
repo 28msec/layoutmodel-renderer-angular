@@ -71,8 +71,8 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                             return constraintVal.indexOf('Domain') > -1;
                         }).length > 0;
                     });
-                    return labelMatches.length > 0 || constraintMatches.length > 0
-                        || (header.CellLabels.length === 0 && header.RollUp === true);
+                    return labelMatches.length > 0 || constraintMatches.length > 0 ||
+                        (header.CellLabels.length === 0 && header.RollUp === true);
                 };
 
                 scope.colHeaderClasses = function(header) {
