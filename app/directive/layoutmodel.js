@@ -212,6 +212,14 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                         }
                         return groupIdx;
                     });
+
+                    // if all headers are supergroups, nothing is displayed
+                    // for this reason we need to do this fix:
+                    superGroups = _.values(superGroups);
+                    if(superGroups.length === allHeaderGroupCells.length){
+                        superGroups = [ _.flatten(superGroups) ];
+                    }
+                    
                     _.each(superGroups, function(superColumns){
                         _.each(superColumns, function(col, i){
                             var rowIdx = 0;
