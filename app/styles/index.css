@@ -5932,11 +5932,21 @@ button.close {
   background-color: #f0f0f0;
 }
 .preview-style table .header {
-  background-color: #8db4e3;
   padding: 2px;
 }
-.preview-style table .column-header {
+.preview-style table .dimension-header {
   background-color: #8db4e3;
+}
+.preview-style table .domain-header {
+  background-color: #ddeafa;
+}
+.preview-style table .member-header {
+  background-color: #ddeafa;
+}
+.preview-style table .superheader {
+  background-color: #8db4e3;
+}
+.preview-style table .column-header {
   border-top: 1px solid #000000;
   border-left: 1px solid #000000;
   font-weight: bold;
@@ -5949,8 +5959,6 @@ button.close {
   border-top: 2px solid #000000;
 }
 .preview-style table .last-column-header-row .column-header {
-  background-color: #ddeafa;
-  border-left: 1px solid #dadcdd;
   font-weight: normal;
 }
 .preview-style table .column-header:first-child {
@@ -5958,10 +5966,6 @@ button.close {
 }
 .preview-style table tr .xrollup {
   border-top: none;
-  border-left: 1px solid #000000;
-}
-.preview-style table .last-column-header-row .xrollup {
-  background-color: #8db4e3;
   border-left: 1px solid #000000;
 }
 .preview-style table .title + .column-header {
