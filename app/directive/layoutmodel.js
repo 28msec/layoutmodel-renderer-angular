@@ -64,11 +64,11 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
 
                 var isDomainHeader = function(header) {
                     var labelMatches = _.filter(header.CellLabels, function(label){
-                        return label.indexOf('Domain') > -1;
+                        return _.isString(label) && label.indexOf('Domain') > -1;
                     });
                     var constraintMatches = _.filter(_.values(header.CellConstraints), function(constraints){
                         return _.filter(_.values(constraints), function(constraintVal){
-                            return constraintVal.indexOf('Domain') > -1;
+                            return _.isString(constraintVal) && constraintVal.indexOf('Domain') > -1;
                         }).length > 0;
                     });
                     return labelMatches.length > 0 || constraintMatches.length > 0 ||
