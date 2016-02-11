@@ -5922,6 +5922,9 @@ button.close {
   border-bottom: 4px double #000000;
   border-top: 1px solid #000000;
 }
+.preview-style table td.subyrollupdata div.value {
+  border-bottom: 1px solid #000000 !important;
+}
 .preview-style table .depth4 td.yrollupdata div.value {
   border-bottom: 1px solid #000000;
   border-top: 1px solid #000000;

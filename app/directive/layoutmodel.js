@@ -51,7 +51,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                 scope.classes = function(data, header) {
                     /*jshint eqnull:true */
                     var add = header.IsRollUp ? ' yrollupdata' : '';
-                    add += (header.Depth => 3) ? ' subyrollupdata' : '';
+                    add += (header.Depth >= 3 && header.IsRollUp) ? ' subyrollupdata' : '';
                     if (data) {
                         if (data.length > 0) {
                             return data[0].Type + add+ ' multiplefacts';
