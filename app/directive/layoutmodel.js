@@ -24,7 +24,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                 dataclick: '&',
                 headerclick: '&'
             },
-            controller: function ($scope, $element, $modal, $sce) {
+            controller: function ($scope, $element, $uibModal, $sce) {
                 var check = $sce.trustAsHtml('<i class="fa fa-check boolean-true"></i>');
                 var cross = $sce.trustAsHtml('<i class="fa fa-times boolean-false"></i>');
 
@@ -132,7 +132,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
 
                 scope.showDetails = function($event, fact) {
                     $event.stopPropagation();
-                    $modal.open({
+                    $uibModal.open({
                         template : FactDetailTpl,
                         controller : 'FactDetailCtrl',
                         scope : $scope,
@@ -295,9 +295,9 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
             }
         };
     })
-    .controller('FactDetailCtrl', function($scope, $modalInstance, fact) {
+    .controller('FactDetailCtrl', function($scope, $uibModalInstance, fact) {
         $scope.facts = fact.length ? fact : [ fact ];
         $scope.ok = function() {
-            $modalInstance.close();
+            $uibModalInstance.close();
         };
     });
