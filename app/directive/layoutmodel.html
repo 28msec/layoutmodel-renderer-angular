@@ -36,7 +36,12 @@
   <tbody ng-if="constraints == true" ng-show="hasConstraints()">
     <tr class="constraints" ng-repeat="pair in layoutModel.GlobalConstraints">
       <td class="constraintlabel" colspan="{{yHeaderGroups[0].length}}">{{ getConstraintLabel(pair) }}</td>
-      <td class="constraintvalue" colspan="{{data[0].length}}">{{ getConstraintValue(pair) }}</td>
+      <td class="constraintvalue" colspan="{{data[0].length}}">
+          <div ng-repeat="v in getConstraintValue(pair)">
+              <span ng-bind="v"></span>
+              <br>
+          </div>
+      </td>
       <td class="closing-border"></td>
     </tr> 
     <tr class="space">
