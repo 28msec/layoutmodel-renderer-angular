@@ -153,7 +153,11 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                             result = label ? label : value;
                         }
                     });
-                    return result;
+                    if(_.isArray(result)) {
+                        return result;
+                    } else {
+                        return [result];
+                    }
                 };
 
                 scope.getConstraintLabel = function(constraint) {
