@@ -9,33 +9,69 @@ This repository contains of two parts:
 The master branch of this repository is automatically deployed to
 http://rendering.secxbrl.info/
 
-## To work with the example app:
+## Installation
 
-Checkout this repository execute in the project directory:
+### Requirements
+* Nodejs (version 4.2.2 or superior)
+* Git
+* Grunt & bower
+
+```bash
+npm install grunt-cli bower -g
 ```
+
+### Steps
+
+```bash
+git clone https://github.com/28msec/layoutmodel-renderer-angular.git
+cd layoutmodel-renderer-angular
 npm install
 bower install
+```
+
+To run the sample app:
+```
 grunt server
 ```
 
 ## To use the directive:
 
-Add
+### With Bower and Less
 ```
  "layoutmodel-renderer-angular": "https://github.com/28msec/layoutmodel-renderer-angular.git"
 ```
 to your bower.json file.
 
 Make sure the required scripts are imported in your index.html:
-```
+
+```html
 <script src="/bower_components/layoutmodel-renderer-angular/app/directive/layoutmodel.js"></script>
 <script src="/bower_components/layoutmodel-renderer-angular/app/directive/layoutmodeltemplate.js"></script>
 ```
 
 Import the LESS file into your own LESS file:
+
 ```
 @import "/bower_components/layoutmodel-renderer-angular/app/directive/layoutmodel.less";
 ```
+
+### Without Bower and Less
+Include the following files in your index.html:
+
+```html
+<script src="https://raw.githubusercontent.com/28msec/layoutmodel-renderer-angular/master/app/directive/layoutmodeltemplate.js"></script>
+<script src="https://raw.githubusercontent.com/28msec/layoutmodel-renderer-angular/master/app/directive/layoutmodel.js"></script>
+<link rel="stylesheet" href="https://raw.githubusercontent.com/28msec/layoutmodel-renderer-angular/master/app/styles/main.css">
+```
+
+Alternatively you can download these files locally:
+```html
+<script src="/layoutmodel-renderer-angular/layoutmodeltemplate.js"></script>
+<script src="/layoutmodel-renderer-angular/layoutmodel.js"></script>
+<link rel="stylesheet" href="/layoutmodel-renderer-angular/main.css">
+```
+
+### Usage
 
 Using the directive in a HTML page looks like that:
 ```
@@ -95,5 +131,4 @@ A default data cell:
   </div>            
  </script>
 ```
- 
 
