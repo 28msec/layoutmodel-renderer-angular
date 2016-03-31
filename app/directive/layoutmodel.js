@@ -154,9 +154,9 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                         }
                     });
                     if(_.isArray(result)) {
-                        return result;
+                        return result.join(', ');
                     } else {
-                        return [result];
+                        return result;
                     }
                 };
 
