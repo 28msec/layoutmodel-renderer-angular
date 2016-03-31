@@ -14,7 +14,7 @@ http://rendering.secxbrl.info/
 ### Requirements
 * Nodejs (version 4.2.2 or superior)
 * Git
-* Grunt & bower
+* Grunt & bower (via npm):
 
 ```bash
 npm install grunt-cli bower -g
