@@ -1,0 +1,329 @@
+{
+  "ModelKind" : "LayoutModel",
+  "ComponentAndHypercubeInformation" : {
+    "Component" : {
+      "Archive" : null,
+      "Role" : "http://28.io/component/merged",
+      "Label" : "804A-1"
+    },
+    "Hypercube" : {
+      "Name" : "model:hyp",
+      "Label" : "User-defined Hypercube (overriden)"
+    }
+  },
+  "TableSetLabels" : [ "boi_t804A-1" ],
+  "TableSet" : [ {
+    "TableHeaders" : {
+      "y" : [ {
+        "GroupLabels" : [ "Rows" ],
+        "GroupCells" : [ [ {
+          "CellLabels" : [  ],
+          "CellConstraints" : {
+            "" : {
+
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 16,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 0,
+          "IsAbstract" : true
+        } ], [ {
+          "CellLabels" : [ "Machines that allow cash withdrawal" ],
+          "CellConstraints" : {
+            "" : {
+
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 1,
+          "IsAbstract" : true
+        }, {
+          "CellLabels" : [ "Machines of the reporting bank" ],
+          "CellConstraints" : {
+            "" : {
+
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 2,
+          "IsAbstract" : true
+        }, {
+          "CellLabels" : [ "On external facade of branch" ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Concept" : "boi_met:ii206"
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 3,
+          "IsAbstract" : false
+        }, {
+          "CellLabels" : [ "Inside branch" ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Concept" : "boi_met:ii207"
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 3,
+          "IsAbstract" : false
+        }, {
+          "CellLabels" : [ "Elsewhere" ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Concept" : "xbrl28:Nothing"
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 3,
+          "IsAbstract" : true
+        }, {
+          "CellLabels" : [ "Thereof: more than 500 m. from branches of banking corporation" ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Concept" : "boi_met:ii209"
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 4,
+          "IsAbstract" : false
+        }, {
+          "CellLabels" : [ "Thereof: banking corporation charges a fee" ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Concept" : "boi_met:ii210"
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 4,
+          "IsAbstract" : false
+        }, {
+          "CellLabels" : [ "Total" ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Concept" : "boi_met:ii211"
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 3,
+          "IsAbstract" : false
+        }, {
+          "CellLabels" : [ "Machines of nonbanking corporation that receives settlement services from the reporting corporation1 Total" ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Concept" : "boi_met:ii219"
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 2,
+          "IsAbstract" : false
+        }, {
+          "CellLabels" : [ "Total machines that allow cash withdrawal" ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Concept" : "boi_met:ii212"
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 2,
+          "IsAbstract" : false
+        }, {
+          "CellLabels" : [ "Information and instruction machines" ],
+          "CellConstraints" : {
+            "" : {
+
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 1,
+          "IsAbstract" : true
+        }, {
+          "CellLabels" : [ "On external facade of branch" ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Concept" : "boi_met:ii213"
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 2,
+          "IsAbstract" : false
+        }, {
+          "CellLabels" : [ "Inside branch" ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Concept" : "boi_met:ii214"
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 2,
+          "IsAbstract" : false
+        }, {
+          "CellLabels" : [ "Elsewhere" ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Concept" : "boi_met:ii215"
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 2,
+          "IsAbstract" : false
+        }, {
+          "CellLabels" : [ "Total information and instruction machines" ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Concept" : "boi_met:ii216"
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 2,
+          "IsAbstract" : false
+        }, {
+          "CellLabels" : [ "Total automatic machines for the public" ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Concept" : "boi_met:ii217"
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 1,
+          "IsAbstract" : false
+        } ] ]
+      } ],
+      "x" : [ {
+        "GroupLabels" : [ "Columns" ],
+        "GroupCells" : [ [ {
+          "CellLabels" : [ "Solo" ],
+          "CellConstraints" : {
+            "" : {
+              "boi_dim:CSC" : "boi_cs:x1"
+            }
+          },
+          "TagSelectors" : [  ],
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false
+        } ], [ {
+          "CellLabels" : [ "Number of machines at end of period" ],
+          "CellConstraints" : {
+            "" : {
+              "boi_dim:CSC" : "boi_cs:x1"
+            }
+          },
+          "TagSelectors" : [  ],
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false
+        } ] ]
+      }, {
+        "GroupLabels" : [ "Entities" ],
+        "GroupCells" : [ [ {
+          "CellLabels" : [ "" ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Entity" : null
+            }
+          },
+          "TagSelectors" : [  ],
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false
+        } ] ]
+      }, {
+        "GroupLabels" : [ "Period" ],
+        "GroupCells" : [ [ {
+          "CellLabels" : [  ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Period" : null
+            },
+            "table.periodStart" : {
+              "xbrl:Period" : ""
+            },
+            "table.periodEnd" : {
+              "xbrl:Period" : ""
+            }
+          },
+          "TagSelectors" : [  ],
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false
+        } ] ]
+      } ]
+    },
+    "TableCells" : {
+      "AxisOrder" : [ "y", "x" ],
+      "Facts" : [ [ null ], [ null ], [ null ], [ null ], [ null ], [ null ], [ null ], [ null ], [ null ], [ null ], [ null ], [ null ], [ null ], [ null ], [ null ], [ null ] ]
+    }
+  } ],
+  "GlobalConstraints" : [  ],
+  "GlobalConstraintLabels" : {
+
+  }
+}

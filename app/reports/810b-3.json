@@ -1,0 +1,95 @@
+{
+  "ModelKind" : "LayoutModel",
+  "ComponentAndHypercubeInformation" : {
+    "Component" : {
+      "Archive" : "D810BH-2016-03-30",
+      "Role" : "http://www.boi.org.il/xbrl/role/fws/d810B/d810b/2015-07-15/tab/810B-3",
+      "Label" : null
+    },
+    "Hypercube" : {
+      "Name" : "model:hyp",
+      "Label" : " (overriden)"
+    }
+  },
+  "TableSetLabels" : [ "boi_t810B-3" ],
+  "TableSet" : [ {
+    "TableHeaders" : {
+      "y" : [ {
+        "GroupLabels" : [ "Rows" ],
+        "GroupCells" : [ [ {
+          "CellLabels" : [  ],
+          "CellConstraints" : {
+            "" : {
+
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 0,
+          "IsAbstract" : true
+        } ], [ {
+          "CellLabels" : [ "Description" ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Concept" : "boi_met:si704"
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 1,
+          "IsAbstract" : false
+        } ] ]
+      } ],
+      "x" : [ {
+        "GroupLabels" : [ "Columns" ],
+        "GroupCells" : [ [ {
+          "CellLabels" : [  ],
+          "CellConstraints" : {
+            "" : {
+
+            }
+          },
+          "TagSelectors" : [  ],
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false
+        } ], [ {
+          "CellLabels" : [ "Additional information" ],
+          "CellConstraints" : {
+            "" : {
+
+            }
+          },
+          "TagSelectors" : [  ],
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false
+        } ] ]
+      } ]
+    },
+    "TableCells" : {
+      "AxisOrder" : [ "y", "x" ],
+      "Facts" : [ [ {
+        "Aspects" : {
+          "xbrl:Concept" : "boi_met:si704",
+          "xbrl28:SpreadsheetRow" : 1,
+          "xbrl28:SpreadsheetColumn" : 1
+        },
+        "Concept" : {
+          "PeriodType" : "instant",
+          "DataType" : "xbrli:stringItemType"
+        }
+      } ] ]
+    }
+  } ],
+  "GlobalConstraints" : [  ],
+  "GlobalConstraintLabels" : {
+
+  }
+}

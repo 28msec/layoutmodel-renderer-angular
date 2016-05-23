@@ -1,0 +1,107 @@
+{
+  "ModelKind" : "LayoutModel",
+  "ComponentAndHypercubeInformation" : {
+    "Component" : {
+      "Archive" : "d813",
+      "Role" : "http://www.boi.org.il/xbrl/role/fws/d813/d813/2015-07-15/tab/813-1",
+      "Label" : "813-1"
+    },
+    "Hypercube" : {
+      "Name" : "model:hyp",
+      "Label" : "User-defined Hypercube (overriden)"
+    }
+  },
+  "TableSetLabels" : [ "boi_t813-1" ],
+  "TableSet" : [ {
+    "TableHeaders" : {
+      "y" : [ {
+        "GroupLabels" : [ "ID number" ],
+        "GroupCells" : [ [ {
+          "CellLabels" : [ "" ],
+          "CellConstraints" : {
+            "" : {
+              "boi_dim:TDQ" : null
+            }
+          },
+          "TagSelectors" : [  ],
+          "IsRollUp" : false,
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false,
+          "Depth" : 0,
+          "IsAbstract" : false
+        } ] ]
+      } ],
+      "x" : [ {
+        "GroupLabels" : [ "Columns" ],
+        "GroupCells" : [ [ {
+          "CellLabels" : [  ],
+          "CellConstraints" : {
+            "" : {
+
+            }
+          },
+          "TagSelectors" : [  ],
+          "CellSpan" : 2,
+          "RollUp" : false,
+          "IsNegated" : false
+        } ], [ {
+          "CellLabels" : [ "Name of related institutional investor" ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Concept" : "boi_met:si457"
+            }
+          },
+          "TagSelectors" : [  ],
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false
+        }, {
+          "CellLabels" : [ "Permissible pct. Stake in means of control of other banking corporation" ],
+          "CellConstraints" : {
+            "" : {
+              "xbrl:Concept" : "boi_met:pi458",
+              "boi_dim:IPR" : "boi_IP:x16"
+            }
+          },
+          "TagSelectors" : [  ],
+          "CellSpan" : 1,
+          "RollUp" : false,
+          "IsNegated" : false
+        } ] ]
+      } ]
+    },
+    "TableCells" : {
+      "AxisOrder" : [ "y", "x" ],
+      "Facts" : [ [ {
+        "Aspects" : {
+          "xbrl:Concept" : "boi_met:si457",
+          "boi_dim:TDQ" : null,
+          "xbrl28:SpreadsheetRow" : 1,
+          "xbrl28:SpreadsheetColumn" : 1,
+          "boi_dim:IPR" : "boi_IP:x0"
+        },
+        "Concept" : {
+          "PeriodType" : "instant",
+          "DataType" : "xbrli:stringItemType"
+        }
+      }, {
+        "Aspects" : {
+          "xbrl:Concept" : "boi_met:pi458",
+          "boi_dim:IPR" : "boi_IP:x16",
+          "boi_dim:TDQ" : null,
+          "xbrl28:SpreadsheetRow" : 1,
+          "xbrl28:SpreadsheetColumn" : 2
+        },
+        "Concept" : {
+          "PeriodType" : "instant",
+          "DataType" : "num:percentItemType"
+        }
+      } ] ]
+    }
+  } ],
+  "GlobalConstraints" : [  ],
+  "GlobalConstraintLabels" : {
+
+  }
+}
