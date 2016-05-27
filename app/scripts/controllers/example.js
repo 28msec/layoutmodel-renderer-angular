@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('exampleApp')
-  .controller('ExampleCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {	 
+  .controller('ExampleCtrl', function ($scope, $http, $location, $uibModal) {
 	  $scope.mymodel = null;
 	  $scope.myheaders = null;
 	  $scope.modelurl = $location.search().url;
@@ -38,7 +38,23 @@ angular.module('exampleApp')
 	  
 	  $scope.test = function(data)
 	  {
-		alert(JSON.stringify(data,null," "));  
+		  var modalInstance = $uibModal.open({
+			  templateUrl: '/views/fact-details-modal.html',
+			  controller: 'FactDetailsCtrl',
+			  size: 'lg',
+			  resolve: {
+				  fact: function () {
+					  return data;
+				  }
+			  }
+		  });
+		  /*
+		  modalInstance.result.then(function(reason){
+			  if(reason === 'update'){
+				  $state.reload();
+			  }
+		  });
+		  */
 	  };
 	  
 	  $scope.$on("$locationChangeSuccess", function() {
@@ -48,4 +64,4 @@ angular.module('exampleApp')
 	  
 	  if ($scope.modelurl && $scope.modelurl!=='') $scope.fetch($scope.modelurl);
 	  	
-  }]);
+  });

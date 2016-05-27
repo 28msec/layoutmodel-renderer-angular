@@ -1,0 +1,147 @@
+<div class="fact-details">
+    <div>
+        <h3>Value Metadata</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr class="row">
+                <th>Property</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  class="row">
+                <td class="col-md-4">Value</td>
+                <td ng-bind="fact.Value" class="col-md-8"></td>
+            </tr>
+            <tr  class="row">
+                <td class="col-md-4">Type</td>
+                <td ng-bind="fact.Type" class="col-md-8"></td>
+            </tr>
+            <tr  class="row">
+                <td class="col-md-4">Decimals</td>
+                <td ng-bind="fact.Decimals" class="col-md-8"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h3>Concept Properties</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr class="row">
+                <th>Property</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  class="row">
+                <td class="col-md-4">Balance Type</td>
+                <td ng-bind="fact.Concept.Balance" class="col-md-8"></td>
+            </tr>
+            <tr  class="row">
+                <td class="col-md-4">Period Type</td>
+                <td ng-bind="fact.Concept.PeriodType" class="col-md-8"></td>
+            </tr>
+            <tr  class="row">
+                <td class="col-md-4">Data Type</td>
+                <td ng-bind="fact.Concept.DataType" class="col-md-8"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h3>Other Properties</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr class="row">
+                <th>Property</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="row" ng-if="fact.EntityRegistrantName">
+                <td class="col-md-4">Entity Name</td>
+                <td ng-bind="fact.EntityRegistrantName" class="col-md-8"></td>
+            </tr>
+            <tr  class="row">
+                <td class="col-md-4">Fact Source Type</td>
+                <td ng-bind="fact['xbrl28:Type']" class="col-md-8"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h3>Key Aspects</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr class="row">
+                <th>Aspect</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  class="row" ng-repeat="aspect in keyAspects">
+                <td ng-bind="aspect.name" class="col-md-4"></td>
+                <td ng-bind="aspect.value" class="col-md-8"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h3>Secondary Aspects</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr class="row">
+                <th>Aspect</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  class="row" ng-repeat="aspect in nonKeyAspects">
+                <td ng-bind="aspect.name" class="col-md-4"></td>
+                <td ng-bind="aspect.value" class="col-md-8"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h3>Computation Audit Trails</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr class="row">
+                <th>Label</th>
+                <th>Message</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  class="row" ng-repeat="trail in computationAuditTrails">
+                <td ng-bind="trail.Label" class="col-md-3"></td>
+                <td ng-bind="trail.Message" class="col-md-9"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div ng-repeat="stamping in validationAuditTrails">
+        <h3>Validation Stamp</h3>
+        <p>{{stamping.Message}}</p>
+        <table class="table table-hover validation-stamp-table">
+            <thead>
+            <tr class="row">
+                <th> </th>
+                <th>Validation</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="row validation-stamp-row" ng-repeat="audittrail in stamping.Data.AuditTrails" ng-class="{'bg-success': audittrail.Data.ValidationPassed, 'bg-warning': audittrail.Data.ValidationPassed == false}">
+                <td class="col-md-1">
+                    <i ng-show="audittrail.Data.ValidationPassed == false" class="fa fa-times invalid"></i>
+                    <i ng-show="audittrail.Data.ValidationPassed" class="fa fa-check valid"></i>
+                </td>
+                <td ng-bind="audittrail.Message" class="col-md-11"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
