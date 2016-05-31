@@ -78,7 +78,7 @@
         </td>
 
         <!-- data cells -->
-        <td class="data" ng-click="dataclick({ data : data })" ng-class="classes(data, headerGroup[headerGroup.length - 1])" ng-repeat="data in data[$index] track by $index" ng-include="dataTemplate">
+        <td class="data" ng-click="dataclick({ data : data }); selectCell(data)" ng-class="[{ 'selected-cell': data.selected }, classes(data, headerGroup[headerGroup.length - 1])]" ng-repeat="data in data[$index] track by $index" ng-include="dataTemplate">
         </td>
 
         <td class="closing-border"></td>
