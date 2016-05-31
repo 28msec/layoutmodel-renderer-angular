@@ -49,22 +49,26 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                 };
 
                 scope.cellClick = function(data) {
-                    data.clicked = !data.clicked;
+                    if(_.isObject(data)) {
+                        data.clicked = !data.clicked;
+                    }
                 };
 
                 scope.classes = function(data, header) {
                     /*jshint eqnull:true */
                     var add = header.IsRollUp ? ' yrollupdata' : '';
                     add += (header.Depth >= 3 && header.IsRollUp) ? ' subyrollupdata' : '';
-                    if (data) {
+                    if (_.isObject(data)) {
                         if (data.length > 0) {
                             return data[0].Type + add+ ' multiplefacts';
                         }
                         if (data.Value != null) {
                             return data.Type + add;
                         }
+                    } else {
+                        add += ' null';
                     }
-                    return 'null '+add;
+                    return add;
                 };
 
                 var isDomainHeader = function(header) {
