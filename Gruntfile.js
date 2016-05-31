@@ -101,10 +101,10 @@ module.exports = function (grunt) {
         },
         less: {
             dist: {
-                options: {
-                },
+                options: {},
                 files: {
-                    '<%= config.app %>/styles/index.css': ['<%= config.app %>/styles/index.less']
+                    '<%= config.app %>/styles/index.css': ['<%= config.app %>/styles/index.less'],
+                    '<%= config.app %>/styles/layoutmodel-standalone.css': ['<%= config.app %>/styles/layoutmodel-standalone.less']
                 }
             }
         },
