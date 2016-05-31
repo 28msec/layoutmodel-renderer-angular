@@ -213,6 +213,7 @@ module.exports = function (grunt) {
             }
         },
 
+        // The following *-min tasks produce minified files in the dist folder
         htmlmin: {
             dist: {
                 options: {
