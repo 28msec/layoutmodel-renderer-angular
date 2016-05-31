@@ -62,7 +62,7 @@
 .preview-style table .data {
   border-top: 2px solid #dadcdd;
   border-left: 2px solid #dadcdd;
-  background-color: #f0f0f0;
+  background-color: #909090;
   vertical-align: top;
   padding: 0px;
 }
@@ -126,7 +126,8 @@
 .preview-style table tr td.null div.value {
   border-bottom: none !important;
   border-top: none !important;
-  background-color: #f0f0f0;
+  background-color: #909090;
+  cursor: not-allowed;
 }
 .preview-style table .header {
   padding: 2px;

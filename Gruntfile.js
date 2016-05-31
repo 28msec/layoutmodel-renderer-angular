@@ -351,7 +351,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('unit-tests', ['clean:pre', 'less', /* 'karma:1.2.9', */ 'clean:post']);
     grunt.registerTask('test', ['clean:pre', 'less', /* 'karma:1.2.9', */ 'clean:post' /*, 'e2e' */ ]);
-    grunt.registerTask('build', ['clean:pre', 'bower-install','ngconstant:tpl','useminPrepare','concurrent:dist','autoprefixer','concat','ngmin',
+    grunt.registerTask('build', ['clean:pre', 'bower-install', 'less', 'ngconstant:tpl','useminPrepare','concurrent:dist','autoprefixer','concat','ngmin',
         'copy:dist','cdnify','cssmin','uglify','rev','usemin','htmlmin']);
     grunt.registerTask('default', ['jsonlint', 'jshint', 'build', 'deploy']);
 };
