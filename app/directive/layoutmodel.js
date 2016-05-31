@@ -48,6 +48,10 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     return $sce.trustAsHtml(accounting.formatNumber(fact.Value, decimals));
                 };
 
+                scope.cellClick = function(data) {
+                    data.clicked = !data.clicked;
+                };
+
                 scope.classes = function(data, header) {
                     /*jshint eqnull:true */
                     var add = header.IsRollUp ? ' yrollupdata' : '';

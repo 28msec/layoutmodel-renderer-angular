@@ -213,27 +213,6 @@ module.exports = function (grunt) {
             }
         },
 
-        // The following *-min tasks produce minified files in the dist folder
-        imagemin: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= config.app %>/images',
-                    src: '{,*/}*.{png,jpg,jpeg,gif}',
-                    dest: '<%= config.dist %>/images'
-                }]
-            }
-        },
-        svgmin: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= config.app %>/images',
-                    src: '{,*/}*.svg',
-                    dest: '<%= config.dist %>/images'
-                }]
-            }
-        },
         htmlmin: {
             dist: {
                 options: {
@@ -335,9 +314,7 @@ module.exports = function (grunt) {
                 'copy:styles'
             ],
             dist: [
-                'copy:styles',
-                'imagemin',
-                'svgmin'
+                'copy:styles'
             ]
         }
     });
