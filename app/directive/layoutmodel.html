@@ -58,7 +58,7 @@
 
         <!-- top header row -->
         <td class="header column-header" ng-class="colHeaderClasses(header)"
-            ng-click="headerclick({header : header, axis:'x' });"
+            ng-click="headerclick({header : header, axis:'x', index: $index });"
             ng-repeat="header in headerGroup" colspan="{{header.CellSpan}}" ng-include="headerTemplate">
         </td>
 
@@ -71,7 +71,7 @@
         <td ng-repeat="header in headerGroup"
             class="header row-header"
             ng-class="rowColHeaderClasses(header, $first)"
-            ng-click="headerclick({header : header, axis:'y' });"
+            ng-click="headerclick({header : header, axis:'y', index: $index });"
             ng-show="isVisible(header)"
             colspan="{{headerColSpan(headerGroup, $index)}}"
             rowspan="{{header.CellSpan}}" ng-include="headerTemplate">

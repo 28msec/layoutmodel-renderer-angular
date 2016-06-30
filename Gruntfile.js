@@ -104,7 +104,7 @@ module.exports = function (grunt) {
                 options: {},
                 files: {
                     '<%= config.app %>/styles/index.css': ['<%= config.app %>/styles/index.less'],
-                    '<%= config.app %>/styles/layoutmodel-standalone.css': ['<%= config.app %>/styles/layoutmodel-standalone.less']
+                    '<%= config.app %>/styles/layoutmodel-standalone.css': ['<%= config.app %>/directive/layoutmodel-standalone.less']
                 }
             }
         },
