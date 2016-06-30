@@ -24,6 +24,26 @@
 
 @plain-header-url: #909090;
 
+.border-left(@props){
+  border-right: @props;
+}
+
+.padding-left(@props){
+  padding-right: @props;
+}
+
+.padding-right(@props){
+  padding-left: @props;
+}
+
+.margin-left(@props){
+  margin-right: @props;
+}
+
+.margin-right(@props){
+  margin-left: @props;
+}
+
 .preview-style table {
   empty-cells:show;
  
@@ -35,21 +55,21 @@
   
     td.header {
       background-color: #909090;
-      border-top:2px solid @preview-dark-bc; border-left:2px solid @preview-dark-bc;         
+      border-top:2px solid @preview-dark-bc; .border-left(2px solid @preview-dark-bc);
       padding:2px;
       font-weight:bold;
     }
     
     td.headerlabel {
       background-color: @preview-main-network-bg;
-      border-top:2px solid @preview-dark-bc; border-left:2px solid @preview-dark-bc;   
+      border-top:2px solid @preview-dark-bc; .border-left(2px solid @preview-dark-bc);
       min-width:200px;   
       padding:2px;        
     }
 
     td.headervalue {
       background-color: @preview-second-network-bg;
-      border-top:2px solid @preview-dark-bc; border-left:2px solid @preview-dark-bc;   
+      border-top:2px solid @preview-dark-bc; .border-left(2px solid @preview-dark-bc);
       min-width:200px;      
       padding:2px;   
       
@@ -61,14 +81,14 @@
     
     td.constraintlabel {
       background-color: @preview-main-header-bg;
-      border-top:2px solid @preview-dark-bc; border-left:2px solid @preview-dark-bc;   
+      border-top:2px solid @preview-dark-bc; .border-left(2px solid @preview-dark-bc);
       min-width:200px;   
       padding:2px;        
     }
 
     td.constraintvalue {
       background-color: @preview-second-header-bg;
-      border-top:2px solid @preview-dark-bc; border-left:2px solid @preview-dark-bc;   
+      border-top:2px solid @preview-dark-bc; .border-left(2px solid @preview-dark-bc);
       min-width:200px;      
       padding:2px;               
     }
@@ -78,21 +98,21 @@
    
   .closing-border {
     border:none;
-    border-left:2px solid @preview-dark-bc;  
+    .border-left(2px solid @preview-dark-bc);
     width:0px;
     padding:0px;
     margin:0px;     
   }
   
   tr.space td {    
-    border-left:none;    
+    .border-left(none);
     border-top:2px solid @preview-dark-bc;   
     height:5px;        
   }
   
   .data { 
     border-top:2px solid @preview-light-bc;
-    border-left:2px solid @preview-light-bc;
+    .border-left(2px solid @preview-light-bc);
     background-color: @preview-null-bg;
     vertical-align:top;
     padding:0px;   
@@ -131,8 +151,9 @@
     
   .title { 
     border-top:2px solid @preview-dark-bc; 
-    border-left:2px solid @preview-dark-bc; 
-    vertical-align:bottom; 
+    .border-left(2px solid @preview-dark-bc);
+    //border-left: 2px solid @preview-dark-bc;
+    vertical-align:bottom;
     text-align:center; 
     padding:2px;   
     font-weight:bold;  
@@ -190,12 +211,12 @@
 
   .column-header { 
     border-top:1px solid @preview-dark-bc;
-    border-left:1px solid @preview-dark-bc; 
+    .border-left(1px solid @preview-dark-bc);
     font-weight:bold; 
     vertical-align:bottom; 
     text-align:center; 
-    padding-left:10px;
-    padding-right:6px;
+    .padding-left(10px);
+    .padding-right(6px);
   }
 
   .first-column-header-row .column-header { 
@@ -205,11 +226,11 @@
     font-weight:normal;
   }
   .column-header:first-child { 
-    border-left:2px solid @preview-dark-bc; 
+    .border-left(2px solid @preview-dark-bc);
   }
   tr .xrollup { 
     border-top:none;
-    border-left:1px solid @preview-dark-bc;
+    .border-left(1px solid @preview-dark-bc);
   }
   .last-column-header-row .xrollup { 
 
@@ -219,15 +240,15 @@
   .row-header { 
     background-color: @preview-second-header-bg; 
     vertical-align:top;
-    border-left:2px solid @preview-light-bc;
+    .border-left(2px solid @preview-light-bc);
     border-top:2px solid @preview-light-bc;
   }
   .first-row-header-col {
-    border-left: 2px solid @preview-dark-bc;
+    .border-left( 2px solid @preview-dark-bc);
   }
   .first-row-header-row .row-header:first-child { min-width:200px; }
   .row-header + .data { 
-    border-left:2px solid @preview-dark-bc 
+    .border-left(2px solid @preview-dark-bc);
   }
   .first-row-header-row .data { 
     border-top:2px solid @preview-dark-bc; 
@@ -242,7 +263,7 @@
     border-bottom: 4px solid @preview-second-header-bg; 
   }
   
-  td.NumericValue div.value { padding-left:14px; }
+  td.NumericValue div.value { .padding-left(14px); }
   
 }
 
@@ -280,7 +301,7 @@
     background-color: @preview-bg; 
     padding: 0px; 
     vertical-align:top; 
-    padding-left:10px;
+    .padding-left(10px);
         
     .validation { 
        font-size:75%;
@@ -308,11 +329,11 @@
   }
   .column-header { 
     border-bottom:1px solid black;
-    margin-right:2px; 
+    .margin-right(2px);
     font-weight:bold; 
     vertical-align:bottom; 
     text-align:right; 
-    padding-left:10px; 
+    .padding-left(10px);
   }
   .row-header { vertical-align:top; }
   td.abstract { font-weight:bold; }
@@ -335,18 +356,18 @@
    td { 
      padding: 2px; 
      border-top:2px solid white;
-     border-left:2px solid white; 
+     .border-left(2px solid white);
    }
    
    tr.constraints {
       td.headerlabel {
         background-color: #e0e0e0;      
-        border-top:2px solid white;border-left:2px solid white;
+        border-top:2px solid white;.border-left(2px solid white);
         padding:2px;      
       }  
       td.headervalue {
         background-color: #e0e0e0;      
-        border-top:2px solid white;border-left:2px solid white;
+        border-top:2px solid white;.border-left(2px solid white);
         padding:2px;   
         
         div {
@@ -357,12 +378,12 @@
    
       td.constraintlabel {
         background-color: #e0e0e0;      
-        border-top:2px solid white;border-left:2px solid white;
+        border-top:2px solid white;.border-left(2px solid white);
         padding:2px;      
       }  
       td.constraintvalue {
         background-color: #e0e0e0;      
-        border-top:2px solid white;border-left:2px solid white;
+        border-top:2px solid white;.border-left(2px solid white);
         padding:2px;   
                
       }
@@ -370,20 +391,20 @@
    
    .closing-border {
      border:none;
-     border-left:2px solid white;  
+     .border-left(2px solid white);
      width:0px;
      padding:0px;
      margin:0px;     
    }
   
    tr.space td {    
-     border-left:none;    
+     .border-left(none);
      border-top:2px solid white;   
      height:5px;        
    }
 
    .xrollup { border-top:none }
-   .yrollup { border-left:none }
+   .yrollup { .border-left(none) }
    
    .header { 
      background-color: @preview-plain-header-bg; 
@@ -410,7 +431,7 @@
 .value { position:relative; }
 .null span.validation { display:none; }
 .NonNumericValue span.icon i.validation { top:0px; left:0px; }
-.NonNumericValue span.icon { margin-left:5px; }
+.NonNumericValue span.icon { .margin-left(5px); }
 
 .rendering a { cursor : pointer } 
 
