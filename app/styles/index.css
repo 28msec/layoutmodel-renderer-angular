@@ -6553,6 +6553,27 @@ button.close {
   margin: auto;
   padding: 0;
 }
+/* RTL
+.border-left(@props){
+  border-right: @props;
+}
+
+.padding-left(@props){
+  padding-right: @props;
+}
+
+.padding-right(@props){
+  padding-left: @props;
+}
+
+.margin-left(@props){
+  margin-right: @props;
+}
+
+.margin-right(@props){
+  margin-left: @props;
+}
+*/
 .preview-style table {
   empty-cells: show;
   border-spacing: 0px;
@@ -6562,21 +6583,21 @@ button.close {
 .preview-style table tr.constraints td.header {
   background-color: #909090;
   border-top: 2px solid #000000;
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
   padding: 2px;
   font-weight: bold;
 }
 .preview-style table tr.constraints td.headerlabel {
   background-color: #757575;
   border-top: 2px solid #000000;
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
   min-width: 200px;
   padding: 2px;
 }
 .preview-style table tr.constraints td.headervalue {
   background-color: #ececec;
   border-top: 2px solid #000000;
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
   min-width: 200px;
   padding: 2px;
 }
@@ -6587,14 +6608,14 @@ button.close {
 .preview-style table tr.constraints td.constraintlabel {
   background-color: #337ab7;
   border-top: 2px solid #000000;
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
   min-width: 200px;
   padding: 2px;
 }
 .preview-style table tr.constraints td.constraintvalue {
   background-color: #ddeafa;
   border-top: 2px solid #000000;
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
   min-width: 200px;
   padding: 2px;
 }
@@ -6604,19 +6625,19 @@ button.close {
 }
 .preview-style table .closing-border {
   border: none;
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
   width: 0px;
   padding: 0px;
   margin: 0px;
 }
 .preview-style table tr.space td {
-  border-right: none;
+  border-left: none;
   border-top: 2px solid #000000;
   height: 5px;
 }
 .preview-style table .data {
   border-top: 2px solid #dadcdd;
-  border-right: 2px solid #dadcdd;
+  border-left: 2px solid #dadcdd;
   background-color: #909090;
   vertical-align: top;
   padding: 0px;
@@ -6655,7 +6676,7 @@ button.close {
 }
 .preview-style table .title {
   border-top: 2px solid #000000;
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
   vertical-align: bottom;
   text-align: center;
   padding: 2px;
@@ -6701,12 +6722,12 @@ button.close {
 }
 .preview-style table .column-header {
   border-top: 1px solid #000000;
-  border-right: 1px solid #000000;
+  border-left: 1px solid #000000;
   font-weight: bold;
   vertical-align: bottom;
   text-align: center;
-  padding-right: 10px;
-  padding-left: 6px;
+  border-left: 10px;
+  padding-right: 6px;
 }
 .preview-style table .first-column-header-row .column-header {
   border-top: 2px solid #000000;
@@ -6715,29 +6736,29 @@ button.close {
   font-weight: normal;
 }
 .preview-style table .column-header:first-child {
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
 }
 .preview-style table tr .xrollup {
   border-top: none;
-  border-right: 1px solid #000000;
+  border-left: 1px solid #000000;
 }
 .preview-style table .title + .column-header {
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
 }
 .preview-style table .row-header {
   background-color: #ddeafa;
   vertical-align: top;
-  border-right: 2px solid #dadcdd;
+  border-left: 2px solid #dadcdd;
   border-top: 2px solid #dadcdd;
 }
 .preview-style table .first-row-header-col {
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
 }
 .preview-style table .first-row-header-row .row-header:first-child {
   min-width: 200px;
 }
 .preview-style table .row-header + .data {
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
 }
 .preview-style table .first-row-header-row .data {
   border-top: 2px solid #000000;
@@ -6753,7 +6774,7 @@ button.close {
   border-bottom: 4px solid #ddeafa;
 }
 .preview-style table td.NumericValue div.value {
-  padding-right: 14px;
+  border-left: 14px;
 }
 .document-style table {
   border-spacing: 2px;
@@ -6782,7 +6803,7 @@ button.close {
   background-color: #ffffff;
   padding: 0px;
   vertical-align: top;
-  padding-right: 10px;
+  border-left: 10px;
 }
 .document-style table .data .validation {
   font-size: 75%;
@@ -6818,11 +6839,11 @@ button.close {
 }
 .document-style table .column-header {
   border-bottom: 1px solid black;
-  margin-left: 2px;
+  margin-right: 2px;
   font-weight: bold;
   vertical-align: bottom;
   text-align: right;
-  padding-right: 10px;
+  border-left: 10px;
 }
 .document-style table .row-header {
   vertical-align: top;
@@ -6847,18 +6868,18 @@ button.close {
 .plain-style table td {
   padding: 2px;
   border-top: 2px solid white;
-  border-right: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
 }
 .plain-style table tr.constraints td.headerlabel {
   background-color: #e0e0e0;
   border-top: 2px solid white;
-  border-right: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
   padding: 2px;
 }
 .plain-style table tr.constraints td.headervalue {
   background-color: #e0e0e0;
   border-top: 2px solid white;
-  border-right: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
   padding: 2px;
 }
 .plain-style table tr.constraints td.headervalue div {
@@ -6868,24 +6889,24 @@ button.close {
 .plain-style table tr.constraints td.constraintlabel {
   background-color: #e0e0e0;
   border-top: 2px solid white;
-  border-right: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
   padding: 2px;
 }
 .plain-style table tr.constraints td.constraintvalue {
   background-color: #e0e0e0;
   border-top: 2px solid white;
-  border-right: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
   padding: 2px;
 }
 .plain-style table .closing-border {
   border: none;
-  border-right: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
   width: 0px;
   padding: 0px;
   margin: 0px;
 }
 .plain-style table tr.space td {
-  border-right: none;
+  border-left: none;
   border-top: 2px solid white;
   height: 5px;
 }
@@ -6893,7 +6914,7 @@ button.close {
   border-top: none;
 }
 .plain-style table .yrollup {
-  border-right: none;
+  border-left: none;
 }
 .plain-style table .header {
   background-color: #e0e0e0;
@@ -6931,7 +6952,7 @@ button.close {
   left: 0px;
 }
 .NonNumericValue span.icon {
-  margin-right: 5px;
+  margin-left: 5px;
 }
 .rendering a {
   cursor: pointer;
