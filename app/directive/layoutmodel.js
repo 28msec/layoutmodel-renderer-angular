@@ -292,7 +292,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                                     }
                                     
                                     if(_.isEmpty(cell.CellLabels)) {
-                                        cell.CellLabels.push("");
+                                        cell.CellLabels.push('');
                                         cell.RollUp = false;
                                     }
                                     
