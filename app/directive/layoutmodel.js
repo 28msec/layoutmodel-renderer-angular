@@ -290,9 +290,14 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                                     {
                                         scope.yHeaderGroups.push([]);
                                     }
+                                    
+                                    if(_.isEmpty(cell.CellLabels)) {
+                                        cell.CellLabels.push("");
+                                        cell.RollUp = false;
+                                    }
+                                    
                                     scope.yHeaderGroups[rowIdx].push(cell);
                                     rowIdx += (cell.CellSpan || 1);
-
                                     // fill up with empty rows cols if cellspan > 1
                                     while (scope.yHeaderGroups.length < rowIdx)
                                     {
