@@ -1,7 +1,7 @@
 sudo: false
 language: node_js
 node_js:
-- 5.0.7
+- 5.7.0
 before_script:
 - npm install -g bower
 - bower install
