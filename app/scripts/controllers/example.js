@@ -35,10 +35,33 @@ angular.module('exampleApp')
 			$scope.modelurl = '';
 		}
 	  };
+
+	  $scope.headerclick = function(data) {
+	  	for(var i = 0; i < data.rowspan; i++) {
+	  		data.cells[data.rowIndex + i].forEach(function(cell){
+				if(cell.selected === undefined) {
+					cell.selected = true;
+				} else {
+					cell.selected = !cell.selected;
+				}
+			});
+	  		//console.log(data.index + i);
+		}
+		  console.log({ index: data.index, colspan: data.colspan, rowspan: data.rowspan });
+		/*
+	  	data.cells.forEach(function(cell){
+	  		if(cell.selected === undefined) {
+				cell.selected = true;
+			} else {
+				cell.selected = !cell.selected;
+			}
+		});
+		*/
+	  };
 	  
 	  $scope.test = function(data)
 	  {
-		alert(JSON.stringify(data,null," "));  
+		console.log(JSON.stringify(data,null," "));
 	  };
 	  
 	  $scope.$on("$locationChangeSuccess", function() {
