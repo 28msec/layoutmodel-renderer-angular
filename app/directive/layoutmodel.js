@@ -48,9 +48,9 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     return $sce.trustAsHtml(accounting.formatNumber(fact.Value, decimals));
                 };
 
-                scope.selectCell = function(data) {
+                scope.toggleCell = function(data,  property) {
                     if(data) {
-                        data.selected = !data.selected;
+                        data[property]= !data[property];
                     }
                 };
 
