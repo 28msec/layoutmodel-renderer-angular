@@ -59,7 +59,7 @@
 
         <!-- top header row -->
         <td class="header column-header" ng-class="colHeaderClasses(header)"
-            ng-click="headerclick({header : header, axis:'x', index: $index, parentIndex: $parent.$parent.$index, rows: data, colspan: header.CellSpan });"
+            ng-click="headerclick({header : header, axis:'x', index: $index, parentIndex: $parent.$parent.$index, rows: data, colspan: header.CellSpan, headerGroup: headerGroup });"
             ng-repeat="header in headerGroup" colspan="{{header.CellSpan}}" ng-include="headerTemplate">
         </td>
 
