@@ -37,26 +37,39 @@ angular.module('exampleApp')
 	  };
 
 	  $scope.headerclick = function(data) {
-	  	for(var i = 0; i < data.rowspan; i++) {
-	  		data.cells[data.rowIndex + i].forEach(function(cell){
-				if(cell.selected === undefined) {
-					cell.selected = true;
-				} else {
-					cell.selected = !cell.selected;
+	  	if(!data.rowspan && data.colspan) {
+	  		console.log({ header: data.header, index: data.index, colspan: data.colspan });
+	  		data.rows.forEach(function(row) {
+				for(var i = 0; i < data.colspan; i++) {
+					var cell = row[data.index + i];
+					if(cell.selected === undefined) {
+						cell.selected = true;
+					} else {
+						cell.selected = !cell.selected;
+					}
 				}
 			});
-	  		//console.log(data.index + i);
-		}
-		  console.log({ index: data.index, colspan: data.colspan, rowspan: data.rowspan });
-		/*
-	  	data.cells.forEach(function(cell){
-	  		if(cell.selected === undefined) {
-				cell.selected = true;
-			} else {
-				cell.selected = !cell.selected;
+		} else if (data.rowspan) {
+			for(var i = 0; i < data.rowspan; i++) {
+				data.rows[data.parentIndex + i].forEach(function(cell){
+					if(cell.selected === undefined) {
+						cell.selected = true;
+					} else {
+						cell.selected = !cell.selected;
+					}
+				});
 			}
-		});
-		*/
+		} else {
+			data.rows.forEach(function(row){
+				row.forEach(function(cell){
+					if(cell.selected === undefined) {
+						cell.selected = true;
+					} else {
+						cell.selected = !cell.selected;
+					}
+				});
+			});
+		}
 	  };
 	  
 	  $scope.test = function(data)

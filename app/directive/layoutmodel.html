@@ -55,11 +55,11 @@
         <td ng-repeat="superHeader in ySuperHeaders | displaySuperColumnHeader:$index"
             class="header title superheader"
             colspan="{{yHeaderGroups[0].length}}" rowspan="{{xHeaderGroups.length}}"
-            ng-click="headerClick({ header : superHeader, axis:'x', index: 0,  cells: [] });">{{superHeader.Label}}</td>
+            ng-click="headerclick({ header : superHeader, axis:'x', index: 0,  rows: data });">{{superHeader.Label}}</td>
 
         <!-- top header row -->
         <td class="header column-header" ng-class="colHeaderClasses(header)"
-            ng-click="headerclick({header : header, axis:'x', index: $index, cells: [] });"
+            ng-click="headerclick({header : header, axis:'x', index: $index, parentIndex: $parent.$parent.$index, rows: data, colspan: header.CellSpan });"
             ng-repeat="header in headerGroup" colspan="{{header.CellSpan}}" ng-include="headerTemplate">
         </td>
 
@@ -72,7 +72,7 @@
         <td ng-repeat="header in headerGroup"
             class="header row-header"
             ng-class="rowColHeaderClasses(header, $first)"
-            ng-click="headerclick({ header : header, axis:'y', index: $index, rowIndex: $parent.$parent.$index, cells: data, rowspan: header.CellSpan, colspan: headerColSpan(headerGroup, $index) });"
+            ng-click="headerclick({ header : header, axis:'y', index: $index, parentIndex: $parent.$parent.$index, rows: data, rowspan: header.CellSpan, colspan: headerColSpan(headerGroup, $index) });"
             ng-show="isVisible(header)"
             colspan="{{headerColSpan(headerGroup, $index)}}"
             rowspan="{{header.CellSpan}}" ng-include="headerTemplate">
