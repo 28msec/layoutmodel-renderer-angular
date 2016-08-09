@@ -48,9 +48,9 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     return $sce.trustAsHtml(accounting.formatNumber(fact.Value, decimals));
                 };
 
-                scope.selectCell = function(data) {
+                scope.toggleCell = function(data,  property) {
                     if(data) {
-                        data.selected = !data.selected;
+                        data[property]= !data[property];
                     }
                 };
 
@@ -64,6 +64,9 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                         }
                         if (data.Value != null) {
                             return data.Type + add;
+                        }
+                        if(_.isObject(data.properties)) {
+                            add += Object.keys(data.properties).join(' ');
                         }
                     } else {
                         add += ' null';

@@ -8,7 +8,10 @@
     "type": "git",
     "url": "https://github.com/28msec/layoutmodel-renderer-angular"
   },
-  "main": [ "./app/directive/layoutmodel.js", "./app/directive/layoutmodeltemplate.js" ],
+  "main": [
+    "./app/directive/layoutmodel.js",
+    "./app/directive/layoutmodeltemplate.js"
+  ],
   "ignore": [
     ".bowerrc",
     "coverage/",
@@ -23,14 +26,16 @@
     ".gitignore",
     ".travis.yml"
   ],
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
     "angular": "1.5.5",
     "font-awesome": "~4.1.0",
     "bootstrap": "3.3.4",
     "angular-ui-bootstrap-bower": "~1.2.1",
     "accounting": "~0.3.2",
-    "lodash": ">=3.8.0"
+    "lodash": ">=3.8.0",
+    "bower": "*",
+    "install": "~1.0.4",
+    "bootstrap-rtl": "~3.4.0"
   }
 }

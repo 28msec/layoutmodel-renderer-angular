@@ -6562,21 +6562,21 @@ button.close {
 .preview-style table tr.constraints td.header {
   background-color: #909090;
   border-top: 2px solid #000000;
-  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
   padding: 2px;
   font-weight: bold;
 }
 .preview-style table tr.constraints td.headerlabel {
   background-color: #757575;
   border-top: 2px solid #000000;
-  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
   min-width: 200px;
   padding: 2px;
 }
 .preview-style table tr.constraints td.headervalue {
   background-color: #ececec;
   border-top: 2px solid #000000;
-  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
   min-width: 200px;
   padding: 2px;
 }
@@ -6587,14 +6587,14 @@ button.close {
 .preview-style table tr.constraints td.constraintlabel {
   background-color: #337ab7;
   border-top: 2px solid #000000;
-  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
   min-width: 200px;
   padding: 2px;
 }
 .preview-style table tr.constraints td.constraintvalue {
   background-color: #ddeafa;
   border-top: 2px solid #000000;
-  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
   min-width: 200px;
   padding: 2px;
 }
@@ -6604,20 +6604,20 @@ button.close {
 }
 .preview-style table .closing-border {
   border: none;
-  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
   width: 0px;
   padding: 0px;
   margin: 0px;
 }
 .preview-style table tr.space td {
-  border-left: none;
+  border-right: none;
   border-top: 2px solid #000000;
   height: 5px;
 }
 .preview-style table .data {
   border-top: 2px solid #dadcdd;
-  border-left: 2px solid #dadcdd;
-  background-color: #f0f0f0;
+  border-right: 2px solid #dadcdd;
+  background-color: #909090;
   vertical-align: top;
   padding: 0px;
 }
@@ -6655,7 +6655,7 @@ button.close {
 }
 .preview-style table .title {
   border-top: 2px solid #000000;
-  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
   vertical-align: bottom;
   text-align: center;
   padding: 2px;
@@ -6681,7 +6681,8 @@ button.close {
 .preview-style table tr td.null div.value {
   border-bottom: none !important;
   border-top: none !important;
-  background-color: #f0f0f0;
+  background-color: #909090;
+  cursor: not-allowed;
 }
 .preview-style table .header {
   padding: 2px;
@@ -6700,12 +6701,12 @@ button.close {
 }
 .preview-style table .column-header {
   border-top: 1px solid #000000;
-  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
   font-weight: bold;
   vertical-align: bottom;
   text-align: center;
-  padding-left: 10px;
-  padding-right: 6px;
+  padding-right: 10px;
+  padding-left: 6px;
 }
 .preview-style table .first-column-header-row .column-header {
   border-top: 2px solid #000000;
@@ -6714,29 +6715,29 @@ button.close {
   font-weight: normal;
 }
 .preview-style table .column-header:first-child {
-  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
 }
 .preview-style table tr .xrollup {
   border-top: none;
-  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
 }
 .preview-style table .title + .column-header {
-  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
 }
 .preview-style table .row-header {
   background-color: #ddeafa;
   vertical-align: top;
-  border-left: 2px solid #dadcdd;
+  border-right: 2px solid #dadcdd;
   border-top: 2px solid #dadcdd;
 }
 .preview-style table .first-row-header-col {
-  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
 }
 .preview-style table .first-row-header-row .row-header:first-child {
   min-width: 200px;
 }
 .preview-style table .row-header + .data {
-  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
 }
 .preview-style table .first-row-header-row .data {
   border-top: 2px solid #000000;
@@ -6752,7 +6753,7 @@ button.close {
   border-bottom: 4px solid #ddeafa;
 }
 .preview-style table td.NumericValue div.value {
-  padding-left: 14px;
+  padding-right: 14px;
 }
 .document-style table {
   border-spacing: 2px;
@@ -6781,7 +6782,7 @@ button.close {
   background-color: #ffffff;
   padding: 0px;
   vertical-align: top;
-  padding-left: 10px;
+  padding-right: 10px;
 }
 .document-style table .data .validation {
   font-size: 75%;
@@ -6817,11 +6818,11 @@ button.close {
 }
 .document-style table .column-header {
   border-bottom: 1px solid black;
-  margin-right: 2px;
+  margin-left: 2px;
   font-weight: bold;
   vertical-align: bottom;
   text-align: right;
-  padding-left: 10px;
+  padding-right: 10px;
 }
 .document-style table .row-header {
   vertical-align: top;
@@ -6846,18 +6847,18 @@ button.close {
 .plain-style table td {
   padding: 2px;
   border-top: 2px solid white;
-  border-left: 2px solid white;
+  border-right: 2px solid #ffffff;
 }
 .plain-style table tr.constraints td.headerlabel {
   background-color: #e0e0e0;
   border-top: 2px solid white;
-  border-left: 2px solid white;
+  border-right: 2px solid #ffffff;
   padding: 2px;
 }
 .plain-style table tr.constraints td.headervalue {
   background-color: #e0e0e0;
   border-top: 2px solid white;
-  border-left: 2px solid white;
+  border-right: 2px solid #ffffff;
   padding: 2px;
 }
 .plain-style table tr.constraints td.headervalue div {
@@ -6867,24 +6868,24 @@ button.close {
 .plain-style table tr.constraints td.constraintlabel {
   background-color: #e0e0e0;
   border-top: 2px solid white;
-  border-left: 2px solid white;
+  border-right: 2px solid #ffffff;
   padding: 2px;
 }
 .plain-style table tr.constraints td.constraintvalue {
   background-color: #e0e0e0;
   border-top: 2px solid white;
-  border-left: 2px solid white;
+  border-right: 2px solid #ffffff;
   padding: 2px;
 }
 .plain-style table .closing-border {
   border: none;
-  border-left: 2px solid white;
+  border-right: 2px solid #ffffff;
   width: 0px;
   padding: 0px;
   margin: 0px;
 }
 .plain-style table tr.space td {
-  border-left: none;
+  border-right: none;
   border-top: 2px solid white;
   height: 5px;
 }
@@ -6892,7 +6893,7 @@ button.close {
   border-top: none;
 }
 .plain-style table .yrollup {
-  border-left: none;
+  border-right: none;
 }
 .plain-style table .header {
   background-color: #e0e0e0;
@@ -6930,7 +6931,7 @@ button.close {
   left: 0px;
 }
 .NonNumericValue span.icon {
-  margin-left: 5px;
+  margin-right: 5px;
 }
 .rendering a {
   cursor: pointer;
@@ -6956,6 +6957,9 @@ table.truncate div.value span.ellipsis {
 table.truncate div.value span.morelink {
   vertical-align: top;
   display: inline-block;
+}
+td.data.ng-scope.selected-cell div.value {
+  background-color: aliceblue !important;
 }
 /* Space out content a bit */
 body {
