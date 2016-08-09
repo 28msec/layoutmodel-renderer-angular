@@ -66,7 +66,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                             return data.Type + add;
                         }
                         if(_.isObject(data.properties)) {
-                            add += Object.keys(data.properties).join(" ");
+                            add += Object.keys(data.properties).join(' ');
                         }
                     } else {
                         add += ' null';
