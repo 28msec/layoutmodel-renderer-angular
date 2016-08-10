@@ -6559,6 +6559,9 @@ button.close {
   border-collapse: separate;
   font-size: 80%;
 }
+.preview-style table td {
+  cursor: pointer;
+}
 .preview-style table tr.constraints td.header {
   background-color: #909090;
   border-top: 2px solid #000000;
@@ -6617,7 +6620,7 @@ button.close {
 .preview-style table .data {
   border-top: 2px solid #dadcdd;
   border-left: 2px solid #dadcdd;
-  background-color: #f0f0f0;
+  background-color: #909090;
   vertical-align: top;
   padding: 0px;
 }
@@ -6681,7 +6684,8 @@ button.close {
 .preview-style table tr td.null div.value {
   border-bottom: none !important;
   border-top: none !important;
-  background-color: #f0f0f0;
+  background-color: #909090;
+  cursor: not-allowed;
 }
 .preview-style table .header {
   padding: 2px;
@@ -6956,6 +6960,9 @@ table.truncate div.value span.ellipsis {
 table.truncate div.value span.morelink {
   vertical-align: top;
   display: inline-block;
+}
+td.data.ng-scope.selected div.value {
+  background-color: aliceblue !important;
 }
 /* Space out content a bit */
 body {

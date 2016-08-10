@@ -50,7 +50,10 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
 
                 scope.selectCell = function(data) {
                     if(data) {
-                        data.selected = !data.selected;
+                        if(!data.properties) {
+                            data.properties = {};
+                        }
+                        data.properties.selected = !data.properties.selected;
                     }
                 };
 
@@ -64,6 +67,9 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                         }
                         if (data.Value != null) {
                             return data.Type + add;
+                        }
+                        if(_.isObject(data.properties)) {
+                            add += Object.keys(data.properties).filter(function(property){ return data.properties[property] === true; }).join(' ');
                         }
                     } else {
                         add += ' null';
