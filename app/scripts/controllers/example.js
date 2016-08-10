@@ -75,9 +75,14 @@ angular.module('exampleApp')
 		}
 	  };
 	  
-	  $scope.test = function(data)
+	  $scope.test = function(cell)
 	  {
-		console.log(JSON.stringify(data,null," "));
+	  	if(!cell.properties) {
+		  cell.properties = { selected: true };
+	  	} else {
+		  cell.properties.selected = !cell.properties.selected;
+	  	}
+		console.log(JSON.stringify(cell, null, ''));
 	  };
 	  
 	  $scope.$on("$locationChangeSuccess", function() {
