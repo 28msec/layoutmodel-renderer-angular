@@ -48,9 +48,12 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     return $sce.trustAsHtml(accounting.formatNumber(fact.Value, decimals));
                 };
 
-                scope.toggleCell = function(data,  property) {
+                scope.selectCell = function(data) {
                     if(data) {
-                        data[property]= !data[property];
+                        if(!data.properties) {
+                            data.properties = {};
+                        }
+                        data.properties.selected = !data.properties.selected;
                     }
                 };
 
@@ -66,7 +69,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                             return data.Type + add;
                         }
                         if(_.isObject(data.properties)) {
-                            add += Object.keys(data.properties).join(' ');
+                            add += Object.keys(data.properties).filter(function(property){ return data.properties[property] === true; }).join(' ');
                         }
                     } else {
                         add += ' null';
