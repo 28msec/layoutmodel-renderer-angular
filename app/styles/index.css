@@ -6580,6 +6580,9 @@ button.close {
   border-collapse: separate;
   font-size: 80%;
 }
+.preview-style table td {
+  cursor: pointer;
+}
 .preview-style table tr.constraints td.header {
   background-color: #909090;
   border-top: 2px solid #000000;
@@ -6978,6 +6981,9 @@ table.truncate div.value span.ellipsis {
 table.truncate div.value span.morelink {
   vertical-align: top;
   display: inline-block;
+}
+td.data.ng-scope.selected div.value {
+  background-color: aliceblue !important;
 }
 /* Space out content a bit */
 body {

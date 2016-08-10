@@ -50,7 +50,10 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
 
                 scope.selectCell = function(data) {
                     if(data) {
-                        data.selected = !data.selected;
+                        if(!data.properties) {
+                            data.properties = {};
+                        }
+                        data.properties.selected = !data.properties.selected;
                     }
                 };
 
@@ -64,6 +67,9 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                         }
                         if (data.Value != null) {
                             return data.Type + add;
+                        }
+                        if(_.isObject(data.properties)) {
+                            add += Object.keys(data.properties).filter(function(property){ return data.properties[property] === true; }).join(' ');
                         }
                     } else {
                         add += ' null';
@@ -201,7 +207,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     if (scope.layoutModel.TableSet.length <= tableIndex) { throw new Error('layoutmodel: No table '+tableIndex+' in TableSet'); }
                     scope.table = scope.layoutModel.TableSet[tableIndex];
                     if (!scope.table.TableCells || !scope.table.TableCells.Facts) { throw new Error('layoutmodel: model does not contain facts.'); }
-                    if (scope.table.TableHeaders.z) { throw new Error('layoutmodel: Z-Axis not supported.'); }
+                    if (scope.table.TableHeaders.z) { console.error('layoutmodel: Z-Axis not supported.'); }
 
                     var ao = scope.table.TableCells.AxisOrder;
                     if (!ao || ao.length!==2 || ao[0] !== 'y' || ao[1] !== 'x') { throw new Error('layoutmodel: table cells must be in y, x axis order.'); }
@@ -292,7 +298,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                                     }
                                     
                                     if(_.isEmpty(cell.CellLabels)) {
-                                        cell.CellLabels.push("");
+                                        cell.CellLabels.push('');
                                         cell.RollUp = false;
                                     }
                                     

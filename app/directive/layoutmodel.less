@@ -72,6 +72,10 @@
   border-spacing: 0px;  
   border-collapse: separate;  
   font-size: 80%;
+
+  td {
+    cursor: pointer;
+  }
    
   tr.constraints {
   
@@ -475,4 +479,8 @@ table.truncate div.value {
     vertical-align:top;    
     display:inline-block;
   } 
+}
+
+td.data.ng-scope.selected div.value {
+  background-color: aliceblue !important;
 }
