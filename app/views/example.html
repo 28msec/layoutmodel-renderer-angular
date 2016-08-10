@@ -3,64 +3,6 @@
 <p>
     <a id="opensource" href="http://28.io/analysts">Made with <i class="fa fa-heart-o"></i> by 28.io</a>
 </p>
-<form class="form-horizontal" role="form">
-
- <!--div class="form-group">
-    <label class="col-sm-2 control-label" for="modelurl">URL</label>
-    <div class="col-sm-10">
-      <div class="input-group">      
-        <input type="text" class="form-control" id="modelurl" ng-model="modelurl" />
-        <span class="input-group-btn">
-           <button ng-click="fetch(modelurl);" class="btn btn-default">get</button>
-         </span>
-      </div>
-    </div>
- </div-->
-
- <!--div class="form-group">
-    <label class="col-sm-2 control-label" for="css">Style</label>
-    <div class="col-sm-10">
-      <label class="radio-inline">      
-        <input type="radio" id="css1" ng-model="css" value="plain-style" />1: Plain
-      </label>
-      <label class="radio-inline">      
-        <input type="radio" id="css2" ng-model="css" value="document-style" />2: Document
-      </label>
-      <label class="radio-inline">      
-        <input type="radio" id="css2" ng-model="css" value="preview-style" />3: XBRL Cloud like
-      </label>         
-    </div>
- </div-->
- 
- <!--div class="form-group">
-    <label class="col-sm-2 control-label" for="constraints">Constraints</label>
-    <div class="col-sm-10">
-      <label class="checkbox-inline">      
-        <input type="checkbox" id="constraints" ng-model="constraints" value="true" />Show constraints
-      </label>           
-      <label class="checkbox-inline">      
-        <input type="checkbox" id="checks" ng-model="checks" value="true" />Show validation checks
-      </label>
-      <label class="checkbox-inline">      
-        <input type="checkbox" id="truncate" ng-model="truncate" value="true" />Shorten textblocks
-      </label>
-    </div>
- </div-->
- 
-<!--div class="form-group">
-  <div class="col-sm-offset-2 col-sm-10">
-    <button class="btn btn-default" ng-click="fetch('http://metapatterns-rendering.28.io/v1/_queries/public/metapatterns/resolution-and-layout-and-accountant.jq?def=hierarchy')">Hierachy</button>
-    <button class="btn btn-default" ng-click="fetch('http://metapatterns-rendering.28.io/v1/_queries/public/metapatterns/resolution-and-layout-and-accountant.jq?def=rollup')">Rollup</button>
-    <button class="btn btn-default" ng-click="fetch('http://metapatterns-rendering.28.io/v1/_queries/public/metapatterns/resolution-and-layout-and-accountant.jq?def=rollforward')">Rollforward</button>
-    <button class="btn btn-default" ng-click="fetch('http://metapatterns-rendering.28.io/v1/_queries/public/metapatterns/resolution-and-layout-and-accountant.jq?def=compoundfacts')">Compoundfacts</button>
-    <button class="btn btn-default" ng-click="fetch('http://metapatterns-rendering.28.io/v1/_queries/public/metapatterns/resolution-and-layout-and-accountant.jq?def=adjustment')">Adjustment</button>
-    <button class="btn btn-default" ng-click="fetch('http://metapatterns-rendering.28.io/v1/_queries/public/metapatterns/resolution-and-layout-and-accountant.jq?def=variance')">Variance</button>       
-    <button class="btn btn-default" ng-click="fetch('http://metapatterns-rendering.28.io/v1/_queries/public/metapatterns/resolution-and-layout-and-accountant.jq?def=complexcomputation')">Complex</button>
-    <button class="btn btn-default" ng-click="fetch('http://metapatterns-rendering.28.io/v1/_queries/public/metapatterns/resolution-and-layout-and-accountant.jq?def=textblock')">Textblock</button>
-    <button class="btn btn-default" ng-click="fetch('http://metapatterns-rendering.28.io/v1/_queries/public/metapatterns/resolution-and-layout-and-accountant.jq?def=grid')">Grid</button>
-  </div>
-</div-->
-</form>
 
 <script type="text/ng-template" id="myheaders.html">  
   {{ header.CellLabels[$scope.labelidx] || header.CellLabels[0] || " " }}
@@ -72,7 +14,7 @@
                constraints="constraints"
                truncate="truncate"
                checks="checks" 
-               headerclick="test({ header: header, axis: axis, index: index })" 
+               headerclick="headerclick({ header: header, axis: axis, index: index, parentIndex: parentIndex, rows: rows, rowspan: rowspan, colspan: colspan, headerGroup: headerGroup })"
                dataclick="test(data)" 
                header="'myheaders.html'"></layoutmodel>
 </div>

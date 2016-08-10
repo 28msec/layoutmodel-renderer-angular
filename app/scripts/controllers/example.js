@@ -35,10 +35,50 @@ angular.module('exampleApp')
 			$scope.modelurl = '';
 		}
 	  };
+
+	  $scope.headerclick = function(data) {
+	  	if(!data.rowspan && data.colspan) {
+	  		var index = 0;
+	  		for(var i = 0; i < data.index; i++) {
+				index += data.headerGroup[i].CellSpan;
+			}
+	  		console.log({ index: index, colspan: data.colspan });
+	  		data.rows.forEach(function(row) {
+				for(var i = 0; i < data.colspan; i++) {
+					var cell = row[index + i];
+					if(cell.selected === undefined) {
+						cell.selected = true;
+					} else {
+						cell.selected = !cell.selected;
+					}
+				}
+			});
+		} else if (data.rowspan) {
+			for(var i = 0; i < data.rowspan; i++) {
+				data.rows[data.parentIndex + i].forEach(function(cell){
+					if(cell.selected === undefined) {
+						cell.selected = true;
+					} else {
+						cell.selected = !cell.selected;
+					}
+				});
+			}
+		} else {
+			data.rows.forEach(function(row){
+				row.forEach(function(cell){
+					if(cell.selected === undefined) {
+						cell.selected = true;
+					} else {
+						cell.selected = !cell.selected;
+					}
+				});
+			});
+		}
+	  };
 	  
 	  $scope.test = function(data)
 	  {
-		alert(JSON.stringify(data,null," "));  
+		console.log(JSON.stringify(data,null," "));
 	  };
 	  
 	  $scope.$on("$locationChangeSuccess", function() {

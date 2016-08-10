@@ -6961,6 +6961,9 @@ table.truncate div.value span.morelink {
   vertical-align: top;
   display: inline-block;
 }
+td.data.ng-scope.selected-cell div.value {
+  background-color: aliceblue !important;
+}
 /* Space out content a bit */
 body {
   padding-top: 20px;
