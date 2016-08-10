@@ -80,7 +80,7 @@
 
         <!-- data cells -->
         <td class="data"
-            ng-click="dataclick({ data : data }); selectCell(data)"
+            ng-click="dataclick({ data : data })"
             ng-class="classes(data, headerGroup[headerGroup.length - 1])"
             ng-repeat="data in data[$index] track by $index"
             ng-include="dataTemplate">
