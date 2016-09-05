@@ -6620,7 +6620,6 @@ button.close {
 .preview-style table .data {
   border-top: 2px solid #dadcdd;
   border-left: 2px solid #dadcdd;
-  background-color: #909090;
   vertical-align: top;
   padding: 0px;
 }
@@ -6681,10 +6680,13 @@ button.close {
   border-bottom: 1px solid #000000;
   border-top: 1px solid #000000;
 }
+.preview-style table tr td.null {
+  background-color: #909090;
+}
 .preview-style table tr td.null div.value {
   border-bottom: none !important;
   border-top: none !important;
-  background-color: #909090;
+  background-color: transparent;
   cursor: not-allowed;
 }
 .preview-style table .header {
