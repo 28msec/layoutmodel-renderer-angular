@@ -89,10 +89,10 @@
         <td class="closing-border"></td>
       </tr>
       <tr class="space">
-       <td colspan="{{yHeaderGroups[0].length}}"></td>
-       <td colspan="{{data[0].length}}"></td>
-       <td class="closing-border"></td>
-      </tr> 
+        <td  ng-if="data[0].length > 0" colspan="{{yHeaderGroups[0].length}}"></td>
+        <td ng-if="data[0].length > 0" colspan="{{data[0].length}}"></td>
+        <td class="closing-border"></td>
+      </tr>
   </tbody>
 </table>
 </div>
