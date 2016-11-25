@@ -34,7 +34,6 @@
     "grunt-contrib-less": "~0.11.2",
     "grunt-contrib-cssmin": "~0.7.0",
     "grunt-contrib-htmlmin": "~0.1.3",
-    "grunt-contrib-imagemin": "~0.3.0",
     "grunt-contrib-uglify": "~0.2.0",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-google-cdn": "~0.2.0",
@@ -80,6 +79,14 @@
     {
       "name": "Dennis Knochenwefel",
       "email": "d@28.io"
+    },
+    {
+      "name": "William Candillon",
+      "email": "w@28.io"
+    },
+    {
+      "name": "Christopher Chiche",
+      "email": "c@28.io"
     }
   ],
   "licenses": [
