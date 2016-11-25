@@ -40,7 +40,11 @@ function stickyHeader() {
     			.end()
     			.find('tbody td').remove();
 
-    		$stickyInsct.html('<thead><tr><th>'+$t.find('thead th:first-child').html()+'</th></tr></thead>');
+    		//$stickyInsct.html('<thead><tr><th>'+$t.find('thead th:first-child').html()+'</th></tr></thead>');
+    		$thead2 = $t.find('thead').clone(),
+    		$stickyInsct
+    		.append($thead2)
+    			.find('thead th:gt(0)').remove()
 
     		// Set widths
     		var setWidths = function () {
@@ -58,6 +62,9 @@ function stickyHeader() {
 
     				// Set width of sticky table col
     				$stickyCol.find('th').add($stickyInsct.find('th')).width($t.find('thead th').width())
+
+                    // Set width of sticky tabl intersect
+                    $stickyInsct.find('th').height($t.find('thead').height())
     			},
     			repositionStickyHead = function () {
     				// Return value of calculated allowance
