@@ -8,11 +8,10 @@
  <script type="text/ng-template" id="defaultHeader.html">
   {{ header.CellLabels[labelidx] || header.CellLabels[0] }}
  </script>
- 
 <table ng-show="layoutModel && xHeaderGroups && xHeaderGroups.length > 0 && yHeaderGroups && yHeaderGroups.length>0" class="rendering" ng-class="tableClass()">
   <thead ng-if="layoutModel.ComponentAndHypercubeInformation">
      <tr class="constraints">
-      <td class="header networkandtable" colspan="{{ (yHeaderGroups[0].length + data[0].length )}}">Component: (Network and Table)</td>      
+      <td class="header networkandtable" colspan="{{ (yHeaderGroups[0].length + data[0].length )}}">Component: (Network and Table)</td>
       <td class="closing-border"></td>
     </tr>
     <tr class="constraints">
@@ -38,14 +37,16 @@
       <td class="constraintlabel" colspan="{{yHeaderGroups[0].length}}">{{ getConstraintLabel(pair) }}</td>
       <td class="constraintvalue" colspan="{{data[0].length}}">{{ getConstraintValue(pair) }}</td>
       <td class="closing-border"></td>
-    </tr> 
+    </tr>
     <tr class="space">
        <td colspan="{{yHeaderGroups[0].length}}"></td>
        <td colspan="{{data[0].length}}"></td>
        <td class="closing-border"></td>
-     </tr> 
+     </tr>
   </tbody>
-
+</table>
+ <div id="c" style="overflow: hidden;">
+ <table id="table">
   <!-- ###### The main table ###### -->
   <tbody>
       <tr ng-repeat="headerGroup in xHeaderGroups"
@@ -95,4 +96,5 @@
       </tr>
   </tbody>
 </table>
+ </div>
 </div>

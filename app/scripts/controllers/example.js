@@ -5,6 +5,7 @@ angular.module('exampleApp')
 	  $scope.mymodel = null;
 	  $scope.myheaders = null;
 	  $scope.modelurl = $location.search().url;
+	  console.log($scope.modelurl);
 	  $scope.labelidx = 0;
 	  $scope.constraints = true;
 	  $scope.checks = true;

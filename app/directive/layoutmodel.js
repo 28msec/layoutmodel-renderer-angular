@@ -305,7 +305,6 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                         });
                     });
                 });
-
             }
         };
     })
