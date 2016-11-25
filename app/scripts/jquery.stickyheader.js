@@ -2,7 +2,6 @@ function stickyHeader() {
     $('#table').each(function() {
     	if($(this).find('thead').length > 0 && $(this).find('th').length > 0) {
     		// Clone <thead>
-            console.log("sticky!")
     		var $w	   = $(window),
     			$t	   = $(this),
     			$thead = $t.find('thead').clone(),
@@ -64,7 +63,7 @@ function stickyHeader() {
     				$stickyCol.find('th').add($stickyInsct.find('th')).width($t.find('thead th').width())
 
                     // Set width of sticky tabl intersect
-                    // FixMe: there is probably a better way to remove the 2 extra pixels. 
+                    // FixMe: there is probably a better way to remove the 2 extra pixels.
                     $stickyInsct.find('th').height($t.find('thead').height())
     			},
     			repositionStickyHead = function () {
@@ -148,7 +147,6 @@ function stickyHeader() {
     		$w
     		.load(setWidths)
     		.resize($.debounce(250, function () {
-                console.log("yay!")
     			setWidths();
     			repositionStickyHead();
     			repositionStickyCol();
