@@ -64,6 +64,7 @@ function stickyHeader() {
     				$stickyCol.find('th').add($stickyInsct.find('th')).width($t.find('thead th').width())
 
                     // Set width of sticky tabl intersect
+                    // FixMe: there is probably a better way to remove the 2 extra pixels. 
                     $stickyInsct.find('th').height($t.find('thead').height())
     			},
     			repositionStickyHead = function () {
