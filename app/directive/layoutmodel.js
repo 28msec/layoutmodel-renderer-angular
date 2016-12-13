@@ -18,7 +18,6 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                 dataTemplateUrl: '=data',
                 headerTemplateUrl: '=header',
                 constraints: '=',
-                truncate: '=',
                 checks: '=',
                 labelidx: '=',
                 dataclick: '&',
@@ -40,72 +39,25 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     if (fact.Value == null) { return ''; }
                     if (fact.Value === true) { return check; }
                     if (fact.Value === false) { return cross; }
-                    if (scope.truncate && !alwaysfull && fact.Value && fact.Value.indexOf && fact.Value.indexOf('<') >= 0) {
-                        return $sce.trustAsHtml('<span class="ellipsis">'+fact.Value.replace(/<(?:.|\n)*?>/gm, '')+'</span>');
-                    }
                     if (fact.Type !== 'NumericValue') { return $sce.trustAsHtml(''+fact.Value); }
                     var decimals = fact.Decimals > 0 ? fact.Decimals : 0;
                     return $sce.trustAsHtml(accounting.formatNumber(fact.Value, decimals));
                 };
 
-                scope.classes = function(data, header) {
-                    /*jshint eqnull:true */
-                    var add = header.IsRollUp ? ' yrollupdata' : '';
-                    add += (header.Depth >= 3 && header.IsRollUp) ? ' subyrollupdata' : '';
-                    if (_.isObject(data)) {
-                        if (data.length > 0) {
-                            return data[0].Type + add+ ' multiplefacts';
-                        }
-                        if (data.Value != null) {
-                            return data.Type + add;
-                        }
-                        if(_.isObject(data.properties)) {
-                            add += Object.keys(data.properties).filter(function(property){ return data.properties[property] === true; }).join(' ');
-                        }
-                    } else {
-                        add += ' null';
-                    }
-                    return add;
-                };
 
-                var isDomainHeader = function(header) {
-                    var labelMatches = _.filter(header.CellLabels, function(label){
-                        return _.isString(label) && label.indexOf('Domain') > -1;
-                    });
-                    var constraintMatches = _.filter(_.values(header.CellConstraints), function(constraints){
-                        return _.filter(_.values(constraints), function(constraintVal){
-                            return _.isString(constraintVal) && constraintVal.indexOf('Domain') > -1;
-                        }).length > 0;
-                    });
-                    return labelMatches.length > 0 || constraintMatches.length > 0 ||
-                        (header.CellLabels.length === 0 && header.RollUp === true);
-                };
-
+                /* CSS Class definitions */
                 scope.colHeaderClasses = function(header) {
-                    var constraints = _.isObject(header.CellConstraints) ? _.keys(header.CellConstraints) : [];
-                    var isNotEmpty = scope.isVisible(header);
-                    var classes = header.RollUp ? 'xrollup' : '';
-                    if(isDomainHeader(header)){
-                        classes += ' domain-header';
-                    } else if (constraints.length > 0 || !isNotEmpty){
-                        classes += ' member-header';
-                    } else {
-                        classes += ' dimension-header';
-                    }
+                    var classes = _.keys(header.CellConstraints).length?"lightBlueBold":"darkBlueBold";
+                    classes += header.RollUp ? ' xrollup' : '';
                     return classes;
                 };
 
-                scope.rowHeaderClasses = function(header, first) {
-                    return (first ? ' first-row-header-row' : '');
-                };
-
                 // if row headers span more than 1 col
-                scope.rowColHeaderClasses = function(header, first) {
+                scope.rowColHeaderClasses = function(header) {
                     return (header.RollUp ? 'yrollup' : '') +
                         (header.IsAbstract ? ' abstract' : '') +
                         (header.Depth ? ' depth' + header.Depth : '') +
-                        (header.IsRollUp ? ' isrollup' : '') +
-                        (first ? ' first-row-header-col' : '');
+                        (header.IsRollUp ? ' isrollup' : '')
 
                 };
 
@@ -122,6 +74,14 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     }
                     return i;
                 };
+                /* End of CSS class definitions */
+
+                scope.classes = function(data, header) {
+                    /*jshint eqnull:true */
+                    var add = header.IsRollUp ? ' yrollupdata' : '';
+                    add += (header.Depth >= 3 && header.IsRollUp) ? ' subyrollupdata' : '';
+                    return add;
+                };
 
                 scope.isVisible = function(header) {
                     return !_.isUndefined(header.CellLabels) && header.CellLabels.length > 0;
@@ -132,7 +92,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                 };
 
                 scope.showMoreLink = function(fact) {
-                    return fact && (fact.length || (scope.truncate && fact.Value && fact.Value.indexOf && fact.Value.indexOf('<') >= 0));
+                    return fact && (fact.length || (fact.Value && fact.Value.indexOf && fact.Value.indexOf('<') >= 0));
                 };
 
                 scope.showDetails = function($event, fact) {
@@ -144,10 +104,6 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                         resolve : { fact : function () { return fact; } }
                     });
                     return false;
-                };
-
-                scope.tableClass = function() {
-                    return scope.truncate ? 'truncate' : '';
                 };
 
                 scope.getConstraintValue = function(constraint) {
@@ -182,7 +138,6 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                 var tableIndex = scope.tableSet || 0;
 
                 scope.$watch(function() { return scope.layoutModel; }, function() {
-
                     // Data not yet available?
                     if (!scope.layoutModel) {
                         scope.table = [];
@@ -191,12 +146,15 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                         scope.data = [];
                         return;
                     }
+                    console.log(scope.layoutModel)
 
                     // Check if this component may be used to render the table
                     if (scope.layoutModel.ModelKind !== 'LayoutModel' || !scope.layoutModel.TableSet) { throw new Error('layoutmodel: "model" parameter does not contain a layout model!'); }
 
                     if (scope.layoutModel.TableSet.length <= tableIndex) { throw new Error('layoutmodel: No table '+tableIndex+' in TableSet'); }
+
                     scope.table = scope.layoutModel.TableSet[tableIndex];
+
                     if (!scope.table.TableCells || !scope.table.TableCells.Facts) { throw new Error('layoutmodel: model does not contain facts.'); }
                     if (scope.table.TableHeaders.z) { console.error('layoutmodel: Z-Axis not supported.'); }
 
@@ -256,7 +214,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     if(superGroups.length === allHeaderGroupCells.length){
                         superGroups = [ _.flatten(superGroups) ];
                     }
-                    
+
                     _.each(superGroups, function(superColumns){
                         _.each(superColumns, function(col, i){
                             var rowIdx = 0;
@@ -287,12 +245,12 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                                     {
                                         scope.yHeaderGroups.push([]);
                                     }
-                                    
+
                                     if(_.isEmpty(cell.CellLabels)) {
                                         cell.CellLabels.push('');
                                         cell.RollUp = false;
                                     }
-                                    
+
                                     scope.yHeaderGroups[rowIdx].push(cell);
                                     rowIdx += (cell.CellSpan || 1);
                                     // fill up with empty rows cols if cellspan > 1
