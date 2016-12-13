@@ -14,7 +14,6 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
             template: LayoutModelTpl,
             scope: {
                 layoutModel: '=model',
-                tableSet: '=table',
                 dataTemplateUrl: '=data',
                 headerTemplateUrl: '=header',
                 constraints: '=',
@@ -32,7 +31,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                 scope.lw = 0;
 
                 // Helper function to format content
-                scope.showValue = function(fact, alwaysfull) {
+                scope.showValue = function(fact) {
                     /*jshint eqnull:true */
                     if (!fact) { return ''; }
                     if (fact.length) { return scope.showValue(fact[0]); }
@@ -47,7 +46,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
 
                 /* CSS Class definitions */
                 scope.colHeaderClasses = function(header) {
-                    var classes = _.keys(header.CellConstraints).length?"lightBlueBold":"darkBlueBold";
+                    var classes = _.keys(header.CellConstraints).length?'lightBlueBold':'darkBlueBold';
                     classes += header.RollUp ? ' xrollup' : '';
                     return classes;
                 };
@@ -57,8 +56,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     return (header.RollUp ? 'yrollup' : '') +
                         (header.IsAbstract ? ' abstract' : '') +
                         (header.Depth ? ' depth' + header.Depth : '') +
-                        (header.IsRollUp ? ' isrollup' : '')
-
+                        (header.IsRollUp ? ' isrollup' : '');
                 };
 
                 scope.headerColSpan = function(headerGroup, pos) {
@@ -135,7 +133,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                 scope.dataTemplate = scope.dataTemplateUrl || 'defaultData.html';
                 scope.headerTemplate = scope.headerTemplateUrl || 'defaultHeader.html';
 
-                var tableIndex = scope.tableSet || 0;
+                var tableIndex = 0;
 
                 scope.$watch(function() { return scope.layoutModel; }, function() {
                     // Data not yet available?
@@ -146,7 +144,6 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                         scope.data = [];
                         return;
                     }
-                    console.log(scope.layoutModel)
 
                     // Check if this component may be used to render the table
                     if (scope.layoutModel.ModelKind !== 'LayoutModel' || !scope.layoutModel.TableSet) { throw new Error('layoutmodel: "model" parameter does not contain a layout model!'); }
