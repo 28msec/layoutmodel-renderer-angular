@@ -16,7 +16,6 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                 layoutModel: '=model',
                 dataTemplateUrl: '=data',
                 headerTemplateUrl: '=header',
-                constraints: '=',
                 checks: '=',
                 labelidx: '=',
                 dataclick: '&',
@@ -72,7 +71,6 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     }
                     return i;
                 };
-                /* End of CSS class definitions */
 
                 scope.classes = function(data, header) {
                     /*jshint eqnull:true */
@@ -80,6 +78,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     add += (header.Depth >= 3 && header.IsRollUp) ? ' subyrollupdata' : '';
                     return add;
                 };
+                /* End of CSS class definitions */
 
                 scope.isVisible = function(header) {
                     return !_.isUndefined(header.CellLabels) && header.CellLabels.length > 0;
@@ -104,59 +103,62 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     return false;
                 };
 
-                scope.getConstraintValue = function(constraint) {
-                    var result;
-                    angular.forEach(constraint, function(value,key) {
-                        if (key !== '$$hashKey' && constraint.hasOwnProperty(key)) {
-                            var label = scope.layoutModel.GlobalConstraintLabels[value];
-                            result = label ? label : value;
-                        }
-                    });
-                    if(_.isArray(result)) {
-                        return result.join(', ');
-                    } else {
-                        return result;
-                    }
-                };
-
-                scope.getConstraintLabel = function(constraint) {
-                    var result;
-                    angular.forEach(constraint, function(value,key) {
-                        if (key !== '$$hashKey' && constraint.hasOwnProperty(key)) {
-                            var label = scope.layoutModel.GlobalConstraintLabels[key];
-                            result = label ? label : key;
-                        }
-                    });
-                    return result;
-                };
-
                 scope.dataTemplate = scope.dataTemplateUrl || 'defaultData.html';
                 scope.headerTemplate = scope.headerTemplateUrl || 'defaultHeader.html';
 
                 var tableIndex = 0;
 
+                scope.getConstraintLabel = (pair,index) => {
+                    var value = _.toPairs(pair)[0][index]
+                    const label = _.get(scope.constraintLabels,value,value);
+                    return _.isArray(label) ? label.join(", "): label;
+                }
+                scope.superHeader = () => {
+                    try {
+                        return scope.yHeaders[0][0].CellLabels[0];
+                    } catch(e) {
+                        return "";
+                    }
+                }
+
                 scope.$watch(function() { return scope.layoutModel; }, function() {
                     // Data not yet available?
-                    if (!scope.layoutModel) {
-                        scope.table = [];
-                        scope.yHeaderGroups = [];
-                        scope.xHeaderGroups = [];
-                        scope.data = [];
-                        return;
-                    }
+                    // if (!scope.layoutModel) {
+                    //     scope.table = [];
+                    //     scope.yHeaderGroups = [];
+                    //     scope.xHeaderGroups = [];
+                    //     scope.data = [];
+                    //     return;
+                    // }
 
                     // Check if this component may be used to render the table
                     if (scope.layoutModel.ModelKind !== 'LayoutModel' || !scope.layoutModel.TableSet) { throw new Error('layoutmodel: "model" parameter does not contain a layout model!'); }
-
                     if (scope.layoutModel.TableSet.length <= tableIndex) { throw new Error('layoutmodel: No table '+tableIndex+' in TableSet'); }
 
-                    scope.table = scope.layoutModel.TableSet[tableIndex];
+                    scope.header = scope.layoutModel.ComponentAndHypercubeInformation;
+                    scope.constraints = scope.layoutModel.GlobalConstraints;
+                    scope.constraintLabels = scope.layoutModel.GlobalConstraintLabels;
+
+                    scope.table = scope.layoutModel.TableSet[0];
+                    scope.xHeaders = _(scope.table.TableHeaders.x)
+                        .map(x => x.GroupCells)
+                        .flatten()
+                        .value();
+
+                    scope.yHeaders = _(scope.table.TableHeaders.y)
+                        .map(x => x.GroupCells)
+                        .flatten()
+                        .value();
+                    scope.headerColspan = scope.yHeaders.length-1;
+                    scope.dataColspan = scope.table.TableCells.Facts.length > 0 ? scope.table.TableCells.Facts[0].length : 0;
 
                     if (!scope.table.TableCells || !scope.table.TableCells.Facts) { throw new Error('layoutmodel: model does not contain facts.'); }
                     if (scope.table.TableHeaders.z) { console.error('layoutmodel: Z-Axis not supported.'); }
-
                     var ao = scope.table.TableCells.AxisOrder;
                     if (!ao || ao.length!==2 || ao[0] !== 'y' || ao[1] !== 'x') { throw new Error('layoutmodel: table cells must be in y, x axis order.'); }
+
+                    // End of sanity
+
 
                     scope.yHeaderGroups = [];
                     scope.ySuperHeaders = []; // y super headers will be put in the top left corner
