@@ -99,31 +99,33 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                 scope.dataTemplate = scope.dataTemplateUrl || 'defaultData.html';
                 scope.headerTemplate = scope.headerTemplateUrl || 'defaultHeader.html';
 
-                scope.getConstraintLabel = (pair,index) => {
-                    var value = _.toPairs(pair)[0][index]
-                    const label = _.get(scope.constraintLabels,value,value);
-                    return _.isArray(label) ? label.join(", "): label;
-                }
-                scope.superHeader = () => {
+                scope.getConstraintLabel = function(pair,index) {
+                    var value = _.toPairs(pair)[0][index];
+                    var label = _.get(scope.constraintLabels,value,value);
+                    return _.isArray(label) ? label.join(', '): label;
+                };
+                scope.superHeader = function() {
                     try {
                         return scope.yHeaders[0][0].CellLabels[0];
                     } catch(e) {
-                        return "";
+                        return '';
                     }
-                }
-                scope.bodyHeaders = (facts, factsIdx) => _(scope.yHeaders)
-                    .filter((d,ii) => ii>0)
-                    .map((groupCells, index) =>
-                        _.filter(groupCells, (cell, groupCellIndex) => {
-                            const sum = _(groupCells)
-                                .filter((c,ii) => ii<groupCellIndex )
-                                .map(c => c.CellSpan || 1)
-                                .sum();
-                            return (factsIdx===0 && sum===0) || (factsIdx>0 && factsIdx===sum);
+                };
+                scope.bodyHeaders = function(facts, factsIdx) {
+                    return  _(scope.yHeaders)
+                        .filter(function(d,ii) { return ii>0; })
+                        .map(function(groupCells) {
+                            return _.filter(groupCells, function(cell, groupCellIndex) {
+                                var sum = _(groupCells)
+                                    .filter(function(c,ii) { return ii<groupCellIndex; } )
+                                    .map(function(c) { return c.CellSpan || 1; })
+                                    .sum();
+                                return (factsIdx===0 && sum===0) || (factsIdx>0 && factsIdx===sum);
+                            });
                         })
-                    )
-                    .flatten()
-                    .value();
+                        .flatten()
+                        .value();
+                };
 
 
                 scope.$watch(function() { return scope.layoutModel; }, function() {
@@ -134,7 +136,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
 
                     // Check if this component may be used to render the table
                     if (scope.layoutModel.ModelKind !== 'LayoutModel' || !scope.layoutModel.TableSet) { throw new Error('layoutmodel: "model" parameter does not contain a layout model!'); }
-                    if (scope.layoutModel.TableSet.length <= 0) { throw new Error('layoutmodel: No table '+tableIndex+' in TableSet'); }
+                    if (scope.layoutModel.TableSet.length <= 0) { throw new Error('layoutmodel: No table at index 0 in TableSet'); }
 
                     scope.header = scope.layoutModel.ComponentAndHypercubeInformation;
                     scope.constraints = scope.layoutModel.GlobalConstraints;
@@ -142,12 +144,12 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
 
                     scope.table = scope.layoutModel.TableSet[0];
                     scope.xHeaders = _(scope.table.TableHeaders.x)
-                        .map(x => x.GroupCells)
+                        .map(function(x) { return x.GroupCells; })
                         .flatten()
                         .value();
 
                     scope.yHeaders = _(scope.table.TableHeaders.y)
-                        .map(x => x.GroupCells)
+                        .map(function(x) { return x.GroupCells; })
                         .flatten()
                         .value();
                     scope.headerColspan = scope.yHeaders.length-1;
