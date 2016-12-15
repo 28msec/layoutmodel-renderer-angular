@@ -9,7 +9,7 @@
   {{ header.CellLabels[labelidx] || header.CellLabels[0] }}
 </script>
 
-<table ng-show="layoutModel && xHeaderGroups && xHeaderGroups.length > 0 && yHeaderGroups && yHeaderGroups.length>0" ng-class="tableClass()">
+<table ng-show="layoutModel" ng-class="tableClass()">
     <thead ng-if="layoutModel.ComponentAndHypercubeInformation">
         <tr>
             <th class="darkGrey" colspan="{{ (headerColspan + dataColspan) }}">Component: (Network and Table)</th>
@@ -55,22 +55,22 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="headerGroup in yHeaderGroups">
+        <tr ng-repeat="facts in table.TableCells.Facts">
             <!-- left row headers -->
-            <th ng-repeat="header in headerGroup"
+            <th ng-repeat="cell in bodyHeaders(facts,$index)"
                 ng-class="rowColHeaderClasses(header)"
                 class="lightBlue"
                 ng-click="headerclick({ header : header, axis:'y', index: $index, parentIndex: $parent.$parent.$index, rows: data, rowspan: header.CellSpan, colspan: headerColSpan(headerGroup, $index) });"
-                ng-show="isVisible(header)"
-                colspan="{{headerColSpan(headerGroup, $index)}}"
-                rowspan="{{header.CellSpan}}" ng-include="headerTemplate">
+                ng-show="isVisible(cell)"
+                rowSpan="{{cell.CellSpan}"
+            >
+            {{cell.CellLabels[0]}}
             </th>
-
             <!-- data cells -->
             <td
-                ng-class="classes(data, headerGroup[headerGroup.length - 1])"
+                ng-class="data.Type"
                 ng-click="dataclick({ data : data })"
-                ng-repeat="data in data[$index] track by $index"
+                ng-repeat="data in facts track by $index"
                 ng-include="dataTemplate">
             </td>
         </tr>
