@@ -152,7 +152,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                         .map(function(x) { return x.GroupCells; })
                         .flatten()
                         .value();
-                    scope.headerColspan = scope.yHeaders.length-1;
+                    scope.headerColspan = (scope.yHeaders.length-1) | 1;
                     scope.dataColspan = scope.table.TableCells.Facts.length > 0 ? scope.table.TableCells.Facts[0].length : 0;
 
                     if (!scope.table.TableCells || !scope.table.TableCells.Facts) { throw new Error('layoutmodel: model does not contain facts.'); }
