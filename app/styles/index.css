@@ -6618,7 +6618,7 @@ button.close {
 }
 .preview-style table .darkGrey {
   background-color: #909090;
-  font-weight: 700;
+  font-weight: bold;
 }
 .preview-style table .midGrey {
   background-color: #b8b8b8;
@@ -6638,11 +6638,11 @@ button.close {
 }
 .preview-style table .darkBlueBold {
   background-color: #8db4e3;
-  font-weight: 700;
+  font-weight: bold;
 }
 .preview-style table .lightBlueBold {
   background-color: #ddeafa;
-  font-weight: 700;
+  font-weight: bold;
 }
 .preview-style table .yrollup {
   text-align: right;
