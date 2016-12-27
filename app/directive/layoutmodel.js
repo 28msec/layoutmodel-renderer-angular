@@ -63,13 +63,34 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     var allFollowingColumnsRollUp = true;
                     while(pos+i<headerGroup.length && allFollowingColumnsRollUp){
                         var header = headerGroup[pos+i];
-                        if(header.RollUp !== true){
+                        if(!header || header.RollUp !== true){
                             allFollowingColumnsRollUp = false;
                         } else {
                             i++;
                         }
                     }
                     return i;
+                };
+
+                scope.classes = function(data, header) {
+                    /*jshint eqnull:true */
+                    // var add = header.IsRollUp ? ' yrollupdata' : '';
+                    // add += (header.Depth >= 3 && header.IsRollUp) ? ' subyrollupdata' : '';
+                    var add = "";
+                    if (_.isObject(data)) {
+                        if (data.length > 0) {
+                            return data[0].Type + add+ ' multiplefacts';
+                        }
+                        if (data.Value != null) {
+                            return data.Type + add;
+                        }
+                        if(_.isObject(data.properties)) {
+                            add += Object.keys(data.properties).filter(function(property){ return data.properties[property] === true; }).join(' ');
+                        }
+                    } else {
+                        add += ' null';
+                    }
+                    return add;
                 };
                 /* End of CSS class definitions */
 
