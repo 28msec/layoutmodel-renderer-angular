@@ -60,9 +60,8 @@
             <th ng-repeat="cell in bodyHeaders(facts,$index)"
                 ng-class="rowColHeaderClasses(header)"
                 class="lightBlue"
-                ng-click="headerclick({ header : header, axis:'y', index: $index, parentIndex: $parent.$parent.$index, rows: data, rowspan: header.CellSpan, colspan: headerColSpan(headerGroup, $index) });"
-                ng-show="isVisible(cell)"
-                rowSpan="{{cell.CellSpan}"
+                ng-click="headerclick({ header : header, axis:'y', index: $index, parentIndex: $parent.$parent.$index, facts: table.TableCells.Facts, rowspan: header.CellSpan, colspan: headerColSpan(facts, $index) });"
+                rowspan="{{cell.CellSpan}}"
             >
             {{cell.CellLabels[0]}}
             </th>

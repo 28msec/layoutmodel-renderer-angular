@@ -73,10 +73,6 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                 };
                 /* End of CSS class definitions */
 
-                scope.isVisible = function(header) {
-                    return !_.isUndefined(header.CellLabels) && header.CellLabels.length > 0;
-                };
-
                 scope.hasConstraints = function() {
                     return scope.layoutModel && scope.layoutModel.GlobalConstraintLabels && Object.keys(scope.layoutModel.GlobalConstraintLabels).length > 0;
                 };
@@ -152,7 +148,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                         .map(function(x) { return x.GroupCells; })
                         .flatten()
                         .value();
-                    scope.headerColspan = scope.yHeaders.length-1;
+                    scope.headerColspan = (scope.yHeaders.length-1) || 1;
                     scope.dataColspan = scope.table.TableCells.Facts.length > 0 ? scope.table.TableCells.Facts[0].length : 0;
 
                     if (!scope.table.TableCells || !scope.table.TableCells.Facts) { throw new Error('layoutmodel: model does not contain facts.'); }
