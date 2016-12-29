@@ -148,6 +148,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                 scope.$watch(function() { return scope.layoutModel; }, function() {
                     // Data not yet available?
                     if (!scope.layoutModel) {
+                        scope.data = [];
                         return;
                     }
 
@@ -160,6 +161,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     scope.constraintLabels = scope.layoutModel.GlobalConstraintLabels;
 
                     scope.table = scope.layoutModel.TableSet[0];
+                    scope.data = scope.table.TableCells.Facts;
                     scope.xHeaders = _(scope.table.TableHeaders.x)
                         .map(function(x) { return x.GroupCells; })
                         .flatten()

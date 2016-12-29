@@ -37,6 +37,7 @@ angular.module('exampleApp')
 	  };
 
 	  $scope.headerclick = function(data) {
+	  	console.log(data);
 	  	if(!data.rowspan && data.colspan) {
 	  		var index = 0;
 	  		for(var i = 0; i < data.index; i++) {
