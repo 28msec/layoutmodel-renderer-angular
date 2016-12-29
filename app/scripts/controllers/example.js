@@ -37,7 +37,7 @@ angular.module('exampleApp')
 	  };
 
 	  $scope.headerclick = function(data) {
-	  	if(!data.rowspan && data.colspan) {
+	  	if(data.axis === 'x') {
 	  		var index = 0;
 	  		for(var i = 0; i < data.index; i++) {
 				index += data.headerGroup[i].CellSpan;
@@ -52,7 +52,7 @@ angular.module('exampleApp')
 					}
 				}
 			});
-		} else if (data.rowspan) {
+		} else if (data.axis === 'y') {
 			for(var i = 0; i < data.rowspan; i++) {
 				data.rows[data.parentIndex + i].forEach(function(cell){
 					if(!cell.properties) {
@@ -75,9 +75,14 @@ angular.module('exampleApp')
 		}
 	  };
 	  
-	  $scope.test = function(data)
+	  $scope.test = function(cell)
 	  {
-		console.log(JSON.stringify(data,null," "));
+	  	if(!cell.properties) {
+		  cell.properties = { selected: true };
+	  	} else {
+		  cell.properties.selected = !cell.properties.selected;
+	  	}
+		console.log(JSON.stringify(cell, null, ''));
 	  };
 	  
 	  $scope.$on("$locationChangeSuccess", function() {
