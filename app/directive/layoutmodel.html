@@ -45,12 +45,12 @@
             <th ng-if="$index == 0"
                 class="darkBlueBold"
                 colspan="{{yHeaders.length - 1}}" rowspan="{{xHeaders.length}}"
-                ng-click="headerclick({ header : superHeader, axis:'x', index: 0,  rows: data });"
+                ng-click="headerclick({ header : superHeader, axis:'xy', index: 0,  rows: data });"
                 >{{ superHeader() }}</th>
 
             <!-- top header row -->
             <th ng-class="colHeaderClasses(header)"
-                ng-click="headerclick({header : header, axis:'x', index: $index, parentIndex: $parent.$parent.$index, facts: table.TableCells.Facts, colspan: header.CellSpan, headerGroup: headerGroup, rows: data });"
+                ng-click="headerclick({header : header, axis:'x', index: $index, parentIndex: $parent.$parent.$index, colspan: header.CellSpan, headerGroup: headerGroup, rows: data });"
                 ng-include="headerTemplate"
                 ng-repeat="header in headerGroup" colspan="{{header.CellSpan}}">{{header.CellLabels[0]}}</th>
         </tr>
@@ -61,7 +61,7 @@
             <th ng-repeat="cell in bodyHeaders(facts,$index)"
                 ng-class="rowColHeaderClasses(header)"
                 class="lightBlue"
-                ng-click="headerclick({ header : header, axis:'y', index: $index, parentIndex: $parent.$parent.$index, facts: table.TableCells.Facts, rowspan: header.CellSpan, colspan: headerColSpan(facts, $index), rows: data });"
+                ng-click="headerclick({ header : cell, axis:'y', index: $index, parentIndex: $parent.$index, rowspan: cell.CellSpan, colspan: headerColSpan(facts, $index), rows: data });"
                 rowspan="{{cell.CellSpan}}"
             >
             {{cell.CellLabels[0]}}

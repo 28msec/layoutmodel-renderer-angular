@@ -37,8 +37,7 @@ angular.module('exampleApp')
 	  };
 
 	  $scope.headerclick = function(data) {
-	  	console.log(data);
-	  	if(!data.rowspan && data.colspan) {
+	  	if(data.axis === 'x') {
 	  		var index = 0;
 	  		for(var i = 0; i < data.index; i++) {
 				index += data.headerGroup[i].CellSpan;
@@ -53,7 +52,7 @@ angular.module('exampleApp')
 					}
 				}
 			});
-		} else if (data.rowspan) {
+		} else if (data.axis === 'y') {
 			for(var i = 0; i < data.rowspan; i++) {
 				data.rows[data.parentIndex + i].forEach(function(cell){
 					if(!cell.properties) {
