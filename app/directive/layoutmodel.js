@@ -72,11 +72,11 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     return i;
                 };
 
-                scope.classes = function(data, header) {
+                scope.classes = function(data) {
                     /*jshint eqnull:true */
                     // var add = header.IsRollUp ? ' yrollupdata' : '';
                     // add += (header.Depth >= 3 && header.IsRollUp) ? ' subyrollupdata' : '';
-                    var add = "";
+                    var add = '';
                     if (_.isObject(data)) {
                         if (data.length > 0) {
                             return data[0].Type + add+ ' multiplefacts';
