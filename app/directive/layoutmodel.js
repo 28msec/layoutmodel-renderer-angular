@@ -52,10 +52,14 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
 
                 // if row headers span more than 1 col
                 scope.rowColHeaderClasses = function(header) {
-                    return (header.RollUp ? 'yrollup' : '') +
-                        (header.IsAbstract ? ' abstract' : '') +
-                        (header.Depth ? ' depth' + header.Depth : '') +
-                        (header.IsRollUp ? ' isrollup' : '');
+                    if(header) {
+                        return (header.RollUp ? 'yrollup' : '') +
+                            (header.IsAbstract ? ' abstract' : '') +
+                            (header.Depth ? ' depth' + header.Depth : '') +
+                            (header.IsRollUp ? ' isrollup' : '');
+                    } else {
+                        return '';
+                    }
                 };
 
                 scope.headerColSpan = function(headerGroup, pos) {
