@@ -39,10 +39,10 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     if (fact.Value === false) { return cross; }
                     if (fact.Type !== 'NumericValue') { return $sce.trustAsHtml(''+fact.Value); }
                     var decimals = fact.Decimals > 0 ? fact.Decimals : 0;
-                    if(fact.Metadata && fact.Metadata[fact.Aspects["xbrl:Concept"]].DataType === "num:percentItemType") {
-                        return $sce.trustAsHtml(accounting.formatNumber(fact.Value, 2, ",") + "%");
+                    if(fact.Metadata && fact.Metadata[fact.Aspects['xbrl:Concept']].DataType === 'num:percentItemType') {
+                        return $sce.trustAsHtml(accounting.formatNumber(fact.Value, 2, ',') + '%');
                     }
-                    return $sce.trustAsHtml(accounting.formatNumber(fact.Value, decimals, ","));
+                    return $sce.trustAsHtml(accounting.formatNumber(fact.Value, decimals, ','));
                 };
 
 
@@ -137,15 +137,15 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                 };
 
                 var emptyLabel = {
-                    "CellLabels": [""],
-                    "CellConstraints": {},
-                    "TagSelectors": [],
-                    "IsRollUp": false,
-                    "CellSpan": 1,
-                    "RollUp": false,
-                    "IsNegated": false,
-                    "Depth": 0,
-                    "IsAbstract": false
+                    'CellLabels': [''],
+                    'CellConstraints': {},
+                    'TagSelectors': [],
+                    'IsRollUp': false,
+                    'CellSpan': 1,
+                    'RollUp': false,
+                    'IsNegated': false,
+                    'Depth': 0,
+                    'IsAbstract': false
                 };
 
                 scope.bodyHeaders = function(facts, factsIdx) {
