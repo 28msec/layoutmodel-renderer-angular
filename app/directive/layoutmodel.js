@@ -135,8 +135,21 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                         return '';
                     }
                 };
+
+                var emptyLabel = {
+                    "CellLabels": [""],
+                    "CellConstraints": {},
+                    "TagSelectors": [],
+                    "IsRollUp": false,
+                    "CellSpan": 1,
+                    "RollUp": false,
+                    "IsNegated": false,
+                    "Depth": 0,
+                    "IsAbstract": false
+                };
+
                 scope.bodyHeaders = function(facts, factsIdx) {
-                    return  _(scope.yHeaders)
+                    var result =  _(scope.yHeaders)
                         .filter(function(d,ii) { return ii>0; })
                         .map(function(groupCells) {
                             return _.filter(groupCells, function(cell, groupCellIndex) {
@@ -149,6 +162,10 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                         })
                         .flatten()
                         .value();
+                    if(result.length === 0) {
+                        result.push(emptyLabel);
+                    }
+                    return result;
                 };
 
 
@@ -178,6 +195,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                         .map(function(x) { return x.GroupCells; })
                         .flatten()
                         .value();
+
                     scope.headerColspan = (scope.yHeaders.length-1) || 1;
                     scope.dataColspan = scope.table.TableCells.Facts.length > 0 ? scope.table.TableCells.Facts[0].length : 0;
 
