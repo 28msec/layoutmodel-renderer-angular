@@ -39,7 +39,10 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     if (fact.Value === false) { return cross; }
                     if (fact.Type !== 'NumericValue') { return $sce.trustAsHtml(''+fact.Value); }
                     var decimals = fact.Decimals > 0 ? fact.Decimals : 0;
-                    return $sce.trustAsHtml(accounting.formatNumber(fact.Value, decimals));
+                    if(fact.Metadata && fact.Metadata[fact.Aspects["xbrl:Concept"]].DataType === "num:percentItemType") {
+                        return $sce.trustAsHtml(accounting.formatNumber(fact.Value, 2, ",") + "%");
+                    }
+                    return $sce.trustAsHtml(accounting.formatNumber(fact.Value, decimals, ","));
                 };
 
 
