@@ -139,19 +139,19 @@ function stickyHeader() {
 
     		setWidths();
 
-    		$t.parent('.sticky-wrap').scroll($.throttle(250, function() {
+    		$t.parent('.sticky-wrap').scroll($.throttle(25, function() {
     			repositionStickyHead();
     			repositionStickyCol();
     		}));
 
     		$w
     		.load(setWidths)
-    		.resize($.debounce(250, function () {
+    		.resize($.debounce(25, function () {
     			setWidths();
     			repositionStickyHead();
     			repositionStickyCol();
     		}))
-    		.scroll($.throttle(250, repositionStickyHead));
+    		.scroll($.throttle(25, repositionStickyHead));
     	}
     });
 };
