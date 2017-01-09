@@ -96,6 +96,9 @@
     }
   ],
   "scripts": {
-    "test": "grunt"
+    "test": "grunt",
+    "postinstall": "bower install", 
+    "start": "grunt server"
+
   }
 }

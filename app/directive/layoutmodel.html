@@ -1,100 +1,80 @@
- <script type="text/ng-template" id="defaultData.html">
-  <div class="value">
-    <span class="data-value" ng-bind-html="showValue(data)"></span><span ng-if="showMoreLink(data)" class="morelink"><a ng-click="showDetails($event, data)">[more]</a></span>
-    <span ng-if="checks" class="validation"><i ng-show="data.Valid == false" class="fa fa-times invalid"></i><i ng-show="data.Valid" class="fa fa-check valid"></i></span>
-  </div>
- </script>
+<script type="text/ng-template" id="defaultData.html">
+    <div class="value">
+        <span class="data-value" ng-bind-html="showValue(data)"></span><span ng-if="showMoreLink(data)" class="morelink"><a ng-click="showDetails($event, data)">[more]</a></span>
+        <span ng-if="checks" class="validation"><i ng-show="data.Valid == false" class="fa fa-times invalid"></i><i ng-show="data.Valid" class="fa fa-check valid"></i></span>
+    </div>
+</script>
 
- <script type="text/ng-template" id="defaultHeader.html">
+<script type="text/ng-template" id="defaultHeader.html">
   {{ header.CellLabels[labelidx] || header.CellLabels[0] }}
- </script>
-<table ng-show="layoutModel && xHeaderGroups && xHeaderGroups.length > 0 && yHeaderGroups && yHeaderGroups.length>0" class="rendering" ng-class="tableClass()">
-  <thead ng-if="layoutModel.ComponentAndHypercubeInformation">
-     <tr class="constraints">
-      <td class="header networkandtable" colspan="{{ (yHeaderGroups[0].length + data[0].length )}}">Component: (Network and Table)</td>
-      <td class="closing-border"></td>
-    </tr>
-    <tr class="constraints">
-      <td class="headerlabel" colspan="{{yHeaderGroups[0].length}}">Network</td>
-      <td class="headervalue" colspan="{{data[0].length}}"><span class="componentlabel">{{ layoutModel.ComponentAndHypercubeInformation.Component.Label  }}</span>
-       <div class="componenturl">( {{ layoutModel.ComponentAndHypercubeInformation.Component.Role  }} )</div>
-      </td>
-      <td class="closing-border"></td>
-    </tr>
-    <tr class="constraints">
-      <td class="headerlabel" colspan="{{yHeaderGroups[0].length}}">Table</td>
-      <td class="headervalue hypercubelabel" colspan="{{data[0].length}}">{{ layoutModel.ComponentAndHypercubeInformation.Hypercube.Label  }}</td>
-      <td class="closing-border"></td>
-    </tr>
-    <tr class="space">
-      <td colspan="{{yHeaderGroups[0].length}}"></td>
-      <td colspan="{{data[0].length}}"></td>
-      <td class="closing-border"></td>
-    </tr>
-  </thead>
-  <tbody ng-if="constraints == true" ng-show="hasConstraints()">
-    <tr class="constraints" ng-repeat="pair in layoutModel.GlobalConstraints">
-      <td class="constraintlabel" colspan="{{yHeaderGroups[0].length}}">{{ getConstraintLabel(pair) }}</td>
-      <td class="constraintvalue" colspan="{{data[0].length}}">{{ getConstraintValue(pair) }}</td>
-      <td class="closing-border"></td>
-    </tr>
-    <tr class="space">
-       <td colspan="{{yHeaderGroups[0].length}}"></td>
-       <td colspan="{{data[0].length}}"></td>
-       <td class="closing-border"></td>
-     </tr>
-  </tbody>
+</script>
+
+<table ng-show="layoutModel" ng-class="tableClass()">
+    <thead ng-if="layoutModel.ComponentAndHypercubeInformation">
+        <tr>
+            <th class="darkGrey" colspan="{{ (headerColspan + dataColspan) }}">Component: (Network and Table)</th>
+        </tr>
+        <tr>
+            <th class="midGrey" colspan="{{headerColspan}}">Network</th>
+            <th class="lightGrey" colspan="{{dataColspan}}">{{ header.Component.Label  }}
+                <div class="lightGreySubTitle">( {{ header.Component.Role  }} )</div>
+            </th>
+        </tr>
+        <tr>
+            <th class="midGrey" colspan="{{headerColspan}}">Table</th>
+            <th class="lightGrey" colspan="{{dataColspan}}">{{ header.Hypercube.Label  }}</th>
+        </tr>
+        <tr class="space"><td></td></tr>
+    </thead>
+
+    <thead ng-show="hasConstraints()">
+        <tr ng-repeat="pair in layoutModel.GlobalConstraints">
+            <th class="darkBlue" colspan="{{headerColspan}}">{{ getConstraintLabel(pair,0) }}</th>
+            <th class="lightBlue" colspan="{{dataColspan}}">{{ getConstraintLabel(pair,1) }}</th>
+        </tr>
+        <tr class="space"><td></td></tr>
+    </thead>
+
 </table>
  <table id="table">
-  <!-- ###### The main table ###### -->
-  <thead>
-      <tr ng-repeat="headerGroup in xHeaderGroups"
-          ng-class="{ 'last-column-header-row' : $last, 'first-column-header-row' : $first }">
+    <!-- ###### The main table ###### -->
+    <thead>
+        <tr ng-repeat="headerGroup in xHeaders"
+            class="header-row">
 
-        <!-- top left corner header cell -->
-        <th ng-repeat="superHeader in ySuperHeaders | displaySuperColumnHeader:$index"
-            class="header title superheader"
-            colspan="{{yHeaderGroups[0].length}}" rowspan="{{xHeaderGroups.length}}"
-            ng-click="headerclick({ header : superHeader, axis:'x', index: 0,  rows: data });">{{superHeader.Label}}</th>
+            <!-- top left corner header cell -->
+            <!-- FixMe click is broken -->
+            <th ng-if="$index == 0"
+                class="darkBlueBold"
+                colspan="{{yHeaders.length - 1}}" rowspan="{{xHeaders.length}}"
+                ng-click="headerclick({ header : superHeader, axis:'xy', index: 0,  rows: data });"
+                >{{ superHeader() }}</th>
 
-        <!-- top header row -->
-        <th class="header column-header" ng-class="colHeaderClasses(header)"
-            ng-click="headerclick({header : header, axis:'x', index: $index, parentIndex: $parent.$parent.$index, rows: data, colspan: header.CellSpan, headerGroup: headerGroup });"
-            ng-repeat="header in headerGroup" colspan="{{header.CellSpan}}" ng-include="headerTemplate">
-        </th>
-
-        <th class="closing-border"></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr ng-repeat="headerGroup in yHeaderGroups"
-          ng-class="rowHeaderClasses(headerGroup[0], $first)">
-
-        <!-- left row headers -->
-        <th ng-repeat="header in headerGroup"
-            class="header row-header"
-            ng-class="rowColHeaderClasses(header, $first)"
-            ng-click="headerclick({ header : header, axis:'y', index: $index, parentIndex: $parent.$parent.$index, rows: data, rowspan: header.CellSpan, colspan: headerColSpan(headerGroup, $index) });"
-            ng-show="isVisible(header)"
-            colspan="{{headerColSpan(headerGroup, $index)}}"
-            rowspan="{{header.CellSpan}}" ng-include="headerTemplate">
-        </th>
-
-        <!-- data cells -->
-        <td class="data"
-            ng-click="dataclick({ data : data })"
-            ng-class="classes(data, headerGroup[headerGroup.length - 1])"
-            ng-repeat="data in data[$index] track by $index"
-            ng-include="dataTemplate">
-        </td>
-
-        <td class="closing-border"></td>
-      </tr>
-      <tr class="space">
-        <td  ng-if="data[0].length > 0" colspan="{{yHeaderGroups[0].length}}"></td>
-        <td ng-if="data[0].length > 0" colspan="{{data[0].length}}"></td>
-        <td class="closing-border"></td>
-      </tr>
-  </tbody>
+            <!-- top header row -->
+            <th ng-class="colHeaderClasses(header)"
+                ng-click="headerclick({header : header, axis:'x', index: $index, parentIndex: $parent.$parent.$index, colspan: header.CellSpan, headerGroup: headerGroup, rows: data });"
+                ng-include="headerTemplate"
+                ng-repeat="header in headerGroup" colspan="{{header.CellSpan}}">{{header.CellLabels[0]}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="facts in table.TableCells.Facts">
+            <!-- left row headers -->
+            <th ng-repeat="cell in bodyHeaders(facts,$index)"
+                ng-class="rowColHeaderClasses(header)"
+                class="lightBlue"
+                ng-click="headerclick({ header : cell, axis:'y', index: $index, parentIndex: $parent.$index, rowspan: cell.CellSpan, colspan: headerColSpan(facts, $index), rows: data });"
+                rowspan="{{cell.CellSpan}}"
+            >
+            {{cell.CellLabels[0]}}
+            </th>
+            <!-- data cells -->
+            <td
+                ng-class="classes(data, facts[facts.length - 1])"
+                ng-click="dataclick({ data : data })"
+                ng-repeat="data in facts track by $index"
+                ng-include="dataTemplate">
+            </td>
+        </tr>
+    </tbody>
 </table>
-</div>
