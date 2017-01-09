@@ -10,40 +10,26 @@
 .border-left(@props){
   border-right: @props;
 }
+
+.border-right(@props) {
+  border-left: @props;
+}
+
 .padding-left(@props){
   padding-right: @props;
 }
+
 .padding-right(@props){
   padding-left: @props;
 }
+
 .margin-left(@props){
   margin-right: @props;
 }
+
 .margin-right(@props){
   margin-left: @props;
 }
-
-/* LTR
-.border-left(@props){
-  border-left: @props;
-}
-
-.padding-left(@props){
-  border-left: @props;
-}
-
-.padding-right(@props){
-  padding-right: @props;
-}
-
-.margin-left(@props){
-  margin-left: @props;
-}
-
-.margin-right(@props){
-  margin-right: @props;
-}
-*/
 
 .preview-style {
   table {
@@ -75,18 +61,18 @@
         th {
           border: 2px solid @color_alto_approx;
           &:first-child {
-            .border-left( 2px solid @black);
+            .border-left(2px solid @black);
           }
           &:last-of-type {
-            border-right: 2px solid @black;
+            .border-right(2px solid @black);
           }
           &:last-child {
-            border-right: 2px solid @black;
+            .border-right(2px solid @black);
           }
         }
         td {
           &:last-child {
-            border-right: 2px solid @black;
+            .border-right(2px solid @black);
           }
           .NumericValue {
             text-align: right;
@@ -103,7 +89,7 @@
           .padding-left(10px);
           .padding-right(6px);
           &:last-child {
-            border-right: 2px solid @black;
+            .border-right(2px solid @black);
           }
         }
         &:first-child th {

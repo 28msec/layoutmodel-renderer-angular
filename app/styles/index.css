@@ -6553,27 +6553,6 @@ button.close {
   margin: auto;
   padding: 0;
 }
-/* LTR
-.border-left(@props){
-  border-left: @props;
-}
-
-.padding-left(@props){
-  border-left: @props;
-}
-
-.padding-right(@props){
-  padding-right: @props;
-}
-
-.margin-left(@props){
-  margin-left: @props;
-}
-
-.margin-right(@props){
-  margin-right: @props;
-}
-*/
 .preview-style table {
   empty-cells: show;
   border-spacing: 0;
@@ -6604,13 +6583,13 @@ button.close {
   border-right: 2px solid #000000;
 }
 .preview-style table tbody tr th:last-of-type {
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
 }
 .preview-style table tbody tr th:last-child {
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
 }
 .preview-style table tbody tr td:last-child {
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
 }
 .preview-style table tbody tr td .NumericValue {
   text-align: right;
@@ -6623,7 +6602,7 @@ button.close {
   padding-left: 6px;
 }
 .preview-style table thead tr.header-row th:last-child {
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
 }
 .preview-style table thead tr.header-row:first-child th {
   border-top: 2px solid #000000;
