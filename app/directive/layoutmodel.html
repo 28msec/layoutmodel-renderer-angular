@@ -1,10 +1,10 @@
  <script type="text/ng-template" id="defaultData.html">
   <div class="value">
-    <span class="data-value" ng-bind-html="showValue(data)"></span><span ng-if="showMoreLink(data)" class="morelink"><a ng-click="showDetails($event, data)">[more]</a></span>    
+    <span class="data-value" ng-bind-html="showValue(data)"></span><span ng-if="showMoreLink(data)" class="morelink"><a ng-click="showDetails($event, data)">[more]</a></span>
     <span ng-if="checks" class="validation"><i ng-show="data.Valid == false" class="fa fa-times invalid"></i><i ng-show="data.Valid" class="fa fa-check valid"></i></span>
-  </div>            
+  </div>
  </script>
- 
+
  <script type="text/ng-template" id="defaultHeader.html">
   {{ header.CellLabels[labelidx] || header.CellLabels[0] }}
  </script>
@@ -45,39 +45,40 @@
      </tr>
   </tbody>
 </table>
- <div id="c" style="overflow: hidden;">
  <table id="table">
   <!-- ###### The main table ###### -->
-  <tbody>
+  <thead>
       <tr ng-repeat="headerGroup in xHeaderGroups"
           ng-class="{ 'last-column-header-row' : $last, 'first-column-header-row' : $first }">
 
         <!-- top left corner header cell -->
-        <td ng-repeat="superHeader in ySuperHeaders | displaySuperColumnHeader:$index"
+        <th ng-repeat="superHeader in ySuperHeaders | displaySuperColumnHeader:$index"
             class="header title superheader"
             colspan="{{yHeaderGroups[0].length}}" rowspan="{{xHeaderGroups.length}}"
-            ng-click="headerclick({ header : superHeader, axis:'x', index: 0,  rows: data });">{{superHeader.Label}}</td>
+            ng-click="headerclick({ header : superHeader, axis:'x', index: 0,  rows: data });">{{superHeader.Label}}</th>
 
         <!-- top header row -->
-        <td class="header column-header" ng-class="colHeaderClasses(header)"
+        <th class="header column-header" ng-class="colHeaderClasses(header)"
             ng-click="headerclick({header : header, axis:'x', index: $index, parentIndex: $parent.$parent.$index, rows: data, colspan: header.CellSpan, headerGroup: headerGroup });"
             ng-repeat="header in headerGroup" colspan="{{header.CellSpan}}" ng-include="headerTemplate">
-        </td>
+        </th>
 
-        <td class="closing-border"></td>
+        <th class="closing-border"></th>
       </tr>
+  </thead>
+  <tbody>
       <tr ng-repeat="headerGroup in yHeaderGroups"
           ng-class="rowHeaderClasses(headerGroup[0], $first)">
 
         <!-- left row headers -->
-        <td ng-repeat="header in headerGroup"
+        <th ng-repeat="header in headerGroup"
             class="header row-header"
             ng-class="rowColHeaderClasses(header, $first)"
             ng-click="headerclick({ header : header, axis:'y', index: $index, parentIndex: $parent.$parent.$index, rows: data, rowspan: header.CellSpan, colspan: headerColSpan(headerGroup, $index) });"
             ng-show="isVisible(header)"
             colspan="{{headerColSpan(headerGroup, $index)}}"
             rowspan="{{header.CellSpan}}" ng-include="headerTemplate">
-        </td>
+        </th>
 
         <!-- data cells -->
         <td class="data"
@@ -96,5 +97,4 @@
       </tr>
   </tbody>
 </table>
- </div>
 </div>
