@@ -6564,6 +6564,9 @@ button.close {
   text-align: left;
   padding: 2px;
 }
+.preview-style table th::after {
+  content: '\00a0';
+}
 .preview-style table tr.space td {
   height: 5px;
 }
