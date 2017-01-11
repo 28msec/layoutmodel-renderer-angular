@@ -64,7 +64,7 @@ function stickyHeader() {
 
                     // Set width of sticky tabl intersect
                     // FixMe: there is probably a better way to remove the 2 extra pixels.
-                    $stickyInsct.find('th').height($t.find('thead').height())
+                    $stickyInsct.find('th').height($t.find('thead th').height())
     			},
     			repositionStickyHead = function () {
     				// Return value of calculated allowance
@@ -138,20 +138,21 @@ function stickyHeader() {
     			};
 
     		setWidths();
+            var delay = 50;
 
-    		$t.parent('.sticky-wrap').scroll($.throttle(250, function() {
+    		$t.parent('.sticky-wrap').scroll($.throttle(delay, function() {
     			repositionStickyHead();
     			repositionStickyCol();
     		}));
 
     		$w
     		.load(setWidths)
-    		.resize($.debounce(250, function () {
+    		.resize($.debounce(delay, function () {
     			setWidths();
     			repositionStickyHead();
     			repositionStickyCol();
     		}))
-    		.scroll($.throttle(250, repositionStickyHead));
+    		.scroll($.throttle(delay, repositionStickyHead));
     	}
     });
 };
