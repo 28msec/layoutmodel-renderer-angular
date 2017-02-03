@@ -198,7 +198,7 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
 
                     if (scope.yHeaders[0].length > 1) {
                         scope.yHeaders = [{
-                            Label: "",
+                            Label: '',
                             ColSpan: scope.yHeaders.length-1
                         }].concat(scope.yHeaders);
                     }
