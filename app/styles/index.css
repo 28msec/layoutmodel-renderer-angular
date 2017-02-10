@@ -6583,16 +6583,16 @@ button.close {
   border: 2px solid #dadcdd;
 }
 .preview-style table tbody tr th:first-child {
-  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
 }
 .preview-style table tbody tr th:last-of-type {
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
 }
 .preview-style table tbody tr th:last-child {
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
 }
 .preview-style table tbody tr td:last-child {
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
 }
 .preview-style table tbody tr td .NumericValue {
   text-align: right;
@@ -6601,11 +6601,11 @@ button.close {
   border: 1px solid #000000;
   vertical-align: bottom;
   text-align: center;
-  padding-left: 10px;
-  padding-right: 6px;
+  padding-right: 10px;
+  padding-left: 6px;
 }
 .preview-style table thead tr.header-row th:last-child {
-  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
 }
 .preview-style table thead tr.header-row:first-child th {
   border-top: 2px solid #000000;
@@ -6666,7 +6666,7 @@ button.close {
 }
 .preview-style table tr .xrollup {
   border-top: none;
-  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
 }
 .preview-style table td.isrollup {
   text-align: right;

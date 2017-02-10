@@ -119,31 +119,6 @@ module.exports = function (grunt) {
             },
             src: ['Gruntfile.js', '<%= config.app %>/modules/**/*.js', '<%= config.app %>/report/**/*.js', '<%= config.app %>/reports/**/*.js', 'tasks/**/*.js', 'tests/**/*.js','<%= config.app %>/directive/*.js'],
         },
-        karma: {
-            options: {
-                configFile: './karma.conf.js'
-            },
-            dev: {
-                browsers: ['Chrome'],
-                autoWatch: true,
-                singleRun: false
-            },
-            '1.2.9': {
-                options: {
-                    files: [
-                        '<%= config.app %>/bower_components/angular/angular.js',
-                        '<%= config.app %>/bower_components/angular-mocks-1.2.9/angular-mocks.js',
-                        'tests/unit/karma.start.js',
-                        'tests/unit/*.js'
-                    ]
-                }
-            }
-        },
-        coveralls: {
-            options: {
-                'coverage_dir': 'coverage'
-            }
-        },
         protractor: {
             travis: 'tests/e2e/config/protractor-travis-conf.js',
             local: 'tests/e2e/config/protractor-conf.js'
