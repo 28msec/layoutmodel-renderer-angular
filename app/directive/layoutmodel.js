@@ -211,7 +211,6 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                     var ao = scope.table.TableCells.AxisOrder;
                     if (!ao || ao.length!==2 || ao[0] !== 'y' || ao[1] !== 'x') { throw new Error('layoutmodel: table cells must be in y, x axis order.'); }
                 });
-
             }
         };
     })
