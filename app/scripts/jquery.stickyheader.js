@@ -144,6 +144,23 @@ function stickyHeader() {
     			repositionStickyCol();
     		}));
 */
+            var delay = 50;
+
+            $t.parent('.sticky-wrap').scroll($.throttle(delay, function() {
+                repositionStickyHead();
+                repositionStickyCol();
+            }));
+/*
+            $w
+                .load(setWidths)
+                .resize($.debounce(delay, function () {
+                    setWidths();
+                    repositionStickyHead();
+                    repositionStickyCol();
+                }))
+                .scroll($.throttle(delay, repositionStickyHead));
+*/
+
     		$w
     		.load(setWidths)
     		.resize($.debounce(100, function () {
@@ -162,6 +179,7 @@ function stickyHeader() {
                     $stickyInsct.show();
 				}, 1000);
 			}));
+
     	}
     });
 };

@@ -196,6 +196,13 @@ angular.module('layoutmodel', [ 'lodash', 'ui.bootstrap' ])
                         .flatten()
                         .value();
 
+                    if (scope.yHeaders[0].length > 1) {
+                        scope.yHeaders = [{
+                            Label: '',
+                            ColSpan: scope.yHeaders.length-1
+                        }].concat(scope.yHeaders);
+                    }
+
                     scope.headerColspan = (scope.yHeaders.length-1) || 1;
                     scope.dataColspan = scope.table.TableCells.Facts.length > 0 ? scope.table.TableCells.Facts[0].length : 0;
 
