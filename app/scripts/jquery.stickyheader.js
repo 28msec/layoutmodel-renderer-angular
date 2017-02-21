@@ -138,20 +138,30 @@ function stickyHeader() {
     			};
 
     		setWidths();
-
-    		$t.parent('.sticky-wrap').scroll($.throttle(250, function() {
+/*
+    		$t.parent('.sticky-wrap').scroll($.throttle(100, function() {
     			repositionStickyHead();
     			repositionStickyCol();
     		}));
-
+*/
     		$w
     		.load(setWidths)
-    		.resize($.debounce(250, function () {
+    		.resize($.debounce(100, function () {
     			setWidths();
     			repositionStickyHead();
     			repositionStickyCol();
     		}))
-    		.scroll($.throttle(250, repositionStickyHead));
+			.scroll(function(){
+                $stickyHead.hide();
+                $stickyInsct.hide();
+			})
+    		.scroll($.throttle(1000	, function () {
+                setTimeout(function(){
+                    repositionStickyHead();
+                    $stickyHead.show();
+                    $stickyInsct.show();
+				}, 1000);
+			}));
     	}
     });
 };
