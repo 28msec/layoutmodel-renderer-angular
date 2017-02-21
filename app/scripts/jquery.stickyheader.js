@@ -155,7 +155,3 @@ function stickyHeader() {
     	}
     });
 };
-
-$(function(){
-    stickyHeader();
-});
